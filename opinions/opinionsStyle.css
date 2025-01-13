@@ -1,0 +1,18 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+a {
+  color: rgb(100, 200, 200);
+}
+
+#math {
+  color: rgb(200,100,100)
+}
+#komputer {
+  color: rgb(100,200,100)
+}
+#linguist {
+  color: rgb(100,100,200)
+}

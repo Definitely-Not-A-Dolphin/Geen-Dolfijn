@@ -1,0 +1,17 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+a {
+  color: rgb(100,200,200);
+}
+
+/*Some cool colors I found (but haven't used yet)
+  rgb(100,200,200)
+  rgb(200,100,200)
+  rgb(200,200,100)
+
+  rgb(200,100,100)
+  rgb(100,200,100)
+  rgb(100,100,200)
