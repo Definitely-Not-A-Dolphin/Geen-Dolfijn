@@ -7,12 +7,22 @@ a {
   color: rgb(100, 200, 200);
 }
 
+h3 {
+  margin-bottom: 0.1rem;
+}
+
+p, ul {
+  margin-top: 0.1rem;
+}
+
 #math {
-  color: rgb(200,100,100)
+  color: rgb(255, 100, 100)
 }
+
 #komputer {
-  color: rgb(100,200,100)
+  color: rgb(75, 255, 75)
 }
+
 #linguist {
-  color: rgb(100,100,200)
+  color: rgb(100, 100, 255)
 }
