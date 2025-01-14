@@ -17,12 +17,16 @@ a {
   color: rgb(100,200,200);
 }
 
-#blue {
-  color: rgb(50, 100, 200);
+#workingOnItNow {
+  color: rgb(100, 200, 100)
 }
-#red {
-  color: rgb(200, 50, 50)
+#gonnaDoItSoon {
+  color: rgb(200, 200, 100)
 }
+#notGonnaDoItSoon {
+  color: rgb(200, 100, 100)
+}
+
 #math {
   color: rgb(255, 100, 100)
 }
@@ -32,13 +36,6 @@ a {
 #linguist {
   color: rgb(100, 100, 255)
 }
-
-/*Some cool colors I found (but haven't used yet)
-  rgb(100,200,200)
-  rgb(200,100,200)
-  rgb(200,200,100)
-
-  rgb(200,100,100)
-  rgb(100,200,100)
-  rgb(100,100,200)
-*/
+#game {
+  color: rgb(255, 150, 0)
+}
