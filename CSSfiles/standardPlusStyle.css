@@ -39,7 +39,7 @@ a {
   color: white;
   border: 5px solid rgb(255, 75, 75);
   padding: 10px;
-  grid-row: 1 / 6;
+  grid-row: 1 / 5;
   grid-column: 29 / 33;
 }
 
@@ -56,7 +56,7 @@ a {
 }
 
 #notGonnaDoItSoon {
-  color: rgb(200, 100, 100)
+  color: rgb(200, 100, 255)
 }
 
 #math {
