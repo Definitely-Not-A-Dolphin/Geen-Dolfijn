@@ -34,6 +34,8 @@ a {
 }
 
 .aside {
+  min-width: 150px;
+  max-height: 150px;
   text-align: right;
   background-color: black;
   color: white;
@@ -50,27 +52,21 @@ a {
 #workingOnItNow {
   color: rgb(100, 200, 100)
 }
-
 #gonnaDoItSoon {
   color: rgb(200, 200, 100)
 }
-
 #notGonnaDoItSoon {
   color: rgb(200, 100, 100)
 }
-
 #math {
-  color: rgb(255, 100, 100)
+  color: rgb(255, 75, 75)
 }
-
 #komputer {
   color: rgb(75, 255, 75)
 }
-
 #linguist {
   color: rgb(100, 100, 255)
 }
-
 #game {
   color: rgb(255, 150, 0)
 }
