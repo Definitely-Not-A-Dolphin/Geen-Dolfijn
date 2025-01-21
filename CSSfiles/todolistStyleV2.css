@@ -17,7 +17,7 @@ a {
 
 .container {
   display: grid;
-  grid-gap: 10px 10px;
+  grid-gap: 0px 0px;
   grid-template-rows: repeat(36, 1fr);
   grid-template-columns: repeat(36, 1fr);
   height: 100vh;
@@ -36,20 +36,18 @@ a {
 .main {
   z-index: 1;
   border-radius: 15px;
-  grid-row: 4 / auto;
+  grid-row: 4 / 36;
   grid-column: 7 / 36;
   padding: 10px;
   background-color: rgb(50, 50, 50);
 }
 
-/*
 .sizzle {
   z-index: 2;
   border-radius: 20px;
   grid-row: 15 / 36;
   grid-column: 2 / 36;
 }
-*/
 
 .aside {
   z-index: 1;
@@ -70,20 +68,7 @@ a {
   /*border: 5px solid rgb(100, 100, 200);*/
   padding: 10px;
   border-radius: 15px;
-  grid-row: 4 / auto;
-  grid-column: 2 / 6;
-  line-height: 1.8;
-  background-color: rgb(50, 50, 50);
-}
-
-.link2 {
-  z-index: 1;
-  text-align: left;
-  color: white;
-  /*border: 5px solid rgb(100, 100, 200);*/
-  padding: 10px;
-  border-radius: 15px;
-  grid-row: 9 / auto;
+  grid-row: 4 / 14;
   grid-column: 2 / 6;
   line-height: 1.8;
   background-color: rgb(50, 50, 50);
