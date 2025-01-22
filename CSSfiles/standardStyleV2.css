@@ -80,7 +80,6 @@ a {
   z-index: 1;
   text-align: left;
   color: white;
-  /*border: 5px solid rgb(100, 100, 200);*/
   padding: 10px;
   border-radius: 15px;
   grid-row: 9 / auto;
@@ -93,18 +92,20 @@ a {
   font-size: 18px;
 }
 
+/*Colors for the to-do list:*/
 #workingOnItNow {
-  color: rgb(100, 200, 100)
+  color: rgb(100, 255, 100)
 }
 
 #gonnaDoItSoon {
-  color: rgb(200, 200, 100)
+  color: rgb(255, 255, 100)
 }
 
 #notGonnaDoItSoon {
-  color: rgb(200, 100, 100)
+  color: rgb(255, 100, 100)
 }
 
+/*Subjects*/
 #math {
   color: rgb(255, 75, 75)
 }

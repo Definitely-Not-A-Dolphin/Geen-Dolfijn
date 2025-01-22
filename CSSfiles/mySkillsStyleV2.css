@@ -30,6 +30,7 @@ a {
   border-radius: 15px;
   background-color: rgb(50, 50, 50);
   padding: 10px;
+  border: 5px solid rgb(50, 50, 50);
 }
 
 .main1 {
@@ -44,7 +45,7 @@ a {
 .main2 {
   z-index: 1;
   border-radius: 15px;
-  grid-row: 12 / auto;
+  grid-row: 10 / auto;
   grid-column: 7 / 36;
   padding: 10px;
   background-color: rgb(50, 50, 50);
@@ -78,15 +79,15 @@ a {
   border-radius: 15px;
   grid-row: 4 / auto;
   grid-column: 2 / 6;
-  line-height: 1.8;
+  line-height: 1.8; 
   background-color: rgb(50, 50, 50);
 }
-  
+
 .link2 {
   z-index: 1;
   text-align: left;
   color: white;
-  padding: 10px;
+  padding: 10px; 
   border-radius: 15px;
   grid-row: 9 / auto;
   grid-column: 2 / 6;
