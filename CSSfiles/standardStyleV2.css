@@ -42,6 +42,15 @@ a {
   background-color: rgb(50, 50, 50);
 }
 
+.main2 {
+  z-index: 1;
+  border-radius: 15px;
+  grid-row: 10 / auto;
+  grid-column: 7 / 36;
+  padding: 10px;
+  background-color: rgb(50, 50, 50);
+}
+
 /*
 .sizzle {
   z-index: 2;
