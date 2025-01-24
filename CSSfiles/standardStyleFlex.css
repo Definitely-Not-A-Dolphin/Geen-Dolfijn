@@ -34,12 +34,18 @@ a {
 }
 
 .containerCol2 {
+  flex-grow: 2;
   margin: 10px;
   padding: 10px;
   gap: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.sizzle {
+  z-index: 2;
+  border-radius: 20px;
 }
 
 .aside1 {
