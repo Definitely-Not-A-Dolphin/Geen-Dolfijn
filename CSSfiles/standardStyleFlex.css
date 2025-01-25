@@ -33,6 +33,11 @@ a {
   justify-content: flex-start;
 }
 
+.sizzle {
+  border-radius: 20px;
+  width: 220px;
+}
+
 .containerCol2 {
   flex-grow: 2;
   margin: 10px;
@@ -41,11 +46,6 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-
-.sizzle {
-  z-index: 2;
-  border-radius: 20px;
 }
 
 .aside1 {
