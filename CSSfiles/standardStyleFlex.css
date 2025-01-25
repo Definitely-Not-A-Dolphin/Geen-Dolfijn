@@ -34,8 +34,8 @@ a {
 }
 
 .sizzle {
-  border-radius: 20px;
   width: 220px;
+  border-radius: 20px;
 }
 
 .containerCol2 {
@@ -43,27 +43,28 @@ a {
   margin: 10px;
   padding: 10px;
   gap: 20px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
 .aside1 {
+  border-radius: 15px;
   width: 200px;
-  text-align: left;
+  text-align: center;
   color: white;
   padding: 10px;
-  border-radius: 15px;
   background-color: rgb(50, 50, 50);
 }
 
 .link1,
 .link2 {
+  text-align: center;
+  border-radius: 15px;
   width: 200px;
-  text-align: left;
   color: white;
   padding: 10px;
-  border-radius: 15px;
   line-height: 1.8;
   background-color: rgb(50, 50, 50);
 }
