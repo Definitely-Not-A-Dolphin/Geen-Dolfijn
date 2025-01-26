@@ -1,0 +1,140 @@
+body {
+  background-color: rgb(25, 25, 25);
+  color: white;
+}
+
+a {
+  color: rgb(0, 200, 200);
+}
+
+.not {
+  margin-top: 0.1rem;
+}
+
+.nob {
+  margin-bottom: 0.1rem;
+}
+
+/* For the Buttons! */
+.button1 {
+  font-family: Georgia, serif;
+  background-color: rgb(50,50,50);
+  border: none;
+  width: 220px;
+  height: 40px;
+  border-radius: 15px;
+  font-size: 18px;
+  color: rgb(0, 200, 200);
+}
+
+/* Flexboxes */
+.containerMain {
+  gap: 40px;
+  margin: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.containerCol1 {
+  gap: 20px;
+  flex: none;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.containerCol1a {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.containerCol1b {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.containerCol2 {
+  gap :20px;
+  margin: 10px;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Images */
+.sizzle {
+  width: 220px;
+  border-radius: 20px;
+}
+
+/* Sidebar */
+.aside1 {
+  border-radius: 15px;
+  width: 200px;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  background-color: rgb(50, 50, 50);
+}
+
+/*Links*/
+.link1,
+.link2 {
+  text-align: center;
+  border-radius: 15px;
+  width: 200px;
+  color: white;
+  padding: 10px;
+  line-height: 1.8;
+  background-color: rgb(50, 50, 50);
+}
+
+.main,
+.header,
+.main2 {
+  border-radius: 15px;
+  padding: 10px;
+  background-color: rgb(50, 50, 50);
+}
+
+.header {
+  height: auto;
+}
+
+#linktext {
+  font-size: 18px;
+}
+
+/*Colors for the to-do list:*/
+#workingOnItNow {
+  color: rgb(100, 255, 100)
+}
+
+#gonnaDoItSoon {
+  color: rgb(255, 255, 100)
+}
+
+#notGonnaDoItSoon {
+  color: rgb(255, 100, 100)
+}
+
+/*Subjects*/
+#math {
+  color: rgb(255, 75, 75)
+}
+
+#komputer {
+  color: rgb(75, 255, 75)
+}
+
+#linguist {
+  color: rgb(100, 100, 255)
+}
+
+#game {
+  color: rgb(255, 150, 0)
+}
