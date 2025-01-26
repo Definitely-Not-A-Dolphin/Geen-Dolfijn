@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="../CSSfiles/standardStyleFlex.css">
+  <link rel="stylesheet" href="../CSSfiles/standardStyleFlexV2.css">
+  <script src="../buttons/buttonFile.js"></script>
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,31 +14,40 @@
   <div class="containerMain">
   
     <div class="containerCol1">
-    
       <div class="aside1">
         <h1>
           Check Out:
         </h1>
       </div>
     
-      <div class="item link1">
-        <p id="linktext">
-          <a href="https://geen-dolfijn.nl/my-projects">My Projects</a><br>
-          <a href="https://geen-dolfijn.nl/my-skills">My Skills</a><br>
-          <a href="https://geen-dolfijn.nl/opinions">Opinions</a><br>
-          <a href="https://geen-dolfijn.nl/random-thoughts">Random Thoughts</a><br>
-          <a href="https://geen-dolfijn.nl/to-do-list">To Do List</a>
-        </p></span>
-      </div>
-    
-      <div class="item link2">
-        <p id="linktext">
-          <a href="https://geen-dolfijn.nl">Home</a><br>
-          <a href="https://geen-dolfijn.nl/opinions">Go back a page</a><br>
-        </p></span>
+      <div class="containerCol1a">
+        <div class="button">
+          <button class="button1" onclick="linkToProj()">My Projects</button>
+        </div>
+        <div class="button">
+          <button class="button1" onclick="linkToSkil()">My Skills</button>
+        </div>
+        <div class="button">
+          <button class="button1" onclick="linkToOpin()">Opinions</button>
+        </div>
+        <div class="button">
+          <button class="button1" onclick="linkToThou()">Random Thoughts</button>
+        </div>
+        <div class="button">
+          <button class="button1" onclick="linkToToDo()">To Do List</button>
+        </div>
       </div>
     
       <img class="item sizzle" src="../images/S_I_Z_Z_L_E.jpg" alt="picture of my cat">
+    
+      <div class="containerCol1a">
+        <div class="button">
+          <button class="button1" onclick="linkToHome()">Home</button>
+        </div>
+        <div class="button">
+          <button class="button1" onclick="linkToOpin()">Go back a page!</button>
+        </div>
+      </div>
     
     </div>
   
@@ -51,7 +61,7 @@
       </div>
     
       <div class="item main">
-        <h2 class="nob">6 is like the best number and if you do not agree you are wrong.</h2>
+        <h2 id="math" class="nob not">6 is like the best number and if you do not agree you are wrong.</h2>
         <p class="not">
           6 is the smallest <span id="math">perfect number</span>. What is a perfect number you may ask? A perfect number is a
           number of which the sum of its proper denominaters equals the number itself.
