@@ -16,3 +16,6 @@ function linkToOpin() {
 function linkToThou() {
   window.location.href = 'https://geen-dolfijn.nl/random-thoughts/';
 };
+function linkToDesm() {
+  window.location.href = 'https://geen-dolfijn.nl/desmos-gallery/';
+};

@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="../CSSfiles/standardStyleFlexV2.css">
-  <script src="../buttons/buttonFile.js"></script>
+  <link rel="stylesheet" href="../../CSSfiles/standardStyleFlexV2.css">
+  <script src="../../buttons/buttonFile.js"></script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coding Projects</title>
+  <title>My Coding Projects</title>
 </head>
 
 <body>
@@ -21,24 +21,27 @@
       </div>
 
       <div class="containerCol1a">
-        <div class="button">
+        <div class="buttons">
           <button class="button1" onclick="linkToProj()">My Projects</button>
         </div>
-        <div class="button">
+        <div class="buttons">
+          <button class="button1" onclick="linkToDesm()">Desmos Gallery</button>
+        </div>
+        <div class="buttons">
           <button class="button1" onclick="linkToSkil()">My Skills</button>
         </div>
-        <div class="button">
+        <div class="buttons">
           <button class="button1" onclick="linkToOpin()">Opinions</button>
         </div>
-        <div class="button">
+        <div class="buttons">
           <button class="button1" onclick="linkToThou()">Random Thoughts</button>
         </div>
-        <div class="button">
+        <div class="buttons">
           <button class="button1" onclick="linkToToDo()">To Do List</button>
         </div>
       </div>
 
-      <img class="item sizzle" src="../images/S_I_Z_Z_L_E.jpg" alt="picture of my cat">
+      <img class="item sizzle" src="../../images/S_I_Z_Z_L_E.jpg" alt="picture of my cat">
 
       <div class="containerCol1a">
         <div class="button">
@@ -54,14 +57,14 @@
     <div class="containerCol2">
 
       <div class="item header">
-        <h1 class="not nob">My Projects</h1>
+        <h1 class="not nob">My <span id="komputer">Coding</span> Projects</h1>
         <p>
           These are all the (big) <span id="komputer">Coding</span> projects I am making / have made. Take a look!
         </p>
       </div>
 
       <div class="item main">
-        <h2 class="nob not">Finnish Language Trainer</h2>
+        <h2 class="nob not" id="linguist">Finnish Language Trainer</h2>
         <p class="not">
           To practise both my <span id="linguist">Finnish</span> and my <span id="komputer">C++</span> skills, I made
           the
@@ -100,8 +103,8 @@
         </p>
       </div>
 
-      <div class="item main2">
-        <h2 class="nob not">This website</h2>
+      <div class="item main">
+        <h2 class="nob not" id="komputer">This website</h2>
         <p class="not">
           When I turned 16 years old in december, one of my friends, who is way better with computers than anyone I
           know, gifted
