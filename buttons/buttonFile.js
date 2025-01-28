@@ -19,3 +19,6 @@ function linkToThou() {
 function linkToDesm() {
   window.location.href = 'https://geen-dolfijn.nl/desmos-gallery/';
 };
+function linkToReco() {
+  window.location.href = 'https://geen-dolfijn.nl/my-recommendations/';
+};
