@@ -58,8 +58,17 @@ a {
   flex-direction: column;
 }
 
-.containerCol2 {
+.containerCol3 {
   gap: 20px;
+  flex: none;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.containerCol2 {
+  gap: 40px;
   margin: 10px;
   flex-grow: 2;
   display: flex;
@@ -95,15 +104,13 @@ a {
   background-color: rgb(25, 25, 25);
 }
 
-.main,
 .header,
-.main2 {
+.aboutMe,
+.aboutMe,
+.interests,
+.mentions {
   border-radius: 15px;
   padding: 10px;
-  background-color: rgb(25, 25, 25);
-}
-
-.header {
   height: auto;
 }
 
