@@ -1,4 +1,3 @@
-
 import { sync } from "glob";
 
 export default {
@@ -8,4 +7,3 @@ export default {
     },
   },
 };
-
