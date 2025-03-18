@@ -37,7 +37,7 @@ a {
   justify-content: flex-start;
 }
 
-.containerCol1 {
+.containerSidebar {
   gap: 20px;
   flex: none;
   padding: 10px;
@@ -46,31 +46,25 @@ a {
   justify-content: flex-start;
 }
 
-.containerCol1a {
+.containerSidebarButtons {
   gap: 10px;
   display: flex;
   flex-direction: column;
-}
-
-.containerCol1b {
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.containerCol3 {
-  gap: 20px;
-  flex: none;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 
 .containerCol2 {
   gap: 40px;
   margin: 10px;
   flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.containerCol3 {
+  gap: 20px;
+  flex: none;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -83,7 +77,7 @@ a {
 }
 
 /* Sidebar */
-.aside1 {
+.CheckOut {
   border-radius: 15px;
   width: 200px;
   text-align: center;
