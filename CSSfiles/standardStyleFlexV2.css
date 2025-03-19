@@ -37,7 +37,7 @@ a {
   justify-content: flex-start;
 }
 
-.containerCol1 {
+.containerSidebar {
   gap: 20px;
   flex: none;
   padding: 10px;
@@ -46,7 +46,7 @@ a {
   justify-content: flex-start;
 }
 
-.containerCol1a {
+.containerSidebarButtons {
   gap: 10px;
   display: flex;
   flex-direction: column;
@@ -74,7 +74,7 @@ a {
 }
 
 /* Sidebar */
-.aside1 {
+.CheckOut {
   border-radius: 15px;
   width: 200px;
   text-align: center;
