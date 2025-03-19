@@ -1,4 +1,5 @@
-const urls: { name: string; url: string }[] = [
+const urls: { name: string; url: string; onHome?: boolean }[] = [
+  // ^^ onHome is an optional parameter, so that we can hide certain links on the homepage
   {
     name: "My Projects",
     url: "/my-projects/",
@@ -30,14 +31,32 @@ const urls: { name: string; url: string }[] = [
   {
     name: "Home",
     url: "/",
+    onHome: false,
   },
 ];
 
 class Navbar extends HTMLElement {
+  #isHome: boolean;
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
     this.render();
+
+    this.#isHome = false;
+  }
+
+  static observedAttributes = ["ishome"]; // Set the attributes you can set in the html
+
+  attributeChangedCallback(name: string, _: string, newValue: string) {
+    console.log(name, newValue);
+    // This function gets called when an attribute changes
+    if (name === "ishome" && newValue === "true") {
+      // We set the isHome (private) variable to true
+      this.#isHome = true;
+    }
+
+    this.render(); // Re-render the component
   }
 
   render() {
@@ -96,30 +115,42 @@ class Navbar extends HTMLElement {
 
       <div class="containerSidebarButtons"></div>
 
-      <img
-        class="item sizzle"
-        src="../images/S_I_Z_Z_L_E.jpg"
-        alt="picture of my cat"
-      />
+      ${
+        /* Only add the image if we're not on the homepage, 
+           Here's an explainer for the syntax 
+           https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator 
+        */
+        this.#isHome
+          ? ""
+          : `
+        <img
+          class="item sizzle"
+          src="../images/S_I_Z_Z_L_E.jpg"
+          alt="picture of my cat"
+        />
+      `
+      }
     </div>
   </nav>
       `;
 
     const containerSidebarButtons = this.shadowRoot!.querySelector(
       ".containerSidebarButtons",
-    )!; // Div waar alle buttons inzitten
+    )!; // Div where we'll put the buttons
     for (let url of urls) {
-      // Loop over alle linkjes
-      const link = document.createElement("a"); // Maak een <a> aan
-      link.classList.add("button1"); // Voeg class toe
-      link.innerText = url.name; // Zet tekst
-      link.href = url.url; // Zet url
+      // Loop over the links
+      if (url.onHome === false && this.#isHome) continue; // Don't add this link if we're on the homepage.
 
-      const buttonContainer = document.createElement("div"); // Maak container voor <a>
-      buttonContainer.classList.add("buttons"); // voeg class toe
-      buttonContainer.append(link); // voeg <a> toe aan <div>
+      const link = document.createElement("a"); // Create a <a>
+      link.classList.add("button1"); // Add a class
+      link.innerText = url.name; // Add some text
+      link.href = url.url; // Set the url
 
-      containerSidebarButtons.append(buttonContainer); // Voeg <div> toe aan navbar
+      const buttonContainer = document.createElement("div"); // Make a <div> for the <a>
+      buttonContainer.classList.add("buttons"); // Add class
+      buttonContainer.append(link); // Add <a> in <div>
+
+      containerSidebarButtons.append(buttonContainer); // Add <div> in navbar
     }
   }
 }
