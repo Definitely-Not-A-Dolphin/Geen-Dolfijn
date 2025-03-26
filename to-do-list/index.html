@@ -1,45 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <link rel="stylesheet" href="../CSSfiles/standardStyleFlexV2.css" />
 
-<head>
-  <link rel="stylesheet" href="../CSSfiles/standardStyleFlexV2.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+  </head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List</title>
-</head>
+  <body>
+    <div class="containerMain">
+      <side-bar></side-bar>
 
-<body>
-  <div class="containerMain">
+      <div class="containerCol2">
+        <div class="item header">
+          <h1 class="not nob">To-Do List</h1>
+          <p>
+            I have to make a list for all the things I still want to do, so here
+            I go.
+          </p>
+        </div>
 
-    <side-bar></side-bar>
+        <div class="item main">
+          <h2 class="nob not">
+            Things I have / want / wish to do (in no perticular order):
+          </h2>
 
-    <div class="containerCol2">
+          <span id="notGonnaDoItSoon"
+            >Learn Unreal Engine (or any other game engine),</span
+          ><br />
+          <span id="gonnaDoItSoon">Finish C++,</span><br />
+          <span id="gonnaDoItSoon">Trying to understand Set Theory</span><br />
+          <span id="workingOnItNow">Learn more Finnish,</span><br />
+          <span id="gonnaDoItSoon"
+            >Implement Finnish Idiom Trainer into this very site</span
+          ><br />
 
-      <div class="item header">
-        <h1 class="not nob">To-Do List</h1>
-        <p>
-          I have to make a list for all the things I still want to do, so here I go.
-        </p>
-      </div>
-
-      <div class="item main">
-        <h2 class="nob not">Things I have / want / wish to do (in no perticular order):</h2>
-
-        <span id="notGonnaDoItSoon">Learn Unreal Engine (or any other game engine),</span><br>
-        <span id="gonnaDoItSoon">Finish C++,</span><br>
-        <span id="gonnaDoItSoon">Trying to understand Set Theory</span><br>
-        <span id="workingOnItNow">Learn more Finnish,</span><br>
-        <span id="gonnaDoItSoon">Implement Finnish Idiom Trainer into this very site</span><br>
-
-        <span id="gonnaDoItSoon">Apply Svelte to it</span><br>
-        <span id="gonnaDoItSoon">Use Typescript to it</span><br>
-        <span id="gonnaDoItSoon">Vite or something</span><br>
+          <span id="gonnaDoItSoon">Apply Svelte to it</span><br />
+          <span id="gonnaDoItSoon">Use Typescript to it</span><br />
+          <span id="gonnaDoItSoon">Vite or something</span><br />
+        </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 
-<script src="../src/standardSidebar.ts" type="module"></script>
-
+  <script src="../src/standardSidebar.ts" type="module"></script>
 </html>

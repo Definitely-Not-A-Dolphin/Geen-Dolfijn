@@ -114,30 +114,30 @@ a {
 
 /*Colors for the to-do list:*/
 #workingOnItNow {
-  color: rgb(100, 255, 100)
+  color: rgb(100, 255, 100);
 }
 
 #gonnaDoItSoon {
-  color: rgb(255, 255, 100)
+  color: rgb(255, 255, 100);
 }
 
 #notGonnaDoItSoon {
-  color: rgb(255, 100, 100)
+  color: rgb(255, 100, 100);
 }
 
 /*Subjects*/
 #math {
-  color: rgb(255, 75, 75)
+  color: rgb(255, 75, 75);
 }
 
 #komputer {
-  color: rgb(75, 255, 75)
+  color: rgb(75, 255, 75);
 }
 
 #linguist {
-  color: rgb(100, 100, 255)
+  color: rgb(100, 100, 255);
 }
 
 #game {
-  color: rgb(255, 150, 0)
+  color: rgb(255, 150, 0);
 }
