@@ -3,8 +3,6 @@
 
 <head>
   <link rel="stylesheet" href="../../CSSfiles/standardStyleFlexV2.css">
-  <script src="../src/buttonFile.ts"></script>
-  <script src="../src/standardSidebar.ts"></script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,29 +15,129 @@
     <side-bar></side-bar>
     
     <div class="containerCol2">
-
+    
       <div class="item header">
         <h1 class="not nob">My Projects</h1>
         <p>
           These are all the (big) projects I am doing / have done. Take a look!
         </p>
       </div>
-
-      <div class="item main">
-        <h2 class="nob not">Coding projects:</h2>
-        <p class="not">
-          You can find my projects that involve coding <a href="https://geen-dolfijn.nl/my-projects/coding">here</a>!
+    
+      <div class="item header">
+        <h1 class="not nob">My <span id="komputer">Coding</span> Projects</h1>
+        <p>
+          These are all the (big) <span id="komputer">Coding</span> projects I am making / have made. Take a look!
         </p>
-        <h2 class="nob">Mathematics projects:</h2>
+      </div>
+    
+      <div class="item main">
+        <h2 class="nob not" id="linguist">Finnish Language Trainer</h2>
         <p class="not">
-          You can find my projects that involve coding <a
-            href="https://geen-dolfijn.nl/my-projects/mathematics">here</a>!
+          To practise both my <span id="linguist">Finnish</span> and my <span id="komputer">C++</span> skills, I made
+          the
+          Finnish Language Trainer (Formerly Finnish Idiom Trainer).
+          It makes use of <span id="komputer">(i)fstream</span> to store all the words and their translations in
+          seperate <span id="komputer">csv-files</span>.
+          It currently supports the "first" <span id="linguist">five cases</span> of the Finnish Language: <span
+            id="linguist">Nominatiivi, Genetiivi, Akkusatiivi, Partitiivi, Inessiivi.</span>
+          There are also some files that store grammar explainations, but they aren't finished. <br />
+        </p>
+        <p class="nob">
+          Some things that I wish to include / add in the future are:<br>
+          Colors, since everything happens in the terminal, colors can help organising all the text, and it looks
+          aesthetically pleasing.
+          More grammar explainations: Finnish is known for its <span id="linguist">complex grammar</span>, both for
+          <span id="linguist">cases</span> and for <span id="linguist">verbs</span>.
+          A way to practise numbers up to a million, but without having to type the first million numbers out in a
+          file.
+        </p>
+        <p>
+          This is written in <span id="komputer">C++</span>, and I put roughly 30 hours into it.
+          Although his code isn't used anymore, my good friend <a href="https://github.com/wh4ky" id="github">Wh4cky</a>
+          wrote
+          the first version (the current version is <span id="komputer">4.0.0</span>).
+          Check out the GitHub repository for the <a
+            href="https://github.com/Definitely-Not-A-Dolphin/Finnish-Idiom-Trainer" id="github">Finnish Language
+            Trainer</a> here.
+        </p>
+      </div>
+    
+      <div class="item main">
+        <h2 class="nob not" id="komputer">This website</h2>
+        <p class="not">
+          When I turned 16 years old in december, one of my friends, who is way better with computers than anyone I
+          know, gifted
+          me this domain.
+          Exactly 20 days later, it was ready to acces and for me to use. I plan on submitting this to the <span
+            id="komputer">High Seas</span> program when I feel content with the contents and the layout. <br />
+          The name of the domain is <span id="linguist">"geen-dolfijn"</span>, which is <span id="linguist">Dutch</span>
+          for
+          "no-dolphin".
+        </p>
+        <p class="nob">
+          Some things that I wish to include / add in the future are:<br>
+          More pages: I want this website to me an accurate representation of me, so it must include serious and
+          non-serious things.<br>
+          A way to let you, the reader, try my projects without leaving this very site.<br>
+        </p>
+        <p>
+          This site is written in <span id="komputer">HTML</span> and <span id="komputer">CSS</span>, and I have put
+          roughly 30+ hours into it. My friend Jsw helped me with the setup, and why not check out his GitHub, he has
+          a
+          very cool discord bot: <a href="https://github.com/jsw08" id="github">jsw</a>.
+          Check out the GitHub repository for <a href="https://github.com/Definitely-Not-A-Dolphin/Geen-Dolfijn"
+            id="github">this website</a> here.
+        </p>
+    
+        <h2>Updates: </h2>
+        <p>
+          25/01/2025: I submitted it to High seas and it got me 101 dablouns!
+        </p>
+        <p>
+          26/01/2025: I replaced most of the links with buttoms!
+        </p>
+      </div>
+    
+      <div class="item main">
+        <h2 class="nob not" id="komputer">Finnish Language Trainer (webversion)</h2>
+        <p class="not">
+          I wanted to put a webversion of this project on my site, so I got into TypeScript and Svelte and I am
+          currently making one. It is hard.
+        </p>
+        <p class="nob">
+          The things that still need to be implemented are: <br>
+          Making the practising stop after the desired amount of words, <br>
+          Adding more settings and actually making them do stuff.
+        </p>
+        <h2>Updates: </h2>
+        <p>
+          18/03/2025: Development is going good. It is really complicated but the start is there.
+        </p>
+      </div>
+    
+    
+      <div class="item header">
+        <h1 class="not nob">My <span id="math">Mathematics</span> Projects</h1>
+        <p>
+          These are all the (big) <span id="math">Mathematics</span> projects I am making / have made. Take a look!
+        </p>
+      </div>
+    
+      <div class="item main">
+        <h2 class="nob not" id="math">Integral of x^(-x)</h2>
+        <p class="not">
+          What is the integral from 0 to positive infinity of the function x^(-x) dx? That is a question I am dying to
+          know the answer to. So, I did the only logical thing: I attempted to solve it myself.
+          If you know anything that might be of any help, please contact me! I am pretty stuck.
+        </p>
+        <p>
+          A link to the typst document: <a href="https://typst.app/project/rg5bVg3psMlzEjEWOvsShB">x^(-x)</a>
         </p>
       </div>
     </div>
   </div>
 </body>
 
-<script type="module" src="../src/standardSidebar.ts"></script>
+<script src="../src/standardSidebar.ts" type="module"></script>
 
 </html>
