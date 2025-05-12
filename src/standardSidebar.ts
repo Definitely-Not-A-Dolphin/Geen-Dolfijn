@@ -1,16 +1,16 @@
 const urls: { name: string; url: string; onHome?: boolean }[] = [
   // ^^ onHome is an optional parameter, so that we can hide certain links on the homepage
   {
-    name: "My Projects",
-    url: "/my-projects/",
+    name: "Projects",
+    url: "/projects.html",
   },
   {
     name: "Desmos Gallery",
-    url: "/desmos-gallery/",
+    url: "/desmos-gallery.html",
   },
-  {
+  /* {
     name: "My Skills",
-    url: "/my-skills/",
+    url: "/my-skills.html",
   },
   {
     name: "Opinions",
@@ -27,7 +27,7 @@ const urls: { name: string; url: string; onHome?: boolean }[] = [
   {
     name: "To Do List",
     url: "/to-do-list/",
-  },
+  }, */
   {
     name: "Home",
     url: "/",

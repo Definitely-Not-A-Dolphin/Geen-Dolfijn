@@ -67,6 +67,15 @@ a {
   justify-content: flex-start;
 }
 
+.containerCol3 {
+  gap: 20px;
+  flex: none;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 /* Images */
 .sizzle {
   width: 220px;
