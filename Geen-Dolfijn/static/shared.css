@@ -127,8 +127,8 @@ a {
   background-color: rgb(25, 25, 25);
 }
 
-#linktext {
-  font-size: 18px;
+.small {
+  font-size: 10px;
 }
 
 /*Links*/

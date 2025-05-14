@@ -1,11 +1,22 @@
 <script lang="ts">
+  import { randomInt } from "$lib/main.ts";
   import sizzle from "../Images/NotBaldCat.jpg";
   import willy from "../Images/BaldCat.jpg";
   import okkie from "../Images/Okkie<3.jpg";
+
+  const titles: string[] = [
+    "Ik ben een titel",
+    "I am a title",
+    "Je suis une titre",
+    "Ich bin ein Titel",
+    "Jag är en title",
+    "Minä olen titteli",
+    "Es esmu tituls",
+  ];
 </script>
 
 <div class="header">
-  <h1>Ik ben een titel</h1>
+  <h1>{titles[randomInt(0, titles.length - 1)]}</h1>
 </div>
 
 <div class="containerIntro">
@@ -48,20 +59,4 @@
       am too busy skateboarding on the learning curve.
     </p>
   </div>
-</div>
-
-<div class="containerButtons">
-  <a href="/projects"
-    ><div class="button1"><p class="nob not">Projects</p></div></a
-  >
-  <a href="/desmos-gallery"
-    ><div class="button1">
-      <p class="nob not">Desmos Gallery</p>
-    </div></a
-  >
-  <a href="/secret"
-    ><div class="button1">
-      <p class="nob not">It's a secret</p>
-    </div></a
-  >
 </div>

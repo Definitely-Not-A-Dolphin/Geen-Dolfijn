@@ -1,10 +1,11 @@
 <div class="header">
   <h1 class="not nob math">Desmos Gallery</h1>
+  <p class="not">Some cool things I made!</p>
 </div>
 
 <div class="main" style="text-align: center">
   <h2 class="nob not math">Honeyyyyy</h2>
-  <p>
+  <p class="not">
     This was my submission to the Desmos Art Contest 2024 ( I didn't win :( )
   </p>
   <p class="nob not">
@@ -15,7 +16,7 @@
 
 <div class="main" style="text-align: center">
   <h2 class="nob not math">Cagney Carnation</h2>
-  <p>
+  <p class="not">
     I made the flower man from Cuphead with roughly 120 quartic bezier curves.
   </p>
   <p class="nob not">
@@ -26,7 +27,7 @@
 
 <div class="main" style="text-align: center">
   <h2 class="nob not math">Fully Functioning Digital Clock!</h2>
-  <p>
+  <p class="not">
     Are you done with the tyranny of effieciently made clocks? Well, let me
     introduce you to a digital clock / timer made in a fucking graphical
     calculator!
@@ -41,7 +42,7 @@
 
 <div class="main" style="text-align: center">
   <h2 class="nob not math">Smaller things</h2>
-  <p>Some other small things I made.</p>
+  <p class="not">Some other small things I made.</p>
   Shadows with moveable lightsource:
   <a href="https://www.desmos.com/calculator/2wo9jbzvab">Shadows</a><br />
   Vector Art (I think that is how it's called):

@@ -1,0 +1,10 @@
+{
+  "blogArray": [
+    {
+      "title": "Welcome to the blog channel!",
+      "subtitle": "And this is a subtitle",
+      "blog": "I will try to regularly upload a blog to this channel. No promises tho",
+      "date": "14/05/2025"
+    }
+  ]
+}
