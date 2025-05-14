@@ -1,7 +1,3 @@
-<script lang="ts">
-  let currentPage = "desmos-gallery";
-</script>
-
 <div class="header">
   <h1 class="not nob">My Projects</h1>
 </div>

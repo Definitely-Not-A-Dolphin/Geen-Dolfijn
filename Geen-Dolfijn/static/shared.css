@@ -52,7 +52,7 @@ a {
   text-align: left;
   border-radius: 15px;
   padding: 1vw;
-  width: 40vw;
+  width: 38vw;
   background-color: rgb(25, 25, 25);
 }
 
@@ -141,4 +141,8 @@ a {
   padding: 10px;
   line-height: 1.8;
   background-color: rgb(25, 25, 25);
+}
+
+.math {
+  color: rgb(255,75,75)
 }
