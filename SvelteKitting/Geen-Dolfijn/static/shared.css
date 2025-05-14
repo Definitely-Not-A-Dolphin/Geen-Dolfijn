@@ -68,7 +68,11 @@ a {
 .containerButtons {
   display: flex;
   flex-direction: row;
-  gap: 2vw;
+  column-gap: 2vw;
+}
+
+.centerText {
+  vertical-align: middle;
 }
 
 .button1 {
@@ -77,7 +81,6 @@ a {
   width: 12vw;
   height: 40px;
   border-radius: 10px;
-  font-size: 18px;
   color: rgb(0, 200, 200);
 }
 
