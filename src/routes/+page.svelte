@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { randomInt } from "$lib/main.ts";
+  import { randomInt } from "../lib/main.js";
   import sizzle from "../Images/NotBaldCat.jpg";
   import willy from "../Images/BaldCat.jpg";
   import okkie from "../Images/Okkie<3.jpg";
