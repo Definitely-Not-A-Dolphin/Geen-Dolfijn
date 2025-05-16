@@ -3,48 +3,39 @@
   import { type GitHubRepository } from "$lib/githubTypes.ts";
   import { type Repository } from "$lib/customTypes.ts";
 
-  let projects: Repository[] = [];
-  let loading: boolean = true;
-  let error: string | null = null;
-
-  const getProject = (index: number) => {
-    return projects[index];
-  };
-
   const GITHUB_STORAGE_KEY: string = "GitHubData";
   const FETCH_INTERVAL: number = 1200000; // 20 minutes
   const GITHUB_BASE_URL: string = "https://api.github.com";
 
-  onMount(async () => {
-    try {
-      const storedLastUpdate = localStorage.getItem(
-        `${GITHUB_STORAGE_KEY}_LastUpdate`,
-      );
-      const storedData = localStorage.getItem(GITHUB_STORAGE_KEY);
-      let shouldFetch = false;
+  async function getData(): Promise<Repository[]> {
+    const storedLastUpdate = localStorage.getItem(
+      `${GITHUB_STORAGE_KEY}_LastUpdate`,
+    );
+    const storedData = localStorage.getItem(GITHUB_STORAGE_KEY);
+    let shouldFetch = false;
 
-      if (!storedLastUpdate) {
-        shouldFetch = true;
-      } else if (Date.now() - parseInt(storedLastUpdate) >= FETCH_INTERVAL) {
-        shouldFetch = true;
-      }
-
-      if (shouldFetch) {
-        projects = await getGitHubData();
-        localStorage.setItem(GITHUB_STORAGE_KEY, JSON.stringify(projects));
-        localStorage.setItem(
-          `${GITHUB_STORAGE_KEY}_LastUpdate`,
-          Date.now().toString(),
-        );
-      } else if (storedData) {
-        projects = JSON.parse(storedData);
-      }
-    } catch (err) {
-      error = (err as Error).message;
-    } finally {
-      loading = false;
+    // TODO: Please check if storedData actually exists. Deleted one of the cookie but not storedupdate and then it crashed.
+    if (!storedLastUpdate) {
+      shouldFetch = true;
+    } else if (Date.now() - parseInt(storedLastUpdate) >= FETCH_INTERVAL) {
+      shouldFetch = true;
     }
-  });
+
+    if (shouldFetch) {
+      let data = await getGitHubData();
+      localStorage.setItem(GITHUB_STORAGE_KEY, JSON.stringify(data));
+      localStorage.setItem(
+	`${GITHUB_STORAGE_KEY}_LastUpdate`,
+	Date.now().toString(),
+      );
+
+      return data // Returns data
+    } else if (storedData) {
+      return JSON.parse(storedData); // Returns localstorage
+    } else {
+      throw Error("Unable to fetch github data"); // Something went wrong
+    }
+  };
 
   async function getGitHubData(): Promise<Repository[]> {
     const response = await fetch(
@@ -98,27 +89,17 @@
 
     return returnData;
   }
-
-  const findIndex = (repoToFind: string) => {
-    for (let i = 0; i <= projects.length; i++) {
-      if (projects.at(i)?.name === repoToFind) {
-        return i;
-      }
-    }
-
-    return -1;
-  };
 </script>
 
-<!-- 
-{#each projects as project}
-  {#each Object.entries(project.languages) as [key, value]}
+{#await getData()}
+  <p>Waiting for project data...</p>
+{:then project}
+  <!-- TODO: Removeme, this was for debugging purposes -->
+  <!-- TODO: Please check if there are any github projects. projects.length > 0. -->
+  <!-- {JSON.stringify(project)} -->
+  {#each Object.entries(project[0].languages) as [key, value]}
     {value}% {key}<br />
   {/each}
-{/each}
- -->
-<p>
-  {#each Object.entries(projects[findIndex("DC-Bot")]?.languages) as [key, value]}
-    {value}% {key}<br />
-  {/each}
-</p>
+{:catch e}
+  Something went wrong while fetching data; error: "{e}"
+{/await}
