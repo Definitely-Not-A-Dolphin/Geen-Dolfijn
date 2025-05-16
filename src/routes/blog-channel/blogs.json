@@ -1,6 +1,12 @@
 {
   "blogArray": [
     {
+      "title": "Aseprite gif",
+      "subtitle": "",
+      "blog": "I plan on making my own aseprite gif, just like emma has on the \"friends\"-tab and on her own website. I do not know when it will be ready tho",
+      "date": "16/05/2025"
+    },
+    {
       "title": "Welcome to the blog channel!",
       "subtitle": "And this is a subtitle",
       "blog": "I will try to regularly upload a blog to this channel. No promises tho",

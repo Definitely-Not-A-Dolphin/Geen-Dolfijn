@@ -3,8 +3,8 @@
 </script>
 
 <div class="header">
-  <h1 class="not nob math">Blog Channel</h1>
-  <p class="not">I try to update it!</p>
+  <h1 class="not nob blog">Blog Channel</h1>
+  <p class="not nob">I try to update it!</p>
 </div>
 
 {#each data.blogArray as thing}
