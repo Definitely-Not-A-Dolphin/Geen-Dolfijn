@@ -14,6 +14,10 @@
     const storedData = localStorage.getItem(GITHUB_STORAGE_KEY);
     let shouldFetch = false;
 
+    if (!storedData) {
+      throw Error("storedData does not exist");
+    }
+
     // TODO: Please check if storedData actually exists. Deleted one of the cookie but not storedupdate and then it crashed.
     if (!storedLastUpdate) {
       shouldFetch = true;
@@ -25,17 +29,17 @@
       let data = await getGitHubData();
       localStorage.setItem(GITHUB_STORAGE_KEY, JSON.stringify(data));
       localStorage.setItem(
-	`${GITHUB_STORAGE_KEY}_LastUpdate`,
-	Date.now().toString(),
+        `${GITHUB_STORAGE_KEY}_LastUpdate`,
+        Date.now().toString(),
       );
 
-      return data // Returns data
+      return data; // Returns data
     } else if (storedData) {
       return JSON.parse(storedData); // Returns localstorage
     } else {
       throw Error("Unable to fetch github data"); // Something went wrong
     }
-  };
+  }
 
   async function getGitHubData(): Promise<Repository[]> {
     const response = await fetch(
@@ -72,6 +76,7 @@
       }
 
       returnData.push({
+        id: project.id,
         full_name: project.full_name,
         name: project.name,
         ownerLogin: project.owner.login,
@@ -84,22 +89,40 @@
               url: project.license.url,
             }
           : undefined,
+        stargazers_count: project.stargazers_count,
       });
     }
 
     return returnData;
   }
+
+  const getIndexFromID = (
+    searchedRepoID: number,
+    projects: Array<Repository>,
+  ) => {
+    for (let i = 0; i <= projects.length; i++) {
+      if (projects[i]?.id === searchedRepoID) {
+        return i;
+      }
+    }
+    return -1;
+  };
+
+  const GEEN_DOLFIJN_ID: number = 915271815;
 </script>
 
 {#await getData()}
   <p>Waiting for project data...</p>
-{:then project}
-  <!-- TODO: Removeme, this was for debugging purposes -->
-  <!-- TODO: Please check if there are any github projects. projects.length > 0. -->
-  <!-- {JSON.stringify(project)} -->
-  {#each Object.entries(project[0].languages) as [key, value]}
-    {value}% {key}<br />
-  {/each}
-{:catch e}
-  Something went wrong while fetching data; error: "{e}"
+{:then projects}
+  <ul>
+    {#if projects.length > 0}
+      {#each Object.entries(projects[getIndexFromID(GEEN_DOLFIJN_ID, projects)].languages) as [key, value]}
+        <li>{value}% {key}</li>
+      {/each}
+    {/if}
+  </ul>
+
+  {projects[getIndexFromID(GEEN_DOLFIJN_ID, projects)].stargazers_count}
+{:catch error}
+  Something went wrong while fetching data; error: "{error}"
 {/await}

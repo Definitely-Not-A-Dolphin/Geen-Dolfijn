@@ -1,4 +1,5 @@
 export type Repository = {
+  id: number;
   full_name: string;
   name: string;
   ownerLogin: string;
@@ -11,4 +12,5 @@ export type Repository = {
     name: string;
     url: string;
   };
+  stargazers_count: number;
 };
