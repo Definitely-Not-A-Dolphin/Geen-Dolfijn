@@ -7,6 +7,10 @@
   let loading: boolean = true;
   let error: string | null = null;
 
+  const getProject = (index: number) => {
+    return projects[index];
+  };
+
   const GITHUB_STORAGE_KEY: string = "GitHubData";
   const FETCH_INTERVAL: number = 1200000; // 20 minutes
   const GITHUB_BASE_URL: string = "https://api.github.com";
@@ -60,13 +64,18 @@
       const rawLanguageData: { [language: string]: number } =
         await response.json();
       let languageData: { [language: string]: string } = {};
-      let langTotal: number = 0;
+
+      // Aantal characters
+      let langTotalChar: number = 0;
 
       for (const language of Object.entries(rawLanguageData)) {
-        langTotal += Number(language[1]);
+        langTotalChar += Number(language[1]);
       }
       for (const language of Object.entries(rawLanguageData)) {
-        languageData[language[0]] = ((Number(language[1]) / langTotal) * 100)
+        languageData[language[0]] = (
+          (Number(language[1]) / langTotalChar) *
+          100
+        )
           .toFixed(1)
           .toString();
       }
@@ -78,7 +87,6 @@
         description: project.description,
         url: project.html_url,
         languages: languageData,
-        languagesAmount: langTotal,
         license: project.license
           ? {
               name: project.license.name,
@@ -102,10 +110,15 @@
   };
 </script>
 
-{projects.at(findIndex("Finnish-Language-Trainer"))?.languages}
-
+<!-- 
 {#each projects as project}
   {#each Object.entries(project.languages) as [key, value]}
     {value}% {key}<br />
   {/each}
 {/each}
+ -->
+<p>
+  {#each Object.entries(projects[findIndex("DC-Bot")]?.languages) as [key, value]}
+    {value}% {key}<br />
+  {/each}
+</p>
