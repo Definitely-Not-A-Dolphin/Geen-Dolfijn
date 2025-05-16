@@ -78,6 +78,7 @@
         description: project.description,
         url: project.html_url,
         languages: languageData,
+        languagesAmount: langTotal,
         license: project.license
           ? {
               name: project.license.name,
@@ -94,11 +95,17 @@
     for (let i = 0; i <= projects.length; i++) {
       if (projects.at(i)?.name === repoToFind) {
         return i;
-      };
-    };
+      }
+    }
 
     return -1;
   };
 </script>
 
-{projects.at(findIndex("Definitely-Not-A-Dolphin"))?.description}
+{projects.at(findIndex("Finnish-Language-Trainer"))?.languages}
+
+{#each projects as project}
+  {#each Object.entries(project.languages) as [key, value]}
+    {value}% {key}<br />
+  {/each}
+{/each}

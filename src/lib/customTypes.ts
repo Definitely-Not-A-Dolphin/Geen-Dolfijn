@@ -7,6 +7,7 @@ export type Repository = {
   languages: {
     [language: string]: string
   };
+  languagesAmount: number;
   license?: {
     name: string;
     url: string;
