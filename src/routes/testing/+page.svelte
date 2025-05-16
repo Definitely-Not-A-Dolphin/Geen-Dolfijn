@@ -18,7 +18,6 @@
       throw Error("storedData does not exist");
     }
 
-    // TODO: Please check if storedData actually exists. Deleted one of the cookie but not storedupdate and then it crashed.
     if (!storedLastUpdate) {
       shouldFetch = true;
     } else if (Date.now() - parseInt(storedLastUpdate) >= FETCH_INTERVAL) {
@@ -109,20 +108,10 @@
   };
 
   const GEEN_DOLFIJN_ID: number = 915271815;
+  const FIN_LANG_TRAIN: number = 898363939;
+  const DC_BOT: number = 971248396;
 </script>
 
-{#await getData()}
-  <p>Waiting for project data...</p>
-{:then projects}
-  <ul>
-    {#if projects.length > 0}
-      {#each Object.entries(projects[getIndexFromID(GEEN_DOLFIJN_ID, projects)].languages) as [key, value]}
-        <li>{value}% {key}</li>
-      {/each}
-    {/if}
-  </ul>
-
-  {projects[getIndexFromID(GEEN_DOLFIJN_ID, projects)].stargazers_count}
-{:catch error}
-  Something went wrong while fetching data; error: "{error}"
-{/await}
+<p>
+  What are you doing here? Go back or something!
+</p>

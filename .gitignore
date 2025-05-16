@@ -1,4 +1,5 @@
 node_modules
+src/routes/testing/+page.svelte
 
 # Output
 .output
