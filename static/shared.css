@@ -1,0 +1,151 @@
+body {
+  /*   background-image: linear-gradient(to bottom right, rgb(0, 50, 50), rgb(12, 12, 12));
+ */
+  background-color: rgb(12, 12, 12);
+  color: white;
+  font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+  text-align: center;
+}
+
+a {
+  color: rgb(0, 200, 200);
+  text-decoration: none;
+}
+
+.not {
+  margin-top: 0rem;
+}
+
+.nob {
+  margin-bottom: 0rem;
+}
+
+.centerer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Flexboxes */
+.containerMain {
+  display: flex;
+  width: 40vw;
+  row-gap: 30px;
+  flex-direction: column;
+}
+
+.containerIntro {
+  flex-direction: row;
+  display: flex;
+  column-gap: 30px;
+}
+
+.header {
+  width: 40vw;
+  border-radius: 15px;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  height: auto;
+  background-color: rgb(25, 25, 25);
+}
+
+.main {
+  text-align: left;
+  border-radius: 15px;
+  padding: 1vw;
+  width: 38vw;
+  background-color: rgb(25, 25, 25);
+}
+
+.intro {
+  text-align: left;
+  border-radius: 15px;
+  padding: 1vw;
+  width: 24vw;
+  background-color: rgb(25, 25, 25);
+}
+
+/* For the Buttons! */
+.containerButtons {
+  display: flex;
+  flex-direction: row;
+  column-gap: 2vw;
+}
+
+.button1 {
+  background-color: rgb(25, 25, 25);
+  border: none;
+  display: inline-block;
+  /* hierdoor werken width en height */
+  text-align: center;
+  /* text center horizontaal */
+  line-height: 40px;
+  /* zorgt ervoor dat text in midden verticaal is, verander dit als je height veranderd*/
+  width: 12vw;
+  height: 40px;
+  border-radius: 10px;
+  color: rgb(0, 200, 200);
+}
+
+.mentions {
+  border-radius: 15px;
+  height: auto;
+  background-color: rgb(25, 25, 25);
+}
+
+.containerProject {
+  flex-direction: row;
+  display: flex;
+  gap: 1vw;
+}
+
+.projectText {
+  text-align: left;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  width: 24vw;
+  border-radius: 12px;
+  background-color: rgb(25, 25, 25);
+}
+
+.githubWidget {
+  text-align: left;
+  padding: 1vw;
+  width: 12vw;
+  height: auto;
+  border-radius: 15px;
+  background-color: rgb(25, 25, 25);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Images */
+.sizzle {
+  width: 12vw;
+  border-radius: 20px;
+  background-color: rgb(25, 25, 25);
+}
+
+.small {
+  font-size: 10px;
+}
+
+/*Links*/
+.link1,
+.link2 {
+  text-align: center;
+  border-radius: 15px;
+  width: 200px;
+  color: white;
+  padding: 10px;
+  line-height: 1.8;
+  background-color: rgb(25, 25, 25);
+}
+
+.math {
+  color: rgb(255, 75, 75)
+}
+
+.blog {
+  color: rgb(35, 219, 38)
+}
