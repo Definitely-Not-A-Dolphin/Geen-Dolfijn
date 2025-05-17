@@ -14,10 +14,6 @@
     const storedData = localStorage.getItem(GITHUB_STORAGE_KEY);
     let shouldFetch = false;
 
-    if (!storedData) {
-      throw Error("storedData does not exist");
-    }
-
     if (!storedLastUpdate) {
       shouldFetch = true;
     } else if (Date.now() - parseInt(storedLastUpdate) >= FETCH_INTERVAL) {
