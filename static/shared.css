@@ -1,6 +1,4 @@
 body {
-  /*   background-image: linear-gradient(to bottom right, rgb(0, 50, 50), rgb(12, 12, 12));
- */
   background-color: rgb(12, 12, 12);
   color: white;
   font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
@@ -22,8 +20,6 @@ a {
 
 .centerer {
   display: flex;
-  /*   justify-content: center;
- */
 }
 
 .fillerElement {
@@ -34,8 +30,6 @@ a {
 /* Flexboxes */
 .containerMain {
   display: flex;
-  /*   width: 40vw;
- */
   width: 768px;
   row-gap: 30px;
   flex-direction: column;
@@ -113,6 +107,13 @@ a {
   border-radius: 15px;
   height: auto;
   background-color: rgb(25, 25, 25);
+  padding-bottom: 10px;
+}
+
+.mentionspfp {
+  height: 50px;
+  border-radius: 25px;
+  margin: 5px;
 }
 
 .small {

@@ -1,6 +1,12 @@
 {
   "blogArray": [
     {
+      "title": "SvelteKit Reword",
+      "subtitle": "Its here better aligned than ever",
+      "blog": "The new SvelteKit remake of the site is here, finally working and running well. I have put in some serious effort in it, so I hope it looks nice. The mobile alignment update is also done.",
+      "date": "22/05/2025"
+    },
+    {
       "title": "Aseprite gif",
       "subtitle": "",
       "blog": "I plan on making my own aseprite gif, just like emma has on the \"friends\"-tab and on her own website. I do not know when it will be ready tho",
