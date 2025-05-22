@@ -31,17 +31,6 @@
     </div>
     <div class="mentions">
       <h3>My frend</h3>
-      <!-- <p>
-        <a href="https://prpl.wtf" rel="noopener">
-          <img
-            src={prplGif}
-            alt="prplGif"
-            width="88"
-            height="31"
-            style="image-rendering: crisp-edges; image-rendering: -webkit-optimize-contrast;"
-          />
-        </a>
-      </p> -->
       <a href="https://jsw.tf">
         <img
           class="mentionspfp"

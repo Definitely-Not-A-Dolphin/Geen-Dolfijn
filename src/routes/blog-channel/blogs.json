@@ -1,7 +1,7 @@
 {
   "blogArray": [
     {
-      "title": "SvelteKit Reword",
+      "title": "SvelteKit Remake",
       "subtitle": "Its here better aligned than ever",
       "blog": "The new SvelteKit remake of the site is here, finally working and running well. I have put in some serious effort in it, so I hope it looks nice. The mobile alignment update is also done.",
       "date": "22/05/2025"
