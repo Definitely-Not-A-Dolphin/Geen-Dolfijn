@@ -13,6 +13,8 @@
 </script>
 
 <div class="centerer">
+  <div class="fillerElement"></div>
+
   <div class="containerMain">
     {@render children()}
 
@@ -27,7 +29,6 @@
         {/if}
       {/each}
     </div>
-
     <div class="mentions">
       <h3 class="nob">My frend</h3>
       <p class="not">
@@ -46,4 +47,6 @@
       </p>
     </div>
   </div>
+
+  <div class="fillerElement"></div>
 </div>

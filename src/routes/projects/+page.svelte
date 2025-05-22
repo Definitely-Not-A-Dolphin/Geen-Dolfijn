@@ -112,8 +112,8 @@
   <h1 class="not nob">My Projects</h1>
 </div>
 
-<div class="containerProject">
-  <div class="projectText">
+<div class="containerStandard">
+  <div class="mainStandard">
     <h2 class="nob not">Finnish Language Trainer</h2>
     <p class="not">
       I learn Finnish, and I also like C++ (counter arguments will not be
@@ -135,7 +135,7 @@
     </ul>
   </div>
 
-  <div class="githubWidget">
+  <div class="sideStandard">
     {#await getData()}
       <p>Waiting for project data...</p>
     {:then projects}
@@ -167,8 +167,8 @@
   </div>
 </div>
 
-<div class="containerProject">
-  <div class="githubWidget">
+<div class="containerStandard">
+  <div class="sideStandard">
     {#await getData()}
       <p>Waiting for project data...</p>
     {:then projects}
@@ -199,7 +199,7 @@
     {/await}
   </div>
 
-  <div class="projectText">
+  <div class="mainStandard">
     <h2 class="nob not">This website</h2>
     <p class="nob not">
       This site is made with SvelteKit, TypeScript and all the other usual
@@ -226,8 +226,8 @@
   </div>
 </div>
 
-<div class="containerProject">
-  <div class="projectText">
+<div class="containerStandard">
+  <div class="mainStandard" style="text-align: left">
     <h2 class="nob not">A Frog With A Knife</h2>
     <p class="not">
       One day I woke up and had the urge to make a discord bot. I do not know
@@ -250,7 +250,7 @@
     </ul>
   </div>
 
-  <div class="githubWidget">
+  <div class="sideStandard">
     {#await getData()}
       <p>Waiting for project data...</p>
     {:then projects}

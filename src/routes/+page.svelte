@@ -19,8 +19,8 @@
   <h1>{titles[randomInt(0, titles.length - 1)]}</h1>
 </div>
 
-<div class="containerIntro">
-  <div class="intro">
+<div class="containerStandard">
+  <div class="mainStandard">
     <p>
       Who am I? That is a good question. I do not know exactly either, but I can
       tell you what I am not: I am Definitely Not A Dolphin.
@@ -37,13 +37,13 @@
     </p>
   </div>
 
-  <img alt="My cat!" src={sizzle} class="sizzle" />
+  <img alt="My cat!" src={sizzle} class="imageStandard" />
 </div>
 
-<div class="containerIntro">
-  <img alt="My other cat!" src={okkie} class="sizzle" />
+<div class="containerStandard">
+  <img alt="My other cat!" src={okkie} class="imageStandard" />
 
-  <div class="intro">
+  <div class="mainStandard">
     <p class="nob">I "know" a few programming languages:</p>
 
     <ul class="not">

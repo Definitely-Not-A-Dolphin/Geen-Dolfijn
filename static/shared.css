@@ -22,25 +22,27 @@ a {
 
 .centerer {
   display: flex;
-  justify-content: center;
+  /*   justify-content: center;
+ */
+}
+
+.fillerElement {
+  width: 30vw;
+  min-width: none;
 }
 
 /* Flexboxes */
 .containerMain {
   display: flex;
-  width: 40vw;
+  /*   width: 40vw;
+ */
+  width: 768px;
   row-gap: 30px;
   flex-direction: column;
 }
 
-.containerIntro {
-  flex-direction: row;
-  display: flex;
-  column-gap: 30px;
-}
-
 .header {
-  width: 40vw;
+  width: 768px;
   border-radius: 15px;
   padding-top: 1vw;
   padding-bottom: 1vw;
@@ -48,19 +50,39 @@ a {
   background-color: rgb(25, 25, 25);
 }
 
-.main {
+.containerStandard {
+  flex-direction: row;
+  display: flex;
+  column-gap: calc(768px * 2/40);
+}
+
+.mainStandard {
   text-align: left;
   border-radius: 15px;
-  padding: 1vw;
-  width: 38vw;
+  padding: calc(768px * 1/40);
+  width: calc(768px * 24/40);
   background-color: rgb(25, 25, 25);
 }
 
-.intro {
+.sideStandard {
+  width: calc(768px * 10/40);
+  border-radius: 20px;
+  padding: calc(768px * 1/40);
+  background-color: rgb(25, 25, 25);
+  text-align: left;
+}
+
+.imageStandard {
+  width: calc(768px * 12/40);
+  border-radius: 20px;
+  background-color: rgb(25, 25, 25);
+}
+
+.main {
   text-align: left;
   border-radius: 15px;
-  padding: 1vw;
-  width: 24vw;
+  padding: calc(768px * 1/40);
+  width: calc(768px * 38/40);
   background-color: rgb(25, 25, 25);
 }
 
@@ -68,7 +90,8 @@ a {
 .containerButtons {
   display: flex;
   flex-direction: row;
-  column-gap: 2vw;
+  column-gap: calc(768px * 2/40);
+  height: auto;
 }
 
 .button1 {
@@ -80,8 +103,8 @@ a {
   /* text center horizontaal */
   line-height: 40px;
   /* zorgt ervoor dat text in midden verticaal is, verander dit als je height veranderd*/
-  width: 12vw;
-  height: 40px;
+  width: calc(768px * 12/40);
+  height: auto;
   border-radius: 10px;
   color: rgb(0, 200, 200);
 }
@@ -89,40 +112,6 @@ a {
 .mentions {
   border-radius: 15px;
   height: auto;
-  background-color: rgb(25, 25, 25);
-}
-
-.containerProject {
-  flex-direction: row;
-  display: flex;
-  gap: 1vw;
-}
-
-.projectText {
-  text-align: left;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
-  width: 24vw;
-  border-radius: 12px;
-  background-color: rgb(25, 25, 25);
-}
-
-.githubWidget {
-  text-align: left;
-  padding: 1vw;
-  width: 12vw;
-  height: auto;
-  border-radius: 15px;
-  background-color: rgb(25, 25, 25);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-}
-
-/* Images */
-.sizzle {
-  width: 12vw;
-  border-radius: 20px;
   background-color: rgb(25, 25, 25);
 }
 
