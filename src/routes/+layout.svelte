@@ -9,6 +9,29 @@
     ["Blog Channel", "/blog-channel"],
   ];
 
+  const friends = [
+    {
+      name: "Jsw",
+      link: "https://jsw.tf",
+      pfpId: "46420489",
+    },
+    {
+      name: "Emma",
+      link: "https://prpl.wtf",
+      pfpId: "103201875",
+    },
+    {
+      name: "Whacky",
+      link: "https://whackydev.nl",
+      pfpId: "148389656",
+    },
+    {
+      name: "Elziy",
+      link: "https://elziyplace.xyz",
+      pfpId: "154922150",
+    },
+  ];
+
   let { children } = $props();
 </script>
 
@@ -29,36 +52,20 @@
         {/if}
       {/each}
     </div>
+    
     <div class="mentions">
       <h3>My frend</h3>
-      <a href="https://jsw.tf">
-        <img
-          class="mentionspfp"
-          src="https://avatars.githubusercontent.com/u/46420489?v=4"
-          alt="jsw's pfp"
-        />
-      </a>
-      <a href="https://prpl.wtf" data-tip="Emma">
-        <img
-          class="mentionspfp"
-          src="https://avatars.githubusercontent.com/u/103201875?v=4"
-          alt="emma's pfp"
-        />
-      </a>
-      <a href="https://whackydev.nl">
-        <img
-          class="mentionspfp"
-          src="https://avatars.githubusercontent.com/u/148389656?v=4"
-          alt="whacky's pfp"
-        />
-      </a>
-      <a href="https://elziyplace.xyz">
-        <img
-          class="mentionspfp"
-          src="https://avatars.githubusercontent.com/u/154922150?v=4"
-          alt="elziy's pfp"
-        />
-      </a>
+      {#each friends as friend}
+        <a href={friend.link}>
+          <img
+            class="mentionspfp"
+            src={"https://avatars.githubusercontent.com/u/" +
+              friend.pfpId +
+              "?v=4"}
+            alt={friend.name + "'s pfp"}
+          />
+        </a>
+      {/each}
     </div>
   </div>
 
