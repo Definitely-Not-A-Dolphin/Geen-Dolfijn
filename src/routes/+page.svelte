@@ -1,7 +1,6 @@
 <script lang="ts">
   import { randomInt } from "../lib/main.js";
   import sizzle from "../images/NotBaldCat.jpg";
-  import willy from "../images/BaldCat.jpg";
   import okkie from "../images/Okkie<3.jpg";
 
   const titles: string[] = [
@@ -42,7 +41,6 @@
 
 <div class="containerStandard">
   <img alt="My other cat!" src={okkie} class="imageStandard" />
-
   <div class="mainStandard">
     <p class="nob">I "know" a few programming languages:</p>
 

@@ -1,0 +1,35 @@
+{
+  "IDs": {
+    "DC_BOT": 971248396,
+    "FIN_LANG_TRAIN": 898363939,
+    "GEEN_DOLFIJN": 915271815
+  },
+  "friends": [
+    {
+      "name": "Jsw",
+      "link": "https://jsw.tf",
+      "pfpId": "46420489"
+    },
+    {
+      "name": "Emma",
+      "link": "https://prpl.wtf",
+      "pfpId": "103201875"
+    },
+    {
+      "name": "Whacky",
+      "link": "https://whackydev.nl",
+      "pfpId": "148389656"
+    },
+    {
+      "name": "Elziy",
+      "link": "https://elziyplace.xyz",
+      "pfpId": "154922150"
+    }
+  ],
+  "pages": [
+    ["Home", "/"],
+    ["Projects", "/projects"],
+    ["Desmos Gallery", "/desmos-gallery"],
+    ["Blog Channel", "/blog-channel"]
+  ]
+}
