@@ -6,13 +6,7 @@
     for (const looper of Object.entries(generalData.languageColors)) {
       if (language === looper[0]) {
         return (
-          "rgb(" +
-          looper[1][0] * 0.8 +
-          "," +
-          looper[1][1] * 0.8 +
-          "," +
-          looper[1][2] * 0.8 +
-          ")"
+          "rgb(" + looper[1][0] + "," + looper[1][1] + "," + looper[1][2] + ")"
         );
       }
     }
