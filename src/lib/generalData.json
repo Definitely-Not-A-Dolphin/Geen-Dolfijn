@@ -31,5 +31,14 @@
     ["Projects", "/projects"],
     ["Desmos Gallery", "/desmos-gallery"],
     ["Blog Channel", "/blog-channel"]
-  ]
+  ],
+  "languageColors": {
+    "Svelte": [255, 62, 0],
+    "TypeScript": [49, 120, 198],
+    "JavaScript": [241, 224, 90],
+    "CSS": [102, 51, 153],
+    "HTML": [227, 76, 38],
+    "Nix": [126, 126, 255],
+    "C++": [243, 75, 12]
+  }
 }

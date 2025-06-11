@@ -69,6 +69,19 @@ a {
   background-color: rgb(25, 25, 25);
 }
 
+.githubWidget {
+  background-color: rgb(13, 17, 23);
+  width: calc(768px * 10 / 40);
+  border-radius: 20px;
+  padding: calc(768px * 1 / 40);
+  text-align: left;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  /*border: 5px;
+  border-color: white;*/
+}
+
 .sideStandard {
   width: calc(768px * 10 / 40);
   border-radius: 20px;
@@ -149,4 +162,8 @@ a {
 
 .blog {
   color: rgb(35, 219, 38);
+}
+
+.project {
+  color: gold;
 }

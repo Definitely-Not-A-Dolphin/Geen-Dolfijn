@@ -1,16 +1,34 @@
 <script lang="ts">
   import { getData, getIndexFromID } from "$lib/getGitHubData.ts";
+  import generalData from "$lib/generalData.json" with { type: "json" };
+
+  const getColor = (language: string): string => {
+    for (const looper of Object.entries(generalData.languageColors)) {
+      if (language === looper[0]) {
+        return (
+          "rgb(" +
+          looper[1][0] * 0.8 +
+          "," +
+          looper[1][1] * 0.8 +
+          "," +
+          looper[1][2] * 0.8 +
+          ")"
+        );
+      }
+    }
+    return "white";
+  };
 </script>
 
 <div class="header">
-  <h1 class="not nob">My Projects</h1>
+  <h1 class="not nob project">My Projects</h1>
 </div>
 
 <!-- Planning on making this an each loop -->
 
 <div class="containerStandard">
   <div class="mainStandard">
-    <h2 class="nob not">Finnish Language Trainer</h2>
+    <h2 class="nob not project">Finnish Language Trainer</h2>
     <p class="not">
       I learn Finnish, and I also like C++ (counter arguments will not be
       listened to), so I combined the two to make the Finnish Language Trainer.
@@ -31,7 +49,7 @@
     </ul>
   </div>
 
-  <div class="sideStandard">
+  <div class="githubWidget">
     {#await getData()}
       <p>Waiting for project data...</p>
     {:then projects}
@@ -40,7 +58,7 @@
         projects[getIndexFromID(898363939, projects)]}
       <h3 class="not">
         Definitely-Not-A-Dolphin/<br />
-        <a href={FIN_LANG_TRAIN_PROJECT.url} id="github">
+        <a href={FIN_LANG_TRAIN_PROJECT.url}>
           {FIN_LANG_TRAIN_PROJECT.name}
         </a>
       </h3>
@@ -49,7 +67,9 @@
       <ul class="not">
         {#if projects.length > 0}
           {#each Object.entries(FIN_LANG_TRAIN_PROJECT.languages) as [key, value]}
-            <li>{value}% {key}</li>
+            <li>
+              {value}% <span style="color: {getColor(key)}">{key}</span>
+            </li>
           {/each}
         {/if}
       </ul>
@@ -64,7 +84,7 @@
 </div>
 
 <div class="containerStandard">
-  <div class="sideStandard">
+  <div class="githubWidget">
     {#await getData()}
       <p>Waiting for project data...</p>
     {:then projects}
@@ -73,7 +93,7 @@
         projects[getIndexFromID(915271815, projects)]}
       <h3 class="not">
         Definitely-Not-A-Dolphin /<br />
-        <a href={GEEN_DOLFIJN_PROJECT.url} id="github">
+        <a href={GEEN_DOLFIJN_PROJECT.url}>
           {GEEN_DOLFIJN_PROJECT.name}
         </a>
       </h3>
@@ -82,7 +102,10 @@
       <ul class="not">
         {#if projects.length > 0}
           {#each Object.entries(GEEN_DOLFIJN_PROJECT.languages) as [key, value]}
-            <li>{value}% {key}</li>
+            <li>
+              {value}%
+              <span style="color: {getColor(key)}">{key}</span>
+            </li>
           {/each}
         {/if}
       </ul>
@@ -96,7 +119,7 @@
   </div>
 
   <div class="mainStandard">
-    <h2 class="nob not">This website</h2>
+    <h2 class="nob not project">This website</h2>
     <p class="nob not">
       This site is made with SvelteKit, TypeScript and all the other usual
       stuff. My friend Jsw helped me with the setup, and will host this site on
@@ -124,7 +147,7 @@
 
 <div class="containerStandard">
   <div class="mainStandard" style="text-align: left">
-    <h2 class="nob not">A Frog With A Knife</h2>
+    <h2 class="nob not project">A Frog With A Knife</h2>
     <p class="not">
       One day I woke up and had the urge to make a discord bot. I do not know
       where it came from, but here it is anyway! It can translate to morse code
@@ -148,22 +171,25 @@
     </ul>
   </div>
 
-  <div class="sideStandard">
+  <div class="githubWidget">
     {#await getData()}
       <p>Waiting for project data...</p>
     {:then projects}
       <!-- The ID for this repo is 971248396 -->
       {@const DC_BOT_PROJECT = projects[getIndexFromID(971248396, projects)]}
-      <h3 class="not">
+      <h3 class="not githubTitle">
         Definitely-Not-A-Dolphin /<br />
-        <a href={DC_BOT_PROJECT.url} id="github">{DC_BOT_PROJECT.name}</a>
+        <a href={DC_BOT_PROJECT.url}>{DC_BOT_PROJECT.name}</a>
       </h3>
 
       <p class="nob not">Languages:</p>
       <ul class="not">
         {#if projects.length > 0}
           {#each Object.entries(DC_BOT_PROJECT.languages) as [key, value]}
-            <li>{value}% {key}</li>
+            <li>
+              {value}%
+              <span style="color: {getColor(key)}">{key}</span>
+            </li>
           {/each}
         {/if}
       </ul>
