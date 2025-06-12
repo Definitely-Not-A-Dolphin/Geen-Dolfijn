@@ -71,6 +71,24 @@
       <p>
         Stars: {FIN_LANG_TRAIN_PROJECT.stargazers_count}
       </p>
+
+      <div
+        style="
+          display: flex;
+          border-radius: 5px;
+          overflow: hidden;
+        "
+      >
+        {#each Object.entries(FIN_LANG_TRAIN_PROJECT.languages) as [key, value]}
+          <div
+            style="
+                width: {2.304 * Number(value)}px;
+                height: 12px;
+                background-color: {getColor(key)}
+            "
+          ></div>
+        {/each}
+      </div>
     {:catch error}
       Something went wrong while fetching data; error: "{error}"
     {/await}
@@ -92,29 +110,16 @@
         </a>
       </h3>
 
-      <p class="nob not">Languages:</p>
-      <span class="not">
+      <p class="nob not">Languages</p>
+      <ul class="not">
         {#if projects.length > 0}
-          <!-- I will make this work
-          <div style="display: flex;">
-            {#each Object.entries(GEEN_DOLFIJN_PROJECT.languages) as [key, value]}
-              <div
-                style="width: {2.304 * Number(value)}px;
-                       height: 12px;
-                       background-color: {getColor(key)}
-                       "
-              ></div>
-            {/each}
-          </div>
-          -->
-
           {#each Object.entries(GEEN_DOLFIJN_PROJECT.languages) as [key, value]}
             <li>
               {value}% <span style="color: {getColor(key)}">{key}</span>
             </li>
           {/each}
         {/if}
-      </span>
+      </ul>
 
       <p>
         <svg
@@ -130,6 +135,24 @@
         </svg>
         {GEEN_DOLFIJN_PROJECT.stargazers_count}
       </p>
+
+      <div
+        style="
+          display: flex;
+          border-radius: 5px;
+          overflow: hidden;
+        "
+      >
+        {#each Object.entries(GEEN_DOLFIJN_PROJECT.languages) as [key, value]}
+          <div
+            style="
+                width: {2.304 * Number(value)}px;
+                height: 12px;
+                background-color: {getColor(key)}
+            "
+          ></div>
+        {/each}
+      </div>
     {:catch error}
       Something went wrong while fetching data; error: "{error}"
     {/await}
@@ -214,6 +237,24 @@
       <p>
         Stars: {DC_BOT_PROJECT.stargazers_count}
       </p>
+
+      <div
+        style="
+          display: flex;
+          border-radius: 5px;
+          overflow: hidden;
+        "
+      >
+        {#each Object.entries(DC_BOT_PROJECT.languages) as [key, value]}
+          <div
+            style="
+                width: {2.304 * Number(value)}px;
+                height: 12px;
+                background-color: {getColor(key)}
+            "
+          ></div>
+        {/each}
+      </div>
     {:catch error}
       Something went wrong while fetching data; error: "{error}"
     {/await}
