@@ -93,19 +93,42 @@
       </h3>
 
       <p class="nob not">Languages:</p>
-      <ul class="not">
+      <span class="not">
         {#if projects.length > 0}
+          <!-- I will make this work
+          <div style="display: flex;">
+            {#each Object.entries(GEEN_DOLFIJN_PROJECT.languages) as [key, value]}
+              <div
+                style="width: {2.304 * Number(value)}px;
+                       height: 12px;
+                       background-color: {getColor(key)}
+                       "
+              ></div>
+            {/each}
+          </div>
+          -->
+
           {#each Object.entries(GEEN_DOLFIJN_PROJECT.languages) as [key, value]}
             <li>
-              {value}%
-              <span style="color: {getColor(key)}">{key}</span>
+              {value}% <span style="color: {getColor(key)}">{key}</span>
             </li>
           {/each}
         {/if}
-      </ul>
+      </span>
 
       <p>
-        Stars: {GEEN_DOLFIJN_PROJECT.stargazers_count}
+        <svg
+          height="16"
+          viewBox="0 0 16 16"
+          version="1.1"
+          width="16"
+          style="fill: #e3b341"
+        >
+          <path
+            d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"
+          ></path>
+        </svg>
+        {GEEN_DOLFIJN_PROJECT.stargazers_count}
       </p>
     {:catch error}
       Something went wrong while fetching data; error: "{error}"

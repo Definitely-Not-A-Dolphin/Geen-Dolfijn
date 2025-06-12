@@ -82,6 +82,10 @@ a {
   border-color: white;*/
 }
 
+.githublangbar {
+  display: flex;
+}
+
 .sideStandard {
   width: calc(768px * 10 / 40);
   border-radius: 20px;
