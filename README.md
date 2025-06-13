@@ -1,20 +1,20 @@
-<h2 class="nob not project">Finnish Language Trainer</h2>
-
-<p class="not">
-  I learn Finnish, and I also like C++ (counter arguments will not be
-  listened to), so I combined the two to make the Finnish Language Trainer.
+<h2>This website</h2>
+<p>
+  This site is made with SvelteKit, TypeScript and all the other usual
+  stuff. My friend Jsw helped me with the setup, and will host this site on
+  his server soon.
 </p>
-<p class="nob not">
+
+<p>
   Some things that I wish to include / add in the future are:
 </p>
-<ul class="nob not">
+<ul>
   <li>
-    Colors, since everything happens in the terminal, colors can help
-    organising all the text, and it looks aesthetically pleasing.
+    A way to vertically display the language bar in the widget
   </li>
-  <li>More grammar explainations.</li>
+  <li>A better design on the background</li>
   <li>
-    A way to practise numbers up to a million, but without having to type
-    the first million numbers out in a file.
+    More banner-gifs on the frends-tab, although my friends won't make one.
+    :(
   </li>
 </ul>
