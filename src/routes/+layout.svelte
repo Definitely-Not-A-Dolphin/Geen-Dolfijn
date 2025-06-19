@@ -26,15 +26,18 @@
     <div class="mentions">
       <h3>My frend</h3>
       {#each data.friends as friend}
-        <a href={friend.link}>
-          <img
-            class="mentionspfp"
-            src={"https://avatars.githubusercontent.com/u/" +
-              friend.pfpId +
-              "?v=4"}
-            alt={friend.name + "'s pfp"}
-          />
-        </a>
+        <span class="tooltip">
+          <a href={friend.link}>
+            <img
+              class="mentionspfp"
+              src={"https://avatars.githubusercontent.com/u/" +
+                friend.pfpId +
+                "?v=4"}
+              alt={friend.name + "'s pfp"}
+            />
+          </a>
+          <!-- <span class="tooltiptext">{friend.name + "'s pfp"}</span> -->
+        </span>
       {/each}
     </div>
   </div>

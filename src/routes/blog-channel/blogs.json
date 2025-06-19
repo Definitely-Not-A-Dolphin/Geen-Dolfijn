@@ -1,6 +1,12 @@
 {
   "blogArray": [
     {
+      "title": "Lil' update",
+      "subtitle": "I had nothing to do",
+      "blog": "I had some time over and decided to give my projects page a better design. I initially wanted to make the GitHub widgets to have a GitHub-similar style so here it is! :D",
+      "date": "11/06/2025"
+    },
+    {
       "title": "SvelteKit Remake",
       "subtitle": "Its here better aligned than ever",
       "blog": "The new SvelteKit remake of the site is here, finally working and running well. I have put in some serious effort in it, so I hope it looks nice. The mobile alignment update is also done.",

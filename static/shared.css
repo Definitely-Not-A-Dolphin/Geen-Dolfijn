@@ -69,6 +69,23 @@ a {
   background-color: rgb(25, 25, 25);
 }
 
+.githubWidget {
+  background-color: rgb(13, 17, 23);
+  width: calc(768px * 10 / 40);
+  border-radius: 20px;
+  padding: calc(768px * 1 / 40);
+  text-align: left;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  /*border: 5px;
+  border-color: white;*/
+}
+
+.githublangbar {
+  display: flex;
+}
+
 .sideStandard {
   width: calc(768px * 10 / 40);
   border-radius: 20px;
@@ -142,11 +159,51 @@ a {
   line-height: 1.8;
   background-color: rgb(25, 25, 25);
 }
+/*
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
 
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+*/
 .math {
   color: rgb(255, 75, 75);
 }
 
 .blog {
   color: rgb(35, 219, 38);
+}
+
+.project {
+  color: gold;
 }

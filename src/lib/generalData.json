@@ -1,8 +1,8 @@
 {
   "IDs": {
-    "DC_BOT": 971248396,
     "FIN_LANG_TRAIN": 898363939,
-    "GEEN_DOLFIJN": 915271815
+    "GEEN_DOLFIJN": 915271815,
+    "DC_BOT": 971248396
   },
   "friends": [
     {
@@ -24,6 +24,11 @@
       "name": "Elziy",
       "link": "https://elziyplace.xyz",
       "pfpId": "154922150"
+    },
+    {
+      "name": "Tijme",
+      "link": "https://www.tijmevh.nl/",
+      "pfpId": "68817281"
     }
   ],
   "pages": [
@@ -31,5 +36,14 @@
     ["Projects", "/projects"],
     ["Desmos Gallery", "/desmos-gallery"],
     ["Blog Channel", "/blog-channel"]
-  ]
+  ],
+  "languageColors": {
+    "Svelte": [255, 62, 0],
+    "TypeScript": [49, 120, 198],
+    "JavaScript": [241, 224, 90],
+    "CSS": [102, 51, 153],
+    "HTML": [227, 76, 38],
+    "Nix": [126, 126, 255],
+    "C++": [243, 75, 125]
+  }
 }
