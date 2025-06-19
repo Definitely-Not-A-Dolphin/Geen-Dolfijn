@@ -20,19 +20,24 @@
 
 <div class="containerStandard">
   <div class="mainStandard">
-    <p>
-      Who am I? That is a good question. I do not know exactly either, but I can
-      tell you what I am not: I am Definitely Not A Dolphin.
+    <h1 style="color: rgb(100,100,200)" class="nob not">Hello there!</h1>
+
+    <p class="not">
+      I am Definitely Not A Dolphin. Dolphins are terrible creatures, so I
+      thought "lets get that out of the way!". I like coding, gaming, and most
+      of all: mathematics.
     </p>
 
     <p>
-      What am I doing here? I am a math nerd, not computer nerd. My friends
-      indoctrinated me into coding and I do not know whether I like it or not.
+      I do coding purely as a hobby, so anything I make is just for funsies! I
+      don't really care about how memory safe C++ is, because I'm not going to
+      use it for anything professional, its just for fun (as far as you can call
+      C++ fun).
     </p>
 
     <p>
-      Since I am still mainly a math nerd, check out my page with my favorite
-      math thingeys!
+      My point is: my motivator for learning coding is curiosity: not money, not
+      fame, just curiosity. And I think we should do that more often.
     </p>
   </div>
 

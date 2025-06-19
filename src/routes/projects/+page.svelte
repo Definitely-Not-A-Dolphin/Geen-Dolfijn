@@ -14,6 +14,11 @@
     return "white";
   };
 
+  let projectArray: number[] = [];
+  for (const projectID of Object.entries(generalData.IDs)) {
+    projectArray.push(Number(projectID[1]));
+  }
+
   const flexDirector = (counter: number): string => {
     if (counter % 2 === 0) {
       return "row";
@@ -27,6 +32,7 @@
 </div>
 
 <!-- Planning on making this an each loop -->
+<!-- I made this an each loop! -->
 
 {#snippet githubWidget(projects: any, repoId: number)}
   {@const SNIPPET_PROJECT = projects[getIndexFromID(repoId, projects)]}
@@ -38,7 +44,7 @@
   </h3>
 
   <p class="nob not">Languages</p>
-  <ul class="not">
+  <ul class="not" style="font-size: 16px;">
     {#if projects.length > 0}
       {#each Object.entries(SNIPPET_PROJECT.languages) as [key, value]}
         <li>
@@ -59,63 +65,33 @@
   >
     {#each Object.entries(SNIPPET_PROJECT.languages) as [key, value]}
       <div
+        class="tooltip"
         style="
             width: {2.304 * Number(value)}px;
             height: 12px;
             background-color: {getColor(key)}
         "
-      ></div>
+      >
+        <!-- <span class="tooltiptext">Tooltip text</span> -->
+      </div>
     {/each}
   </div>
 {/snippet}
 
-<div class="containerStandard">
-  <div class="mainStandard">
-    <ProjectText projectID="898363939" />
-  </div>
+{#each projectArray as IAmRunningOutOfNames, index}
+  <div class="containerStandard" style="flex-direction: {flexDirector(index)}">
+    <div class="mainStandard">
+      <ProjectText projectID={String(IAmRunningOutOfNames)} />
+    </div>
 
-  <div class="githubWidget">
-    {#await getData()}
-      <p>Waiting for project data...</p>
-    {:then projects}
-      <!-- The ID for this repo is 898363939 -->
-      {@render githubWidget(projects, 898363939)}
-    {:catch error}
-      Something went wrong while fetching data; error: "{error}"
-    {/await}
+    <div class="githubWidget">
+      {#await getData()}
+        <p>Waiting for project data...</p>
+      {:then projects}
+        {@render githubWidget(projects, IAmRunningOutOfNames)}
+      {:catch error}
+        Something went wrong while fetching data; error: "{error}"
+      {/await}
+    </div>
   </div>
-</div>
-
-<div class="containerStandard">
-  <div class="githubWidget">
-    {#await getData()}
-      <p>Waiting for project data...</p>
-    {:then projects}
-      <!-- The ID for this repo is 915271815 -->
-      {@render githubWidget(projects, 915271815)}
-    {:catch error}
-      Something went wrong while fetching data; error: "{error}"
-    {/await}
-  </div>
-
-  <div class="mainStandard">
-    <ProjectText projectID="915271815" />
-  </div>
-</div>
-
-<div class="containerStandard">
-  <div class="mainStandard" style="text-align: left">
-    <ProjectText projectID="898363939" />
-  </div>
-
-  <div class="githubWidget">
-    {#await getData()}
-      <p>Waiting for project data...</p>
-    {:then projects}
-      <!-- The ID for this repo is 971248396 -->
-      {@render githubWidget(projects, 971248396)}
-    {:catch error}
-      Something went wrong while fetching data; error: "{error}"
-    {/await}
-  </div>
-</div>
+{/each}
