@@ -20,7 +20,7 @@
 
 <div class="containerStandard">
   <div class="mainStandard">
-    <h1 style="color: rgb(100,100,200)" class="nob not">Hello there!</h1>
+    <h1 style="color: var(--linkblue)" class="nob not">Hello there!</h1>
 
     <p class="not">
       I am Definitely Not A Dolphin. Dolphins are terrible creatures, so I
@@ -46,8 +46,10 @@
 
 <div class="containerStandard">
   <img alt="My other cat!" src={okkie} class="imageStandard" />
+
   <div class="mainStandard">
-    <p class="nob">I "know" a few programming languages:</p>
+    <h1 style="color: var(--linkblue)" class="nob not">Coding</h1>
+    <p class="nob not">I "know" a few programming languages:</p>
 
     <ul class="not">
       <li>Python (never again)</li>

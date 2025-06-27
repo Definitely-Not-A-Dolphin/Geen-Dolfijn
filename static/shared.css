@@ -1,5 +1,15 @@
+:root {
+  --linkblue: rgb(0, 200, 200);
+  --backgroundcolor: rgb(12, 12, 12);
+  --itemcolor: rgb(25, 25, 25);
+  --mathcolor: rgb(255, 75, 75);
+  --blogcolor: rgb(35, 219, 38);
+  --projectcolor: gold;
+  --mainwidth: 768px;
+}
+
 body {
-  background-color: rgb(12, 12, 12);
+  background-color: var(--backgroundcolor);
   color: white;
   font-family: var(
     --default-font-family,
@@ -15,7 +25,7 @@ body {
 }
 
 a {
-  color: rgb(0, 200, 200);
+  color: var(--linkblue);
   text-decoration: none;
 }
 
@@ -41,45 +51,43 @@ a {
 /* Flexboxes */
 .containerMain {
   display: flex;
-  width: 768px;
+  width: var(--mainwidth);
   row-gap: 30px;
   flex-direction: column;
 }
 
 .header {
-  width: 768px;
+  width: var(--mainwidth);
   border-radius: 15px;
   padding-top: 1vw;
   padding-bottom: 1vw;
   height: auto;
-  background-color: rgb(25, 25, 25);
+  background-color: var(--itemcolor);
 }
 
 .containerStandard {
   flex-direction: row;
   display: flex;
-  column-gap: calc(768px * 2 / 40);
+  column-gap: calc(var(--mainwidth) * 2 / 40);
 }
 
 .mainStandard {
   text-align: left;
   border-radius: 15px;
-  padding: calc(768px * 1 / 40);
-  width: calc(768px * 24 / 40);
-  background-color: rgb(25, 25, 25);
+  padding: calc(var(--mainwidth) * 1 / 40);
+  width: calc(var(--mainwidth) * 24 / 40);
+  background-color: var(--itemcolor);
 }
 
 .githubWidget {
   background-color: rgb(13, 17, 23);
-  width: calc(768px * 10 / 40);
+  width: calc(var(--mainwidth) * 10 / 40);
   border-radius: 20px;
-  padding: calc(768px * 1 / 40);
+  padding: calc(var(--mainwidth) * 1 / 40);
   text-align: left;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  /*border: 5px;
-  border-color: white;*/
 }
 
 .githublangbar {
@@ -87,37 +95,37 @@ a {
 }
 
 .sideStandard {
-  width: calc(768px * 10 / 40);
+  width: calc(var(--mainwidth) * 10 / 40);
   border-radius: 20px;
-  padding: calc(768px * 1 / 40);
-  background-color: rgb(25, 25, 25);
+  padding: calc(var(--mainwidth) * 1 / 40);
+  background-color: var(--itemcolor);
   text-align: left;
 }
 
 .imageStandard {
-  width: calc(768px * 12 / 40);
+  width: calc(var(--mainwidth) * 12 / 40);
   border-radius: 20px;
-  background-color: rgb(25, 25, 25);
+  background-color: var(--itemcolor);
 }
 
 .main {
   text-align: left;
   border-radius: 15px;
-  padding: calc(768px * 1 / 40);
-  width: calc(768px * 38 / 40);
-  background-color: rgb(25, 25, 25);
+  padding: calc(var(--mainwidth) * 1 / 40);
+  width: calc(var(--mainwidth) * 38 / 40);
+  background-color: var(--itemcolor);
 }
 
 /* For the Buttons! */
 .containerButtons {
   display: flex;
   flex-direction: row;
-  column-gap: calc(768px * 2 / 40);
+  column-gap: calc(var(--mainwidth) * 2 / 40);
   height: auto;
 }
 
 .button1 {
-  background-color: rgb(25, 25, 25);
+  background-color: var(--itemcolor);
   border: none;
   display: inline-block;
   /* hierdoor werken width en height */
@@ -125,16 +133,16 @@ a {
   /* text center horizontaal */
   line-height: 40px;
   /* zorgt ervoor dat text in midden verticaal is, verander dit als je height veranderd*/
-  width: calc(768px * 12 / 40);
+  width: calc(var(--mainwidth) * 12 / 40);
   height: auto;
   border-radius: 10px;
-  color: rgb(0, 200, 200);
+  color: var(--linkblue);
 }
 
 .mentions {
   border-radius: 15px;
   height: auto;
-  background-color: rgb(25, 25, 25);
+  background-color: var(--itemcolor);
   padding-bottom: 10px;
 }
 
@@ -157,53 +165,5 @@ a {
   color: white;
   padding: 10px;
   line-height: 1.8;
-  background-color: rgb(25, 25, 25);
-}
-/*
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -60px;
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: black transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
-*/
-.math {
-  color: rgb(255, 75, 75);
-}
-
-.blog {
-  color: rgb(35, 219, 38);
-}
-
-.project {
-  color: gold;
+  background-color: var(--itemcolor);
 }

@@ -3,6 +3,13 @@
   import ProjectText from "$lib/projectText.svelte";
   import generalData from "$lib/generalData.json" with { type: "json" };
 
+  import HornetRunning from "../../images/HornetRunning.gif";
+
+  let projectArray: number[] = [];
+  for (const projectID of Object.entries(generalData.IDs)) {
+    projectArray.push(Number(projectID[1]));
+  }
+
   const getColor = (language: string): string => {
     for (const looper of Object.entries(generalData.languageColors)) {
       if (language === looper[0]) {
@@ -14,11 +21,6 @@
     return "white";
   };
 
-  let projectArray: number[] = [];
-  for (const projectID of Object.entries(generalData.IDs)) {
-    projectArray.push(Number(projectID[1]));
-  }
-
   const flexDirector = (counter: number): string => {
     if (counter % 2 === 0) {
       return "row";
@@ -28,7 +30,7 @@
 </script>
 
 <div class="header">
-  <h1 class="not nob project">My Projects</h1>
+  <h1 class="not nob" style="color: var(--projectcolor)">My Projects</h1>
 </div>
 
 <!-- Planning on making this an each loop -->
@@ -78,17 +80,18 @@
   </div>
 {/snippet}
 
-{#each projectArray as IAmRunningOutOfNames, index}
+{#each projectArray as projectEntry, index}
   <div class="containerStandard" style="flex-direction: {flexDirector(index)}">
     <div class="mainStandard">
-      <ProjectText projectID={String(IAmRunningOutOfNames)} />
+      <ProjectText projectID={String(projectEntry)} />
     </div>
 
     <div class="githubWidget">
       {#await getData()}
         <p>Waiting for project data...</p>
+        <img src={HornetRunning} alt="Hornet Running" style="width: 200px;" />
       {:then projects}
-        {@render githubWidget(projects, IAmRunningOutOfNames)}
+        {@render githubWidget(projects, projectEntry)}
       {:catch error}
         Something went wrong while fetching data; error: "{error}"
       {/await}

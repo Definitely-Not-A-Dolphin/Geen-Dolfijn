@@ -3,7 +3,9 @@
 </script>
 
 {#if projectID === "898363939"}
-  <h2 class="nob not project">Finnish Language Trainer</h2>
+  <h2 class="nob not project" style="color: var(--projectcolor)">
+    Finnish Language Trainer
+  </h2>
   <p class="not">
     I learn Finnish, and I also like C++ (counter arguments will not be listened
     to), so I combined the two to make the Finnish Language Trainer.
@@ -23,7 +25,9 @@
     </li>
   </ul>
 {:else if projectID === "915271815"}
-  <h2 class="nob not project">This website</h2>
+  <h2 class="nob not project" style="color: var(--projectcolor)">
+    This website
+  </h2>
   <p class="nob not">
     This site is made with SvelteKit, TypeScript and all the other usual stuff.
     My friend Jsw helped me with the setup, and will host this site on his
@@ -38,7 +42,8 @@
       More banner-gifs on the frends-tab, although my friends won't make one. :(
     </li>
   </ul>
-{:else if projectID === "971248396"}<h2 class="nob not project">
+{:else if projectID === "971248396"}
+  <h2 class="nob not project" style="color: var(--projectcolor)">
     A Frog With A Knife
   </h2>
   <p class="not">
