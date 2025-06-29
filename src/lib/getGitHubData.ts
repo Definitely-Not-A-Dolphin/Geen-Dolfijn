@@ -88,7 +88,7 @@ export async function getData(): Promise<Repository[]> {
 
 export const getIndexFromID = (
   searchedRepoID: number,
-  projects: Array<Repository>,
+  projects: [Repository],
 ) => {
   for (let i = 0; i <= projects.length; i++) {
     if (projects[i]?.id === searchedRepoID) {

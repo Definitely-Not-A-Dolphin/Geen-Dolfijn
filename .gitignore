@@ -1,5 +1,6 @@
 node_modules
 src/routes/testing/+page.svelte
+src/lib/secretData.json
 
 # Output
 .output
