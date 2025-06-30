@@ -1,59 +1,72 @@
 import { Octokit } from "octokit";
 import type { Repository, GitHubRepository } from "./customTypes.ts";
 import secretData from "./secretData.json" with { type: "json" };
+import generalData from "./generalData.json" with { type: "json" };
+
+type testingType = {
+  id: number;
+  full_name: string;
+};
 
 const octokit = new Octokit({
   auth: secretData.token,
 });
 
-const repoData = await octokit.request("GET /users/{username}/repos", {
-  username: "definitely-not-a-dolphin",
-});
+export async function getData(idArray: number[]) {
+  const repoData = await octokit.request("GET /users/{owner}/repos", {
+    owner: "definitely-not-a-dolphin",
+  });
 
-for (const entry of repoData.data) {
-  console.log(entry.full_name);
-}
+  let desiredRepoData = [];
+  let returnData = [];
 
-/*
-export function unrawData(): Repository[] {
-  let returnData: Repository[] = [];
+  for (const repository of Object.entries(repoData.data)) {
+    if (idArray.includes(repository[1].id)) {
+      desiredRepoData.push(repository);
+    }
+  }
 
-  for (const dataEntry of Object.entries(data)) {
-    const rawLanguageData: { [language: string]: number } =
-      await response.json();
+  for (const repositoryEntry of desiredRepoData) {
+    const rawLanguageData = await octokit.request("GET /users/{owner}/{repo}", {
+      owner: "definitely-not-a-dolphin",
+      repo: repositoryEntry[1].languages_url,
+    });
+    console.log(rawLanguageData);
     let languageData: { [language: string]: string } = {};
 
     // Aantal characters
     let langTotalChar: number = 0;
 
-    for (const language of Object.entries(rawLanguageData)) {
+    for (const language of Object.entries(rawLanguageData.data)) {
       langTotalChar += Number(language[1]);
     }
-    for (const language of Object.entries(rawLanguageData)) {
+    for (const language of Object.entries(rawLanguageData.data)) {
       languageData[language[0]] = ((Number(language[1]) / langTotalChar) * 100)
         .toFixed(1)
         .toString();
     }
 
     returnData.push({
-      id: dataEntry.id,
-      full_name: dataEntry.full_name,
-      name: dataEntry.name,
-      ownerLogin: dataEntry.owner.login,
-      description: dataEntry.description,
-      url: dataEntry.html_url,
+      id: repositoryEntry[1].id,
+      full_name: repositoryEntry[1].full_name,
+      name: repositoryEntry[1].name,
+      ownerLogin: repositoryEntry[1].owner.login,
+      description: repositoryEntry[1].description,
+      url: repositoryEntry[1].html_url,
       languages: languageData,
-      license: dataEntry.license
+      license: repositoryEntry[1].license
         ? {
-            name: dataEntry.license.name,
-            url: dataEntry.license.url,
+            name: repositoryEntry[1].license.name,
+            url: repositoryEntry[1].license.url,
           }
         : undefined,
-      stargazers_count: dataEntry.stargazers_count,
+      stargazers_count: repositoryEntry[1].stargazers_count,
     });
   }
 
+  console.log(returnData);
   return returnData;
 }
-let repoArray = [];
-*/
+
+const coolData = getData([898363939]);
+console.log(coolData);
