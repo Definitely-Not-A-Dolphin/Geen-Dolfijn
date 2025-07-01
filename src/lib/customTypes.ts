@@ -123,3 +123,10 @@ export type GitHubRepository = {
   watchers: number;
   default_branch: string;
 };
+
+export type OctokitData = {
+  url: string;
+  status: number;
+  headers: any;
+  data: GitHubRepository[];
+};

@@ -1,5 +1,9 @@
 import { Octokit } from "octokit";
-import type { Repository, GitHubRepository } from "./customTypes.ts";
+import type {
+  Repository,
+  GitHubRepository,
+  OctokitData,
+} from "./customTypes.ts";
 import secretData from "./secretData.json" with { type: "json" };
 import generalData from "./generalData.json" with { type: "json" };
 
@@ -12,13 +16,16 @@ const octokit = new Octokit({
   auth: secretData.token,
 });
 
-export async function getData(idArray: number[]) {
-  const repoData = await octokit.request("GET /users/{owner}/repos", {
-    owner: "definitely-not-a-dolphin",
-  });
+export async function getData(idArray: number[]): Promise<Repository[]> {
+  const repoData: OctokitData = await octokit.request(
+    "GET /users/{owner}/repos",
+    {
+      owner: "definitely-not-a-dolphin",
+    },
+  );
 
   let desiredRepoData = [];
-  let returnData = [];
+  let returnData: Repository[] = [];
 
   for (const repository of Object.entries(repoData.data)) {
     if (idArray.includes(repository[1].id)) {
@@ -27,11 +34,9 @@ export async function getData(idArray: number[]) {
   }
 
   for (const repositoryEntry of desiredRepoData) {
-    const rawLanguageData = await octokit.request("GET /users/{owner}/{repo}", {
-      owner: "definitely-not-a-dolphin",
-      repo: repositoryEntry[1].languages_url,
+    const rawLanguageData = await octokit.request("GET /{url}", {
+      url: repositoryEntry[1].languages_url,
     });
-    console.log(rawLanguageData);
     let languageData: { [language: string]: string } = {};
 
     // Aantal characters
@@ -64,9 +69,7 @@ export async function getData(idArray: number[]) {
     });
   }
 
-  console.log(returnData);
   return returnData;
 }
 
-const coolData = getData([898363939]);
-console.log(coolData);
+const coolData: Promise<Repository[]> = getData([898363939]);
