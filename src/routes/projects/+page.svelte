@@ -1,6 +1,5 @@
 <script lang="ts">
   import { getData, getIndexFromID } from "$lib/getGitHubData.ts";
-  import { _getData } from "$lib/_getGitHubData.ts";
   import ProjectText from "$lib/projectText.svelte";
   import generalData from "$lib/generalData.json" with { type: "json" };
 
@@ -28,8 +27,6 @@
     }
     return "row-reverse";
   };
-
-  console.log("First data");
 </script>
 
 <div class="header">
@@ -81,6 +78,7 @@
   </div>
 {/snippet}
 
+<!--
 {#each projectArray as projectEntry, index}
   <div class="containerStandard" style="flex-direction: {flexDirector(index)}">
     <div class="mainStandard">
@@ -88,7 +86,7 @@
     </div>
 
     <div class="githubWidget">
-      {#await _getData(projectArray)}
+      {#await getData(projectArray)}
         <p>Waiting for project data...</p>
         <img src={HornetRunning} alt="Hornet Running" style="width: 200px;" />
       {:then projects}
@@ -99,3 +97,51 @@
     </div>
   </div>
 {/each}
+-->
+{#await getData(projectArray)}
+  {#each projectArray as projectEntry, index}
+    <div
+      class="containerStandard"
+      style="flex-direction: {flexDirector(index)}"
+    >
+      <div class="mainStandard">
+        <ProjectText projectID={String(projectEntry)} />
+      </div>
+
+      <div class="githubWidget">
+        <p>Waiting for project data...</p>
+        <img src={HornetRunning} alt="Hornet Running" style="width: 200px;" />
+      </div>
+    </div>
+  {/each}
+{:then projects}
+  {#each projectArray as projectEntry, index}
+    <div
+      class="containerStandard"
+      style="flex-direction: {flexDirector(index)}"
+    >
+      <div class="mainStandard">
+        <ProjectText projectID={String(projectEntry)} />
+      </div>
+
+      <div class="githubWidget">
+        {@render githubWidget(projects, projectEntry)}
+      </div>
+    </div>
+  {/each}
+{:catch error}
+  {#each projectArray as projectEntry, index}
+    <div
+      class="containerStandard"
+      style="flex-direction: {flexDirector(index)}"
+    >
+      <div class="mainStandard">
+        <ProjectText projectID={String(projectEntry)} />
+      </div>
+
+      <div class="githubWidget">
+        Something went wrong while fetching data; error: "{error}"
+      </div>
+    </div>
+  {/each}
+{/await}

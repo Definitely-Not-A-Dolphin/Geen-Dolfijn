@@ -1,94 +1,83 @@
-import { type Repository, type GitHubRepository } from "./customTypes.ts";
+import { Octokit } from "octokit";
+import type {
+  Repository,
+  GitHubRepository,
+  OctokitData,
+} from "./customTypes.ts";
+import secretData from "./secretData.json" with { type: "json" };
 
-export const GITHUB_STORAGE_KEY: string = "GitHubData";
-export const FETCH_INTERVAL: number = 1200000; // 20 minutes
-export const GITHUB_BASE_URL: string = "https://api.github.com";
+export async function getData(idArray: number[]): Promise<Repository[]> {
+  const octokit = new Octokit({
+    auth: secretData.token,
+  });
 
-export async function getGitHubData(): Promise<Repository[]> {
-  const response = await fetch(
-    `${GITHUB_BASE_URL}/users/definitely-not-a-dolphin/repos`,
+  const repoData: OctokitData = await octokit.request(
+    "GET /users/{owner}/repos",
+    {
+      owner: "definitely-not-a-dolphin",
+    },
   );
-  if (!response.ok) {
-    throw new Error(`GitHub response ${response.status}`);
-  }
-  const repoData: GitHubRepository[] = await response.json();
+
+  console.log("Fetch Log");
+  console.log(repoData.headers);
+
+  let desiredRepoData = [];
   let returnData: Repository[] = [];
 
-  for (const project of repoData) {
-    const response = await fetch(project.languages_url);
-    if (!response.ok) {
-      throw new Error(`GitHub response ${response.status}`);
+  for (const repository of Object.entries(repoData.data)) {
+    if (idArray.includes(repository[1].id)) {
+      desiredRepoData.push(repository);
     }
-    const rawLanguageData: { [language: string]: number } =
-      await response.json();
+  }
+
+  for (const repositoryEntry of desiredRepoData) {
+    const rawLanguageData = await octokit.request("GET /{url}", {
+      url: repositoryEntry[1].languages_url,
+    });
+
+    console.log("Fetch Log Languages");
+    console.log(rawLanguageData.headers);
+
     let languageData: { [language: string]: string } = {};
 
     // Aantal characters
     let langTotalChar: number = 0;
 
-    for (const language of Object.entries(rawLanguageData)) {
+    for (const language of Object.entries(rawLanguageData.data)) {
       langTotalChar += Number(language[1]);
     }
-    for (const language of Object.entries(rawLanguageData)) {
+    for (const language of Object.entries(rawLanguageData.data)) {
       languageData[language[0]] = ((Number(language[1]) / langTotalChar) * 100)
         .toFixed(1)
         .toString();
     }
 
     returnData.push({
-      id: project.id,
-      full_name: project.full_name,
-      name: project.name,
-      ownerLogin: project.owner.login,
-      description: project.description,
-      url: project.html_url,
+      id: repositoryEntry[1].id,
+      full_name: repositoryEntry[1].full_name,
+      name: repositoryEntry[1].name,
+      ownerLogin: repositoryEntry[1].owner.login,
+      description: repositoryEntry[1].description,
+      url: repositoryEntry[1].html_url,
       languages: languageData,
-      license: project.license
+      license: repositoryEntry[1].license
         ? {
-            name: project.license.name,
-            url: project.license.url,
+            name: repositoryEntry[1].license.name,
+            url: repositoryEntry[1].license.url,
           }
         : undefined,
-      stargazers_count: project.stargazers_count,
+      stargazers_count: repositoryEntry[1].stargazers_count,
     });
   }
 
+  console.log("Returned Data");
+  console.log(returnData);
   return returnData;
-}
-
-export async function getData(): Promise<Repository[]> {
-  const storedLastUpdate = localStorage.getItem(
-    `${GITHUB_STORAGE_KEY}_LastUpdate`,
-  );
-  const storedData = localStorage.getItem(GITHUB_STORAGE_KEY);
-  let shouldFetch = false;
-
-  if (
-    !storedLastUpdate ||
-    Date.now() - parseInt(storedLastUpdate) >= FETCH_INTERVAL
-  ) {
-    shouldFetch = true;
-  }
-
-  if (shouldFetch) {
-    let data = await getGitHubData();
-    localStorage.setItem(GITHUB_STORAGE_KEY, JSON.stringify(data));
-    localStorage.setItem(
-      `${GITHUB_STORAGE_KEY}_LastUpdate`,
-      Date.now().toString(),
-    );
-
-    return data; // Returns data
-  } else if (storedData) {
-    return JSON.parse(storedData); // Returns localstorage
-  } else {
-    throw Error("Unable to fetch github data"); // Something went wrong
-  }
 }
 
 export const getIndexFromID = (
   searchedRepoID: number,
-  projects: [Repository],
+  projects: Repository[],
 ) => {
   for (let i = 0; i <= projects.length; i++) {
     if (projects[i]?.id === searchedRepoID) {
