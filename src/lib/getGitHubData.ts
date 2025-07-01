@@ -1,4 +1,4 @@
-import { type Repository, type GitHubRepository } from "$lib/customTypes.ts";
+import { type Repository, type GitHubRepository } from "./customTypes.ts";
 
 export const GITHUB_STORAGE_KEY: string = "GitHubData";
 export const FETCH_INTERVAL: number = 1200000; // 20 minutes

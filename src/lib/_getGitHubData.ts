@@ -5,18 +5,12 @@ import type {
   OctokitData,
 } from "./customTypes.ts";
 import secretData from "./secretData.json" with { type: "json" };
-import generalData from "./generalData.json" with { type: "json" };
-
-type testingType = {
-  id: number;
-  full_name: string;
-};
 
 const octokit = new Octokit({
   auth: secretData.token,
 });
 
-export async function getData(idArray: number[]): Promise<Repository[]> {
+export async function _getData(idArray: number[]): Promise<Repository[]> {
   const repoData: OctokitData = await octokit.request(
     "GET /users/{owner}/repos",
     {
@@ -72,4 +66,7 @@ export async function getData(idArray: number[]): Promise<Repository[]> {
   return returnData;
 }
 
-const coolData: Promise<Repository[]> = getData([898363939]);
+/*
+const coolData: Repository[] = await _getData([898363939]);
+console.log(coolData);
+*/

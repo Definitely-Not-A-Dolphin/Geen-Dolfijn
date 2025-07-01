@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getData, getIndexFromID } from "$lib/getGitHubData.ts";
+  import { _getData } from "$lib/_getGitHubData.ts";
   import ProjectText from "$lib/projectText.svelte";
   import generalData from "$lib/generalData.json" with { type: "json" };
 
@@ -27,6 +28,8 @@
     }
     return "row-reverse";
   };
+
+  console.log("First data");
 </script>
 
 <div class="header">
@@ -73,9 +76,7 @@
             height: 12px;
             background-color: {getColor(key)}
         "
-      >
-        <!-- <span class="tooltiptext">Tooltip text</span> -->
-      </div>
+      ></div>
     {/each}
   </div>
 {/snippet}
@@ -87,7 +88,7 @@
     </div>
 
     <div class="githubWidget">
-      {#await getData()}
+      {#await _getData(projectArray)}
         <p>Waiting for project data...</p>
         <img src={HornetRunning} alt="Hornet Running" style="width: 200px;" />
       {:then projects}
