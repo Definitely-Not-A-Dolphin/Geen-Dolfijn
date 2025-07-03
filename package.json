@@ -1,6 +1,7 @@
 {
   "name": "geen-dolfijn",
-  "version": "0.0.1",
+  "version": "4.0.0",
+  "license": "UNLICENSE",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run prepack",
