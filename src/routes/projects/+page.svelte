@@ -27,14 +27,13 @@
     }
     return "row-reverse";
   };
+
+  const receivedData = getData(projectArray);
 </script>
 
 <div class="header">
   <h1 class="not nob" style="color: var(--projectcolor)">My Projects</h1>
 </div>
-
-<!-- Planning on making this an each loop -->
-<!-- I made this an each loop! -->
 
 {#snippet githubWidget(projects: any, repoId: number)}
   {@const SNIPPET_PROJECT = projects[getIndexFromID(repoId, projects)]}
@@ -73,9 +72,7 @@
             height: 12px;
             background-color: {getColor(key)}
         "
-      >
-        <!-- <span class="tooltiptext">Tooltip text</span> -->
-      </div>
+      ></div>
     {/each}
   </div>
 {/snippet}
@@ -87,7 +84,7 @@
     </div>
 
     <div class="githubWidget">
-      {#await getData()}
+      {#await receivedData}
         <p>Waiting for project data...</p>
         <img src={HornetRunning} alt="Hornet Running" style="width: 200px;" />
       {:then projects}
