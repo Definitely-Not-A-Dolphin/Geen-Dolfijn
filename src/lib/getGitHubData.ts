@@ -18,7 +18,7 @@ export async function getData(idArray: number[]): Promise<Repository[]> {
     },
   );
 
-  console.log("Fetch Log");
+  console.log(`\x1b[44m > \x1b[0m Fetch Log`);
   console.log(repoData.headers);
 
   let desiredRepoData = [];
@@ -35,7 +35,7 @@ export async function getData(idArray: number[]): Promise<Repository[]> {
       url: repositoryEntry[1].languages_url,
     });
 
-    console.log("Fetch Log Languages");
+    console.log(`\x1b[43m > \x1b[0m Fetch Log Languages`);
     console.log(rawLanguageData.headers);
 
     let languageData: { [language: string]: string } = {};
@@ -70,7 +70,7 @@ export async function getData(idArray: number[]): Promise<Repository[]> {
     });
   }
 
-  console.log("Returned Data");
+  console.log(`\x1b[102m > \x1b[0m Returned Data`);
   console.log(returnData);
   return returnData;
 }

@@ -35,9 +35,6 @@
   <h1 class="not nob" style="color: var(--projectcolor)">My Projects</h1>
 </div>
 
-<!-- Planning on making this an each loop -->
-<!-- I made this an each loop! -->
-
 {#snippet githubWidget(projects: any, repoId: number)}
   {@const SNIPPET_PROJECT = projects[getIndexFromID(repoId, projects)]}
   <h3 class="not">
