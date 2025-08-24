@@ -1,3 +1,31 @@
+export type GitHubUser = {
+  login: string;
+  id: number;
+  node_id: string;
+  avatar_url: string;
+  gravatar_id: string;
+  url: string;
+  html_url: string;
+  followers_url: string;
+  following_url: string;
+  gists_url: string;
+  starred_url: string;
+  subscriptions_url: string;
+  organizations_url: string;
+  repos_url: string;
+  events_url: string;
+  received_events_url: string;
+  type: string;
+  user_view_type: string;
+  site_admin: boolean;
+};
+
+export type GitHubParent = {
+  sha: string;
+  url: string;
+  html_url: string;
+};
+
 export type Repository = {
   id: number;
   full_name: string;
@@ -13,6 +41,10 @@ export type Repository = {
     url: string;
   };
   stargazers_count: number;
+  latest_commit?: {
+    message: string;
+    author: string;
+  };
 };
 
 // May not exactly match the github project response type.
@@ -22,27 +54,7 @@ export type GitHubRepository = {
   name: string;
   full_name: string;
   private: boolean;
-  owner: {
-    login: string;
-    id: number;
-    node_id: string;
-    avatar_url: string;
-    gravatar_id: string;
-    url: string;
-    html_url: string;
-    followers_url: string;
-    following_url: string;
-    gists_url: string;
-    starred_url: string;
-    subscriptions_url: string;
-    organizations_url: string;
-    repos_url: string;
-    events_url: string;
-    received_events_url: string;
-    type: string;
-    user_view_type: string;
-    site_admin: boolean;
-  };
+  owner: GitHubUser;
   html_url: string;
   description: string;
   fork: boolean;
@@ -124,9 +136,47 @@ export type GitHubRepository = {
   default_branch: string;
 };
 
-export type OctokitData = {
+export type GitHubRepositoryCommits = {
+  sha: string;
+  node_id: string;
+  commit: {
+    author: {
+      name: string;
+      email: string;
+      data: string;
+    };
+    committer: {
+      name: string;
+      email: string;
+      data: string;
+    };
+    message: string;
+    tree: {
+      sha: string;
+      url: string;
+    };
+    url: string;
+    comment_counts: number;
+    verification: {
+      verified: boolean;
+      reason: string;
+      signature: string;
+      payload: string;
+      verified_at: string;
+    };
+    commit: string;
+  };
+  url: string;
+  html_url: string;
+  comments_url: string;
+  author: GitHubUser;
+  commiter: GitHubUser;
+  parents: GitHubParent[];
+};
+
+export type OctokitData<thing> = {
   url: string;
   status: number;
   headers: any;
-  data: GitHubRepository[];
+  data: thing[];
 };

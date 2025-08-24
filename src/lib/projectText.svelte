@@ -36,7 +36,6 @@
 
   <p class="nob">Some things that I wish to include / add in the future are:</p>
   <ul class="nob not">
-    <li>A way to vertically display the language bar in the widget</li>
     <li>A better design on the background</li>
     <li>
       More banner-gifs on the frends-tab, although my friends won't make one. :(
@@ -49,7 +48,7 @@
   <p class="not">
     One day I woke up and had the urge to make a discord bot. I do not know
     where it came from, but here it is anyway! It can translate to morse code
-    and send memes based on a number. I plan on making it run 24/7 once I get a
+    and send memes. I plan on making it run 24/7 once I get a
     raspberry pi or a server!
   </p>
 

@@ -57,6 +57,11 @@
 
   <p>Stars: {SNIPPET_PROJECT.stargazers_count}</p>
 
+  <p>
+    Latest commit: {SNIPPET_PROJECT.latest_commit.message} by {SNIPPET_PROJECT
+      .latest_commit.author}
+  </p>
+
   <div
     style="
       display: flex;
@@ -76,6 +81,8 @@
     {/each}
   </div>
 {/snippet}
+
+<!-- This file really makes me love Svelte so much -->
 
 {#each projectArray as projectEntry, index}
   <div class="containerStandard" style="flex-direction: {flexDirector(index)}">

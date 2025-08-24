@@ -1,24 +1,24 @@
 import { Octokit } from "octokit";
 import type {
   Repository,
-  GitHubRepository,
   OctokitData,
+  GitHubRepositoryCommits,
+  GitHubRepository,
 } from "./customTypes.ts";
 import secretData from "./secretData.json" with { type: "json" };
 
 export async function getData(idArray: number[]): Promise<Repository[]> {
+  // Create octokit auth
   const octokit = new Octokit({
     auth: secretData.token,
   });
 
-  const repoData: OctokitData = await octokit.request(
-    "GET /users/{owner}/repos",
-    {
-      owner: "definitely-not-a-dolphin",
-    },
+  // Request all the repos
+  const repoData: OctokitData<GitHubRepository> = await octokit.request(
+    "GET /users/definitely-not-a-dolphin/repos",
   );
 
-  console.log(`\x1b[44m > \x1b[0m Fetch Log`);
+  console.log("\x1b[44m > \x1b[0m Fetch Log");
   console.log(repoData.headers);
 
   let desiredRepoData = [];
@@ -31,11 +31,12 @@ export async function getData(idArray: number[]): Promise<Repository[]> {
   }
 
   for (const repositoryEntry of desiredRepoData) {
+    // Get the languages for each desired repository
     const rawLanguageData = await octokit.request("GET /{url}", {
       url: repositoryEntry[1].languages_url,
     });
 
-    console.log(`\x1b[43m > \x1b[0m Fetch Log Languages`);
+    console.log("\x1b[43m > \x1b[0m Fetch Log \x1b[46mLanguages\x1b[0m");
     console.log(rawLanguageData.headers);
 
     let languageData: { [language: string]: string } = {};
@@ -52,6 +53,15 @@ export async function getData(idArray: number[]): Promise<Repository[]> {
         .toString();
     }
 
+    // Get the three latest commits for each desired repository
+    const rawCommitsData: OctokitData<GitHubRepositoryCommits> =
+      await octokit.request("GET /{url}", {
+        url: repositoryEntry[1].commits_url,
+      });
+
+    console.log("\x1b[43m > \x1b[0m Fetch Log \x1b[45mCommits\x1b[0m");
+    console.log(rawCommitsData.headers);
+
     returnData.push({
       id: repositoryEntry[1].id,
       full_name: repositoryEntry[1].full_name,
@@ -67,10 +77,14 @@ export async function getData(idArray: number[]): Promise<Repository[]> {
           }
         : undefined,
       stargazers_count: repositoryEntry[1].stargazers_count,
+      latest_commit: {
+        message: rawCommitsData.data[0].commit.message,
+        author: rawCommitsData.data[0].author.login,
+      },
     });
   }
 
-  console.log(`\x1b[102m > \x1b[0m Returned Data`);
+  console.log("\x1b[102m > \x1b[0m Returned Data");
   console.log(returnData);
   return returnData;
 }
@@ -86,3 +100,6 @@ export const getIndexFromID = (
   }
   return -1;
 };
+
+const __data = getData([915271815]);
+console.log(__data);

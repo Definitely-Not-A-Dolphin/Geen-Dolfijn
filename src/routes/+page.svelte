@@ -24,14 +24,14 @@
 
     <p class="not">
       I am Definitely Not A Dolphin. Dolphins are terrible creatures, so I
-      thought "lets get that out of the way!". I like coding, gaming, and most
+      thought :"let's get that out of the way!" I like coding, gaming, and most
       of all: mathematics.
     </p>
 
     <p>
       I do coding purely as a hobby, so anything I make is just for funsies! I
       don't really care about how memory safe C++ is, because I'm not going to
-      use it for anything professional, its just for fun (as far as you can call
+      use it for anything professional, it's just for fun (as far as you can call
       C++ fun).
     </p>
 

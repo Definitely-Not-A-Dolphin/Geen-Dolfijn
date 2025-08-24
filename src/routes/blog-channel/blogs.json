@@ -1,6 +1,18 @@
 {
   "blogArray": [
     {
+      "title": "Need Ideas",
+      "subtitle": "im out of them",
+      "blog": "I need ideas for this site I am running out of them and I need hours for Summer of Making",
+      "date": "20/08/2025"
+    },
+    {
+      "title": "Web Assembly",
+      "subtitle": "terminal ig",
+      "blog": "Considering using webassembly so I can run my Finnish Language Trainer (written in C++) in this site in a mini terminal.",
+      "date": "20/07/2025"
+    },
+    {
       "title": "Lil' update",
       "subtitle": "I had nothing to do",
       "blog": "I had some time over and decided to give my projects page a better design. I initially wanted to make the GitHub widgets to have a GitHub-similar style so here it is! :D",
