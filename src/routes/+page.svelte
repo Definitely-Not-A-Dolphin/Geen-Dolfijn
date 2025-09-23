@@ -1,21 +1,27 @@
 <script lang="ts">
-  import { randomInt } from "../lib/main.js";
+  import { randomInt, getCurrentTrack, getHackatime } from "$lib/utils.ts";
+  import type { Track, HackaTimeToday } from "$lib/customTypes";
+  import hornetRunning from "../images/HornetRunning.gif";
   import sizzle from "../images/NotBaldCat.jpg";
   import okkie from "../images/Okkie<3.jpg";
+
+  const lastFMData: Promise<boolean | Track> = getCurrentTrack();
+  const hackatimeData: Promise<HackaTimeToday> = getHackatime();
 
   const titles: string[] = [
     "Ik ben een titel",
     "I am a title",
     "Je suis une titre",
     "Ich bin ein Titel",
-    "Jag är en title",
+    "Jag är en tittel",
     "Minä olen titteli",
     "Es esmu tituls",
   ];
+  const chosenTitle: string = titles[randomInt(0, titles.length - 1)];
 </script>
 
 <div class="header">
-  <h1>{titles[randomInt(0, titles.length - 1)]}</h1>
+  <h1>{chosenTitle}</h1>
 </div>
 
 <div class="containerStandard">
@@ -23,22 +29,58 @@
     <h1 style="color: var(--linkblue)" class="nob not">Hello there!</h1>
 
     <p class="not">
-      I am Definitely Not A Dolphin. Dolphins are terrible creatures, so I
-      thought :"let's get that out of the way!" I like coding, gaming, and most
-      of all: mathematics.
+      I am Definitely Not A Dolphin. I also go by Zedder. I speak Dutch,
+      English, and learning Finnish. I like coding, gaming, and most of all:
+      mathematics.
     </p>
 
-    <p>
-      I do coding purely as a hobby, so anything I make is just for funsies! I
-      don't really care about how memory safe C++ is, because I'm not going to
-      use it for anything professional, it's just for fun (as far as you can call
-      C++ fun).
-    </p>
-
-    <p>
-      My point is: my motivator for learning coding is curiosity: not money, not
-      fame, just curiosity. And I think we should do that more often.
-    </p>
+    {#await lastFMData}
+      <div style="display: flex; gap: 10px; justify-content: space-between;">
+        <div>
+          <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
+          <p>Waiting for project data...</p>
+        </div>
+        <div>
+          <img
+            src={hornetRunning}
+            alt="Hornet Running"
+            style="height: 140px;"
+          />
+        </div>
+      </div>
+    {:then trackData}
+      {#if trackData === false}
+        <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
+        <p class="not">Something went wrong while fetching Last.fm data D:</p>
+      {:else if trackData === true}
+        <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
+        <p class="not">I am not currently listening to any music</p>
+      {:else}
+        <div style="display: flex; gap: 10px; justify-content: space-between;">
+          <div>
+            <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
+            <p class="not">
+              Currently listening to <a href={trackData.url}>{trackData.name}</a
+              ><br />
+              from {trackData.album} by {trackData.artist}
+            </p>
+          </div>
+          <div>
+            <img
+              style="border-radius: 15px; height: 140px;"
+              alt="album cover"
+              src={trackData.image}
+            />
+          </div>
+        </div>
+      {/if}
+    {:catch}
+      <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
+      <p>
+        I have no idea how the hell the data fetched errorless but the awaiting
+        failed, so enjoy this error message I guess!
+      </p>
+    {/await}
   </div>
 
   <img alt="My cat!" src={sizzle} class="imageStandard" />
@@ -49,19 +91,25 @@
 
   <div class="mainStandard">
     <h1 style="color: var(--linkblue)" class="nob not">Coding</h1>
-    <p class="nob not">I "know" a few programming languages:</p>
-
-    <ul class="not">
-      <li>Python (never again)</li>
-      <li>Javascript / TypeScript</li>
-      <li>Svelte (yes I'm counting that, best framework btw)</li>
-      <li>C++</li>
-    </ul>
-
+    <p class="nob not">
+      I currently write a lot of TypeScript, both for my discord bots and this
+      website. I also did some C++, but kinda left it.
+    </p>
     <p>
       Also I am still learning so if you see code that just completely sucks: Do
       not worry, I am aware of it. Just leave an issue and I'll look into it. I
       am too busy skateboarding on the learning curve.
     </p>
+
+    <h3 style="color: var(--mathcolor)" class="nob not">Hackatime</h3>
+
+    {#await hackatimeData}
+      Currently fetching HackaTime data.
+    {:then thing}
+      Today I have logged {thing.data.grand_total.total_seconds} seconds of coding,
+      which is equal to {thing.data.grand_total.text}!
+    {:catch}
+      Oops! Something went wrong while fetching data!
+    {/await}
   </div>
 </div>

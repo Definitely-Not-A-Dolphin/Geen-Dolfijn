@@ -106,6 +106,7 @@ a {
   width: calc(var(--mainwidth) * 12 / 40);
   border-radius: 20px;
   background-color: var(--itemcolor);
+  height: 315px;
 }
 
 .main {

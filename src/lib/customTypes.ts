@@ -1,3 +1,59 @@
+export type Track = {
+  name: string;
+  album: string;
+  artist: string;
+  image: string;
+  url: string;
+};
+
+export type LastFMTrack = {
+  artist: {
+    mbid: string;
+    "#text": string;
+  };
+  streamable: string;
+  image: {
+    size: string;
+    "#text": string;
+  }[];
+  mbid: string;
+  album: {
+    mbid: string;
+    "#text": string;
+  };
+  name: string;
+  url: string;
+  date?: {
+    uts: string;
+    "@attr": string;
+  };
+  "@attr"?: {
+    nowplaying: boolean;
+  };
+};
+
+export type LastFMData = {
+  recenttracks: {
+    track: LastFMTrack[];
+    "@attr": {
+      user: string;
+      totalPages: string;
+      page: string;
+      perPage: string;
+      total: string;
+    };
+  };
+};
+
+export type HackaTimeToday = {
+  data: {
+    grand_total: {
+      text: string;
+      total_seconds: 1064;
+    };
+  };
+};
+
 export type GitHubUser = {
   login: string;
   id: number;
@@ -28,22 +84,17 @@ export type GitHubParent = {
 
 export type Repository = {
   id: number;
-  full_name: string;
+  fullName: string;
   name: string;
   ownerLogin: string;
   description: string;
   url: string;
   languages: {
-    [language: string]: string;
+    [language: string]: number;
   };
   license?: {
     name: string;
     url: string;
-  };
-  stargazers_count: number;
-  latest_commit?: {
-    message: string;
-    author: string;
   };
 };
 
@@ -136,7 +187,98 @@ export type GitHubRepository = {
   default_branch: string;
 };
 
-export type GitHubRepositoryCommits = {
+export type Commit = {
+  message: string;
+  author: string;
+  html_url: string;
+  author_html_url: string;
+  author_avatar_url: string;
+};
+
+export type GitHubCommit = {
+  sha: string;
+  node_id: string;
+  commit: {
+    author: {
+      name: string;
+      email: string;
+      date: string;
+    };
+    committer: {
+      name: string;
+      email: string;
+      date: string;
+    };
+    message: string;
+    tree: {
+      sha: string;
+      url: string;
+    };
+    url: string;
+    comment_count: number;
+    verification: {
+      verified: boolean;
+      reason: string;
+      signature: string;
+      payload: string;
+      verified_at: string;
+    };
+  };
+  url: string;
+  html_url: string;
+  comments_url: string;
+  author: {
+    login: string;
+    id: number;
+    node_id: string;
+    avatar_url: string;
+    gravatar_id: string;
+    url: string;
+    html_url: string;
+    followers_url: string;
+    following_url: string;
+    gists_url: string;
+    starred_url: string;
+    subscriptions_url: string;
+    organizations_url: string;
+    repos_url: string;
+    events_url: string;
+    received_events_url: string;
+    type: string;
+    user_view_type: string;
+    site_admin: boolean;
+  };
+  committer: {
+    login: string;
+    id: number;
+    node_id: string;
+    avatar_url: string;
+    gravatar_id: string;
+    url: string;
+    html_url: string;
+    followers_url: string;
+    following_url: string;
+    gists_url: string;
+    starred_url: string;
+    subscriptions_url: string;
+    organizations_url: string;
+    repos_url: string;
+    events_url: string;
+    received_events_url: string;
+    type: string;
+    user_view_type: string;
+    site_admin: false;
+  };
+  parents: [
+    {
+      sha: string;
+      url: string;
+      html_url: string;
+    },
+  ];
+};
+
+export type GitHubRepositoryCommit = {
   sha: string;
   node_id: string;
   commit: {
@@ -174,9 +316,36 @@ export type GitHubRepositoryCommits = {
   parents: GitHubParent[];
 };
 
-export type OctokitData<thing> = {
-  url: string;
-  status: number;
-  headers: any;
-  data: thing[];
+export type ResponseHeaders = {
+  "cache-control"?: string;
+  "content-length"?: number;
+  "content-type"?: string;
+  date?: string;
+  etag?: string;
+  "last-modified"?: string;
+  link?: string;
+  location?: string;
+  server?: string;
+  status?: string;
+  vary?: string;
+  "x-accepted-github-permissions"?: string;
+  "x-github-mediatype"?: string;
+  "x-github-request-id"?: string;
+  "x-oauth-scopes"?: string;
+  "x-ratelimit-limit"?: string;
+  "x-ratelimit-remaining"?: string;
+  "x-ratelimit-reset"?: string;
+
+  [header: string]: string | number | undefined;
+};
+
+export type Language = { [language: string]: string };
+
+export type Url = string;
+
+export type OctokitResponse<T, S extends number = number> = {
+  headers: ResponseHeaders;
+  status: S; // http response code
+  url: Url; // URL of response after all redirects
+  data: T; // Response data as documented in the REST API reference documentation at https://docs.github.com/rest/reference
 };

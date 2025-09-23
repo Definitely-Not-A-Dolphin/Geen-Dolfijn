@@ -1,8 +1,37 @@
 {
-  "thing": [
+  "graphs": [
     {
       "title": "Honeyyyyyyy",
-      "discription": "This was my submission to the Desmos Art Contest 2024 ( I didn't win :( )"
+      "discription": "This was my submission to the Desmos Art Contest 2024 ( I didn't win :( )",
+      "date": "27/01/2025",
+      "link": "https://www.desmos.com/calculator/zdkli2eaey",
+      "text": "Honeyyyyyy"
+    },
+    {
+      "title": "Cagney Carnation",
+      "discription": "I made the flower man from Cuphead with roughly 120 quartic bezier curves.",
+      "date": "27/01/2025",
+      "link": "https://www.desmos.com/calculator/qudrxpzped",
+      "text": "Petal Power"
+    },
+    {
+      "title": "Fully Functioning Digital Clock!",
+      "discription": "Are you done with the tyranny of effieciently made clocks? Well, let me introduce you to a digital clock / timer made in a graphical calculator!",
+      "date": "27/01/2025",
+      "link": "https://www.desmos.com/calculator/vqznztflb4",
+      "text": "It doesn't count days (yet)"
+    }
+  ],
+  "minorGraphs": [
+    {
+      "title": "Shadows with moveable lightsource:",
+      "link": "https://www.desmos.com/calculator/2wo9jbzvab",
+      "text": "Shadows"
+    },
+    {
+      "title": "Vector Art (I think that is how it's called):",
+      "link": "https://www.desmos.com/calculator/tzsp7q806q",
+      "text": "T-thingeys"
     }
   ]
 }

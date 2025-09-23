@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { getData, getIndexFromID } from "$lib/getGitHubData.ts";
+  import { getRepoData } from "$lib/utils.ts";
   import ProjectText from "$lib/projectText.svelte";
   import generalData from "$lib/generalData.json" with { type: "json" };
+  import hornetRunning from "../../images/HornetRunning.gif";
+  import type { Repository } from "$lib/customTypes";
 
-  import HornetRunning from "../../images/HornetRunning.gif";
-
-  let projectArray: number[] = [];
+  const projectIDArray: number[] = [];
   for (const projectID of Object.entries(generalData.IDs)) {
-    projectArray.push(Number(projectID[1]));
+    projectIDArray.push(projectID[1]);
   }
 
   const getColor = (language: string): string => {
@@ -27,40 +27,28 @@
     }
     return "row-reverse";
   };
-
-  const receivedData = getData(projectArray);
 </script>
 
 <div class="header">
   <h1 class="not nob" style="color: var(--projectcolor)">My Projects</h1>
 </div>
 
-{#snippet githubWidget(projects: any, repoId: number)}
-  {@const SNIPPET_PROJECT = projects[getIndexFromID(repoId, projects)]}
+{#snippet githubWidget(project: Repository)}
   <h3 class="not">
-    Definitely-Not-A-Dolphin/<br />
-    <a href={SNIPPET_PROJECT.url}>
-      {SNIPPET_PROJECT.name}
+    {project.ownerLogin}/<br />
+    <a href={project.url}>
+      {project.name}
     </a>
   </h3>
 
   <p class="nob not">Languages</p>
   <ul class="not" style="font-size: 16px;">
-    {#if projects.length > 0}
-      {#each Object.entries(SNIPPET_PROJECT.languages) as [key, value]}
-        <li>
-          {value}% <span style="color: {getColor(key)}">{key}</span>
-        </li>
-      {/each}
-    {/if}
+    {#each Object.entries(project.languages) as [key, value]}
+      <li>
+        {value}% <span style="color: {getColor(key)}">{key}</span>
+      </li>
+    {/each}
   </ul>
-
-  <p>Stars: {SNIPPET_PROJECT.stargazers_count}</p>
-
-  <p>
-    Latest commit: {SNIPPET_PROJECT.latest_commit.message} by {SNIPPET_PROJECT
-      .latest_commit.author}
-  </p>
 
   <div
     style="
@@ -69,9 +57,8 @@
       overflow: hidden;
     "
   >
-    {#each Object.entries(SNIPPET_PROJECT.languages) as [key, value]}
+    {#each Object.entries(project.languages) as [key, value]}
       <div
-        class="tooltip"
         style="
             width: {2.304 * Number(value)}px;
             height: 12px;
@@ -82,20 +69,18 @@
   </div>
 {/snippet}
 
-<!-- This file really makes me love Svelte so much -->
-
-{#each projectArray as projectEntry, index}
+{#each projectIDArray as projectID, index}
   <div class="containerStandard" style="flex-direction: {flexDirector(index)}">
     <div class="mainStandard">
-      <ProjectText projectID={String(projectEntry)} />
+      <ProjectText projectID={String(projectID)} />
     </div>
 
     <div class="githubWidget">
-      {#await receivedData}
+      {#await getRepoData(projectID)}
         <p>Waiting for project data...</p>
-        <img src={HornetRunning} alt="Hornet Running" style="width: 200px;" />
-      {:then projects}
-        {@render githubWidget(projects, projectEntry)}
+        <img src={hornetRunning} alt="Hornet Running" style="width: 200px;" />
+      {:then project}
+        {@render githubWidget(project)}
       {:catch error}
         Something went wrong while fetching data; error: "{error}"
       {/await}
