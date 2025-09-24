@@ -1,12 +1,19 @@
 <script lang="ts">
-  import { randomInt, getCurrentTrack, getHackatime } from "$lib/utils.ts";
-  import type { Track, HackaTimeToday } from "$lib/customTypes";
+  import { randomInt } from "$lib/utils.ts";
+  import type { HackaTimeToday, Track } from "$lib/customTypes";
   import hornetRunning from "../images/HornetRunning.gif";
   import sizzle from "../images/NotBaldCat.jpg";
   import okkie from "../images/Okkie<3.jpg";
 
-  const lastFMData: Promise<boolean | Track> = getCurrentTrack();
-  const hackatimeData: Promise<HackaTimeToday> = getHackatime();
+  const fetchLastFM = async (): Promise<boolean | Track> => {
+    const response = await fetch("/fetch/last.fm");
+    return await response.json();
+  };
+
+  const fetchHackaTime = async (): Promise<HackaTimeToday> => {
+    const response = await fetch("/fetch/hackatime");
+    return await response.json();
+  };
 
   const titles: string[] = [
     "Ik ben een titel",
@@ -17,11 +24,10 @@
     "Minä olen titteli",
     "Es esmu tituls",
   ];
-  const chosenTitle: string = titles[randomInt(0, titles.length - 1)];
 </script>
 
 <div class="header">
-  <h1>{chosenTitle}</h1>
+  <h1>{titles[randomInt(0, titles.length - 1)]}</h1>
 </div>
 
 <div class="containerStandard">
@@ -34,7 +40,7 @@
       mathematics.
     </p>
 
-    {#await lastFMData}
+    {#await fetchLastFM()}
       <div style="display: flex; gap: 10px; justify-content: space-between;">
         <div>
           <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
@@ -103,7 +109,7 @@
 
     <h3 style="color: var(--mathcolor)" class="nob not">Hackatime</h3>
 
-    {#await hackatimeData}
+    {#await fetchHackaTime()}
       Currently fetching HackaTime data.
     {:then thing}
       Today I have logged {thing.data.grand_total.total_seconds} seconds of coding,

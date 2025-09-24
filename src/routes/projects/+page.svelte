@@ -4,8 +4,8 @@
   import hornetRunning from "../../images/HornetRunning.gif";
   import type { Repository } from "$lib/customTypes.ts";
 
-  const fetchGitHub = async () => {
-    const response = await fetch("/projects");
+  const fetchGitHub = async (repoID: number) => {
+    const response = await fetch(`/fetch/github?repoID=${repoID}`);
     return await response.json();
   };
 
@@ -98,11 +98,11 @@
     </div>
 
     <div class="githubWidget">
-      {#await fetchGitHub()}
+      {#await fetchGitHub(projectID)}
         <p>Waiting for project data...</p>
         <img src={hornetRunning} alt="Hornet Running" style="width: 200px;" />
       {:then project}
-        {@render githubWidget(project[index])}
+        {@render githubWidget(project)}
       {:catch error}
         Something went wrong while fetching data; error: "{error}"
       {/await}
