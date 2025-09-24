@@ -27,68 +27,83 @@ export function arrayChecker<T>(array: T[], element: T): boolean {
   return false;
 }
 
-export async function getRepoData(repoID: number): Promise<Repository> {
+export async function getRepoData(
+  repoIDArray: number[],
+): Promise<Repository[]> {
   // Create octokit auth
   const octokit: Octokit = new Octokit({
     auth: secretData.token,
   });
 
-  // Request all the repos
-  const repoData: OctokitResponse<GitHubRepository> = await octokit.request(
-    "GET /repositories/{repoID}",
-    {
-      repoID: repoID,
-    },
-  );
+  const returnData: Repository[] = [];
 
-  console.log("\x1b[44m > \x1b[0m Fetch Log");
-  console.log(repoData.headers);
+  for (let repoID of repoIDArray) {
+    // Request the repo with matching IDs
+    const receivedRepoData: OctokitResponse<GitHubRepository> = await octokit
+      .request(
+        "GET /repositories/{repoID}",
+        {
+          repoID: repoID,
+        },
+      );
 
-  // Get the languages
-  const rawLanguageData: OctokitResponse<Language[]> = await octokit
-    .request("GET /{url}", {
-      url: repoData.data.languages_url,
-    });
+    console.log(`\x1b[44m > \x1b[0m Fetch Log: ${receivedRepoData.data.full_name}`);
+    console.log(receivedRepoData.headers);
 
-  console.log(
-    "\x1b[43m > \x1b[0m Fetch Log Languages",
-  );
-  console.log(rawLanguageData.headers);
+    // Get the languages
+    const rawLanguageData: OctokitResponse<Language[]> = await octokit
+      .request("GET /{url}", {
+        url: receivedRepoData.data.languages_url,
+      });
 
-  // Aantal characters
-  let totalChar: number = 0;
-  for (const language of Object.entries(rawLanguageData.data)) {
-    totalChar += Number(language[1]);
-  }
+    console.log(
+      `\x1b[43m > \x1b[0m Fetch Log Languages: ${receivedRepoData.data.full_name}`,
+    );
+    console.log(rawLanguageData.headers);
 
-  let languageData: { [language: string]: number } = {};
-  for (const language of Object.entries(rawLanguageData.data)) {
-    const thing: number = Math.floor(Number(language[1]) / totalChar * 1000) /
-      10;
-    if (thing === 0) {
-      continue; // Equivalent of break as long as github doesn't switch the descending order of languages
+    // Aantal characters
+    let totalChar: number = 0;
+    for (const language of Object.entries(rawLanguageData.data)) {
+      totalChar += Number(language[1]);
     }
-    languageData[language[0]] = thing;
+
+    let languageData: { [language: string]: number } = {};
+    for (const language of Object.entries(rawLanguageData.data)) {
+      const thing: number = Math.floor(Number(language[1]) / totalChar * 1000) /
+        10;
+      if (thing === 0) {
+        continue; // Equivalent of break as long as github doesn't switch the descending order of languages
+      }
+      languageData[language[0]] = thing;
+    }
+
+    const pushData = {
+      id: receivedRepoData.data.id,
+      fullName: receivedRepoData.data.full_name,
+      name: receivedRepoData.data.name,
+      owner: {
+        login: receivedRepoData.data.owner.login,
+        avatarUrl: receivedRepoData.data.owner.avatar_url,
+      },
+      description: receivedRepoData.data.description,
+      url: receivedRepoData.data.html_url,
+      languages: languageData,
+      license: receivedRepoData.data.license
+        ? {
+          name: receivedRepoData.data.license.name,
+          url: receivedRepoData.data.license.url,
+        }
+        : undefined,
+      stargazerCount: receivedRepoData.data.stargazers_count
+    };
+
+    returnData.push(pushData);
+    console.log(
+      `\x1b[102m > \x1b[0m Pushed Data: ${receivedRepoData.data.full_name}`,
+    );
+    console.log(pushData);
   }
 
-  const returnData: Repository = {
-    id: repoData.data.id,
-    fullName: repoData.data.full_name,
-    name: repoData.data.name,
-    ownerLogin: repoData.data.owner.login,
-    description: repoData.data.description,
-    url: repoData.data.html_url,
-    languages: languageData,
-    license: repoData.data.license
-      ? {
-        name: repoData.data.license.name,
-        url: repoData.data.license.url,
-      }
-      : undefined,
-  };
-
-  console.log("\x1b[102m > \x1b[0m Returned Data");
-  console.log(returnData);
   return returnData;
 }
 
@@ -118,15 +133,6 @@ export async function getLatestCommits(repoID: number): Promise<Commit[]> {
   }
 
   return returnData;
-}
-
-export function getIndexFromID(array: Repository[], id: number): number {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].id === id) {
-      return i;
-    }
-  }
-  return -1;
 }
 
 export async function getHackatime(): Promise<HackaTimeToday> {

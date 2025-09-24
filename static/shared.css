@@ -33,8 +33,16 @@ a {
   margin-top: 0rem;
 }
 
+.halft {
+  margin-top: 0.1rem;
+}
+
 .nob {
   margin-bottom: 0rem;
+}
+
+.halfb {
+  margin-bottom: 0.1rem;
 }
 
 .centerer {
