@@ -2,26 +2,12 @@ import { Octokit } from "octokit";
 import type {
   Commit,
   GitHubCommit,
-  GitHubRepository,
-  HackaTimeToday,
-  Language,
   OctokitResponse,
-  Repository,
 } from "./customTypes.ts";
 import secretData from "./secretData.json" with { type: "json" };
 
 export function randomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-export function arrayChecker<T>(array: T[], element: T): boolean {
-  for (let value in array) {
-    if (value === element) {
-      return true;
-    }
-  }
-
-  return false;
 }
 
 export async function getLatestCommits(repoID: number): Promise<Commit[]> {

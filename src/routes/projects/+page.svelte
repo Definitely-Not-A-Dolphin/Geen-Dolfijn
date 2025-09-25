@@ -27,7 +27,7 @@
 </script>
 
 <div class="header">
-  <h1 class="not nob" style="color: var(--projectcolor)">My Projects</h1>
+  <h1 class="" style="color: var(--projectcolor)">My Projects</h1>
 </div>
 
 {#snippet githubWidget(project: Repository)}

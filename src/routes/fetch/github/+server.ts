@@ -8,7 +8,7 @@ import { Octokit } from "octokit";
 import secretData from "$lib/secretData.json" with { type: "json" };
 
 export async function GET({ url }: any): Promise<Response> {
-  const repoID = url.searchParams.get("repoID");
+  const repoID: number = url.searchParams.get("repoID");
   if (!repoID) return json(false);
 
   const octokit: Octokit = new Octokit({

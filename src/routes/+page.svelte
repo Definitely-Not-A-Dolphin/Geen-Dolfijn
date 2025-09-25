@@ -44,7 +44,7 @@
       <div style="display: flex; gap: 10px; justify-content: space-between;">
         <div>
           <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
-          <p>Waiting for project data...</p>
+          <p class="not">Waiting for project data...</p>
         </div>
         <div>
           <img
