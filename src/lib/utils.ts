@@ -1,10 +1,6 @@
 import { Octokit } from "octokit";
-import type {
-  Commit,
-  GitHubCommit,
-  OctokitResponse,
-} from "./customTypes.ts";
-import secretData from "./secretData.json" with { type: "json" };
+import type { Commit, GitHubCommit, OctokitResponse } from "./customTypes.ts";
+import { secretData } from "./secrets.ts";
 
 export function randomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1) + min);

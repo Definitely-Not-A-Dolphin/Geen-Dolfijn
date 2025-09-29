@@ -5,7 +5,7 @@ import type {
   OctokitResponse,
 } from "$lib/customTypes.ts";
 import { Octokit } from "octokit";
-import secretData from "$lib/secretData.json" with { type: "json" };
+import { secretData } from "$lib/secrets.ts";
 
 export async function GET({ url }: any): Promise<Response> {
   const repoID: number = url.searchParams.get("repoID");

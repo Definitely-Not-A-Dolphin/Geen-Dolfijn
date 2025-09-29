@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import secretData from "$lib/secretData.json" with { type: "json" };
+import { secretData } from "$lib/secrets.ts";
 
 export async function GET(): Promise<Response> {
   const response = await fetch(

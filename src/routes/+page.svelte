@@ -1,9 +1,9 @@
 <script lang="ts">
   import { randomInt } from "$lib/utils.ts";
-  import type { HackaTimeToday, Track } from "$lib/customTypes";
-  import hornetRunning from "../images/HornetRunning.gif";
-  import sizzle from "../images/NotBaldCat.jpg";
-  import okkie from "../images/Okkie<3.jpg";
+  import type { HackaTimeToday, Track } from "$lib/customTypes.ts";
+  import hornetRunning from "$images/HornetRunning.gif";
+  import sizzle from "$images/NotBaldCat.jpg";
+  import okkie from "$images/Okkie<3.jpg";
 
   const fetchLastFM = async (): Promise<boolean | Track> => {
     const response = await fetch("/fetch/last.fm");

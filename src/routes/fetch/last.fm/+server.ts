@@ -1,6 +1,6 @@
 import { json } from "@sveltejs/kit";
 import type { LastFMData, LastFMTrack } from "$lib/customTypes.ts";
-import secretData from "$lib/secretData.json" with { type: "json" };
+import { secretData } from "$lib/secrets.ts";
 
 export async function GET(): Promise<Response> {
   try {
@@ -21,9 +21,6 @@ export async function GET(): Promise<Response> {
     ) return json(true);
 
     const currentTrack: LastFMTrack = tracks[0];
-    if (secretData.forbiddenSongs.includes(currentTrack.name)) {
-      return json(true);
-    }
 
     const image: string = currentTrack.image[2]["#text"];
     return json({
