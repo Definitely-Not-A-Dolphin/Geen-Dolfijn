@@ -86,7 +86,10 @@ export type Repository = {
   id: number;
   fullName: string;
   name: string;
-  ownerLogin: string;
+  owner: {
+    login: string;
+    avatarUrl: string;
+  };
   description: string;
   url: string;
   languages: {
@@ -96,6 +99,7 @@ export type Repository = {
     name: string;
     url: string;
   };
+  stargazerCount: number;
 };
 
 // May not exactly match the github project response type.

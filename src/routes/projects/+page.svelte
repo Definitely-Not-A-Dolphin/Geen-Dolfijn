@@ -1,14 +1,13 @@
 <script lang="ts">
-  import { getRepoData } from "$lib/utils.ts";
   import ProjectText from "$lib/projectText.svelte";
   import generalData from "$lib/generalData.json" with { type: "json" };
   import hornetRunning from "../../images/HornetRunning.gif";
-  import type { Repository } from "$lib/customTypes";
+  import type { Repository } from "$lib/customTypes.ts";
 
-  const projectIDArray: number[] = [];
-  for (const projectID of Object.entries(generalData.IDs)) {
-    projectIDArray.push(projectID[1]);
-  }
+  const fetchGitHub = async (repoID: number) => {
+    const response = await fetch(`/fetch/github?repoID=${repoID}`);
+    return await response.json();
+  };
 
   const getColor = (language: string): string => {
     for (const looper of Object.entries(generalData.languageColors)) {
@@ -22,24 +21,47 @@
   };
 
   const flexDirector = (counter: number): string => {
-    if (counter % 2 === 0) {
-      return "row";
-    }
+    if (counter % 2 === 0) return "row";
     return "row-reverse";
   };
 </script>
 
 <div class="header">
-  <h1 class="not nob" style="color: var(--projectcolor)">My Projects</h1>
+  <h1 class="" style="color: var(--projectcolor)">My Projects</h1>
 </div>
 
 {#snippet githubWidget(project: Repository)}
-  <h3 class="not">
-    {project.ownerLogin}/<br />
+  <h3 class="halfb not">
+    <img
+      alt="owner_avatar_url"
+      src={project.owner.avatarUrl}
+      style="height: 20px; border-radius: 10px;"
+    />
+    {project.owner.login}/<br />
     <a href={project.url}>
       {project.name}
     </a>
   </h3>
+
+  {@const stars = Math.min(project.stargazerCount, 6)}
+  <p class="halfb halft">
+    {#each Array.from(Array(stars).keys()) as _}
+      <svg
+        height="16"
+        viewBox="0 0 16 16"
+        version="1.1"
+        width="16"
+        style="fill: #e3b341"
+      >
+        <path
+          d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"
+        ></path>
+      </svg>
+    {/each}
+    {#if project.stargazerCount > 6}
+      +
+    {/if}
+  </p>
 
   <p class="nob not">Languages</p>
   <ul class="not" style="font-size: 16px;">
@@ -69,14 +91,14 @@
   </div>
 {/snippet}
 
-{#each projectIDArray as projectID, index}
+{#each generalData.repoIDs as projectID, index}
   <div class="containerStandard" style="flex-direction: {flexDirector(index)}">
     <div class="mainStandard">
       <ProjectText projectID={String(projectID)} />
     </div>
 
     <div class="githubWidget">
-      {#await getRepoData(projectID)}
+      {#await fetchGitHub(projectID)}
         <p>Waiting for project data...</p>
         <img src={hornetRunning} alt="Hornet Running" style="width: 200px;" />
       {:then project}

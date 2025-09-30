@@ -40,6 +40,7 @@
     <li>
       More banner-gifs on the frends-tab, although my friends won't make one. :(
     </li>
+    <li>A contact me div on the home page!</li>
   </ul>
 {:else if projectID === "971248396"}
   <h2 class="nob not project" style="color: var(--projectcolor)">

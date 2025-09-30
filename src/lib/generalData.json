@@ -1,10 +1,5 @@
 {
-  "IDs": {
-    "FIN_LANG_TRAIN": 898363939,
-    "FROG_WITH_A_KNIFE": 971248396,
-    "GEEN_DOLFIJN": 915271815,
-    "BREADENER": 1002157693
-  },
+  "repoIDs": [898363939, 971248396, 915271815, 1002157693],
   "friends": [
     {
       "name": "Jsw",
