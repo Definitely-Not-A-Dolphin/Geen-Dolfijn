@@ -1,4 +1,4 @@
-import adapter from "@sveltejs/adapter-cloudflare";
+import adapter from "@sveltejs/adapter-node";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -11,20 +11,7 @@ const config = {
     alias: {
       "$images": "./src/images",
     },
-    adapter: adapter({
-      // See below for an explanation of these options
-      config: undefined,
-      platformProxy: {
-        configPath: undefined,
-        environment: undefined,
-        persist: undefined,
-      },
-      fallback: "plaintext",
-      routes: {
-        include: ["/*"],
-        exclude: ["<all>"],
-      },
-    }),
+    adapter: adapter(),
   },
 };
 
