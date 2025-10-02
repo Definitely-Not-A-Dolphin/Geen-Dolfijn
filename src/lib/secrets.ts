@@ -1,3 +1,5 @@
-import data from "./secrets.json" with { type: "json" };
+import data from "./../../../Geen-Dolfijn-Token/secrets.json" with {
+  type: "json",
+};
 
 export const secretData = data;
