@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { draggable } from "@neodrag/svelte";
   import { page } from "$app/state";
 
   const emojis: { [thrownError: number]: string } = {
@@ -8,7 +9,7 @@
   };
 </script>
 
-<div class="header">
+<div use:draggable={{ bounds: "body" }} class="header">
   <h1>Whoops!</h1>
   <h2 class="nob">Something went wrong!</h2>
   <p class="not">

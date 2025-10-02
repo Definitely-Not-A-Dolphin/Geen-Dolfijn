@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { draggable } from "@neodrag/svelte";
   import data from "./blogs.json" with { type: "json" };
 </script>
 
@@ -8,7 +9,7 @@
 </div>
 
 {#each data.blogArray as thing}
-  <div class="main">
+  <div use:draggable={{ bounds: "body" }} class="main">
     <h2 class="nob not" style="color: var(--blogcolor)">{thing.title}</h2>
     <p class="not">{thing.subtitle}</p>
     <p class="nob">{thing.blog}</p>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { draggable } from "@neodrag/svelte";
   import desmos from "./desmos.json" with { type: "json" };
 </script>
 

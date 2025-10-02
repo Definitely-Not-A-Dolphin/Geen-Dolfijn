@@ -1,6 +1,7 @@
 {
   "version": "5",
   "specifiers": {
+    "npm:@neodrag/svelte@^2.3.3": "2.3.3_svelte@5.39.7__acorn@8.15.0",
     "npm:@sveltejs/adapter-node@^5.3.2": "5.3.2_@sveltejs+kit@2.43.5__@sveltejs+vite-plugin-svelte@5.1.1___svelte@5.39.7____acorn@8.15.0___vite@6.3.6____picomatch@4.0.3__svelte@5.39.7___acorn@8.15.0__vite@6.3.6___picomatch@4.0.3__acorn@8.15.0_rollup@4.52.3_@sveltejs+vite-plugin-svelte@5.1.1__svelte@5.39.7___acorn@8.15.0__vite@6.3.6___picomatch@4.0.3_svelte@5.39.7__acorn@8.15.0_vite@6.3.6__picomatch@4.0.3",
     "npm:@sveltejs/kit@^2.16.0": "2.43.5_@sveltejs+vite-plugin-svelte@5.1.1__svelte@5.39.7___acorn@8.15.0__vite@6.3.6___picomatch@4.0.3_svelte@5.39.7__acorn@8.15.0_vite@6.3.6__picomatch@4.0.3_acorn@8.15.0",
     "npm:@sveltejs/package@2": "2.5.4_svelte@5.39.7__acorn@8.15.0_typescript@5.9.2",
@@ -168,6 +169,12 @@
       "dependencies": [
         "@jridgewell/resolve-uri",
         "@jridgewell/sourcemap-codec"
+      ]
+    },
+    "@neodrag/svelte@2.3.3_svelte@5.39.7__acorn@8.15.0": {
+      "integrity": "sha512-avXzhrilsBsnMFljhVAQ7h+6hbSIrvRCJ61GCiGbGISkC1QOhjDCNvPZo2+7KVwiYrnUBx4NRH0kTIqrcxv9Lg==",
+      "dependencies": [
+        "svelte"
       ]
     },
     "@octokit/app@16.1.1_@octokit+core@7.0.5": {
@@ -1004,6 +1011,7 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@neodrag/svelte@^2.3.3",
         "npm:@sveltejs/adapter-node@^5.3.2",
         "npm:@sveltejs/kit@^2.16.0",
         "npm:@sveltejs/package@2",

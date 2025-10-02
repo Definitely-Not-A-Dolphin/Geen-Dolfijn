@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { draggable } from "@neodrag/svelte";
   import { randomInt } from "$lib/utils.ts";
   import type { HackaTimeToday, Track } from "$lib/customTypes.ts";
   import hornetRunning from "$images/HornetRunning.gif";
@@ -26,12 +27,12 @@
   ];
 </script>
 
-<div class="header">
+<div use:draggable={{ bounds: "body" }} class="header">
   <h1>{titles[randomInt(0, titles.length - 1)]}</h1>
 </div>
 
 <div class="containerStandard">
-  <div class="mainStandard">
+  <div use:draggable={{ bounds: "body" }} class="mainStandard">
     <h1 style="color: var(--linkblue)" class="nob not">Hello there!</h1>
 
     <p class="not">
@@ -89,13 +90,13 @@
     {/await}
   </div>
 
-  <img alt="My cat!" src={sizzle} class="imageStandard" />
+  <img use:draggable={{ bounds: "body" }} alt="My cat!" src={sizzle} class="imageStandard" />
 </div>
 
 <div class="containerStandard">
-  <img alt="My other cat!" src={okkie} class="imageStandard" />
+  <img use:draggable={{ bounds: "body" }}  alt="My other cat!" src={okkie} class="imageStandard" />
 
-  <div class="mainStandard">
+  <div use:draggable={{ bounds: "body" }} class="mainStandard">
     <h1 style="color: var(--linkblue)" class="nob not">Coding</h1>
     <p class="nob not">
       I currently write a lot of TypeScript, both for my discord bots and this
