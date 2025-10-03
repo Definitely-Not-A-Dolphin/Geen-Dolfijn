@@ -1,8 +1,7 @@
 <script lang="ts">
   import { page } from "$app/state";
   import generalData from "$lib/generalData.json" with { type: "json" };
-
-  let { children } = $props();
+  const { children } = $props();
 </script>
 
 <div class="centerer">

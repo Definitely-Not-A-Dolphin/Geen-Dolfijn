@@ -3,6 +3,7 @@ src/routes/testing/+page.svelte
 src/lib/secretData.json
 src/lib/secrets.json
 src/lib/_getGitHubData.ts
+secrets.json
 
 # Output
 .output

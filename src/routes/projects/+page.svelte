@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { draggable } from "@neodrag/svelte";
+  import { neoDragConfig } from "$lib/utils.ts";
   import ProjectText from "$lib/projectText.svelte";
   import generalData from "$lib/generalData.json" with { type: "json" };
   import hornetRunning from "../../images/HornetRunning.gif";
@@ -26,8 +28,8 @@
   };
 </script>
 
-<div class="header">
-  <h1 class="" style="color: var(--projectcolor)">My Projects</h1>
+<div class="header" {@attach draggable(neoDragConfig)}>
+  <h1 style="color: var(--projectcolor)">My Projects</h1>
 </div>
 
 {#snippet githubWidget(project: Repository)}
@@ -93,11 +95,11 @@
 
 {#each generalData.repoIDs as projectID, index}
   <div class="containerStandard" style="flex-direction: {flexDirector(index)}">
-    <div class="mainStandard">
+    <div class="mainStandard" {@attach draggable(neoDragConfig)}>
       <ProjectText projectID={String(projectID)} />
     </div>
 
-    <div class="githubWidget">
+    <div class="githubWidget" {@attach draggable(neoDragConfig)}>
       {#await fetchGitHub(projectID)}
         <p>Waiting for project data...</p>
         <img src={hornetRunning} alt="Hornet Running" style="width: 200px;" />

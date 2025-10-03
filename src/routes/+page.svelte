@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { randomInt } from "$lib/utils.ts";
+  import { draggable } from "@neodrag/svelte";
+  import { randomInt, neoDragConfig } from "$lib/utils.ts";
   import type { HackaTimeToday, Track } from "$lib/customTypes.ts";
   import hornetRunning from "$images/HornetRunning.gif";
   import sizzle from "$images/NotBaldCat.jpg";
@@ -23,15 +24,15 @@
     "Jag är en tittel",
     "Minä olen titteli",
     "Es esmu tituls",
-  ];
+  ] as const;
 </script>
 
-<div class="header">
+<div class="header" {@attach draggable(neoDragConfig)}>
   <h1>{titles[randomInt(0, titles.length - 1)]}</h1>
 </div>
 
 <div class="containerStandard">
-  <div class="mainStandard">
+  <div class="mainStandard" {@attach draggable(neoDragConfig)}>
     <h1 style="color: var(--linkblue)" class="nob not">Hello there!</h1>
 
     <p class="not">
@@ -95,7 +96,7 @@
 <div class="containerStandard">
   <img alt="My other cat!" src={okkie} class="imageStandard" />
 
-  <div class="mainStandard">
+  <div class="mainStandard" {@attach draggable(neoDragConfig)}>
     <h1 style="color: var(--linkblue)" class="nob not">Coding</h1>
     <p class="nob not">
       I currently write a lot of TypeScript, both for my discord bots and this
