@@ -1,6 +1,6 @@
 <script lang="ts">
   import { draggable } from "@neodrag/svelte";
-  import { randomInt, neoDragConfig } from "$lib/utils.ts";
+  import { randomInt, neoDragConfig, getDragContext } from "$lib/utils.ts";
   import type { HackaTimeToday, Track } from "$lib/customTypes.ts";
   import hornetRunning from "$images/HornetRunning.gif";
   import sizzle from "$images/NotBaldCat.jpg";
@@ -16,6 +16,8 @@
     return await response.json();
   };
 
+  let dragContext = getDragContext<{ movable: boolean }>("dragThing");
+
   const titles: string[] = [
     "Ik ben een titel",
     "I am a title",
@@ -27,12 +29,15 @@
   ] as const;
 </script>
 
-<div class="header" {@attach draggable(neoDragConfig)}>
+<div class="header" {@attach draggable(neoDragConfig(dragContext.movable))}>
   <h1>{titles[randomInt(0, titles.length - 1)]}</h1>
 </div>
 
 <div class="containerStandard">
-  <div class="mainStandard" {@attach draggable(neoDragConfig)}>
+  <div
+    class="mainStandard"
+    {@attach draggable(neoDragConfig(dragContext.movable))}
+  >
     <h1 style="color: var(--linkblue)" class="nob not">Hello there!</h1>
 
     <p class="not">
@@ -96,7 +101,10 @@
 <div class="containerStandard">
   <img alt="My other cat!" src={okkie} class="imageStandard" />
 
-  <div class="mainStandard" {@attach draggable(neoDragConfig)}>
+  <div
+    class="mainStandard"
+    {@attach draggable(neoDragConfig(dragContext.movable))}
+  >
     <h1 style="color: var(--linkblue)" class="nob not">Coding</h1>
     <p class="nob not">
       I currently write a lot of TypeScript, both for my discord bots and this

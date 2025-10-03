@@ -1,7 +1,9 @@
 <script lang="ts">
   import { draggable } from "@neodrag/svelte";
-  import { neoDragConfig } from "$lib/utils.ts";
+  import { neoDragConfig, getDragContext } from "$lib/utils.ts";
   import { page } from "$app/state";
+
+  let dragContext = getDragContext<{ movable: boolean }>("dragThing");
 
   const emojis: { [thrownError: number]: string } = {
     404: "❓",
@@ -10,7 +12,7 @@
   };
 </script>
 
-<div class="header" {@attach draggable(neoDragConfig)}>
+<div class="header" {@attach draggable(neoDragConfig(dragContext.movable))}>
   <h1>Whoops!</h1>
   <h2 class="nob">Something went wrong!</h2>
   <p class="not">

@@ -1,10 +1,20 @@
 import { Octokit } from "octokit";
-import { bounds, BoundsFrom } from "@neodrag/svelte";
+import { bounds, BoundsFrom, disabled } from "@neodrag/svelte";
 import type { Commit, GitHubCommit, OctokitResponse } from "./customTypes.ts";
 import { secretData } from "./secrets.ts";
+import { getContext, setContext } from "svelte";
 
-export const neoDragConfig = [
+export function setDragContext<T>(key: string, thing: T): void {
+  setContext(key, thing);
+}
+
+export function getDragContext<T>(key: string): T {
+  return getContext(key) as T;
+}
+
+export const neoDragConfig = (x: boolean) => [
   bounds(BoundsFrom.viewport()),
+  disabled(!x),
 ];
 
 export function randomInt(min: number, max: number): number {

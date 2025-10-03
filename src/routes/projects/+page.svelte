@@ -1,10 +1,12 @@
 <script lang="ts">
   import { draggable } from "@neodrag/svelte";
-  import { neoDragConfig } from "$lib/utils.ts";
+  import { neoDragConfig, getDragContext } from "$lib/utils.ts";
   import ProjectText from "$lib/projectText.svelte";
   import generalData from "$lib/generalData.json" with { type: "json" };
   import hornetRunning from "../../images/HornetRunning.gif";
   import type { Repository } from "$lib/customTypes.ts";
+
+  let dragContext = getDragContext<{ movable: boolean }>("dragThing");
 
   const fetchGitHub = async (repoID: number) => {
     const response = await fetch(`/fetch/github?repoID=${repoID}`);
@@ -28,7 +30,7 @@
   };
 </script>
 
-<div class="header" {@attach draggable(neoDragConfig)}>
+<div class="header" {@attach draggable(neoDragConfig(dragContext.movable))}>
   <h1 style="color: var(--projectcolor)">My Projects</h1>
 </div>
 
@@ -95,11 +97,17 @@
 
 {#each generalData.repoIDs as projectID, index}
   <div class="containerStandard" style="flex-direction: {flexDirector(index)}">
-    <div class="mainStandard" {@attach draggable(neoDragConfig)}>
+    <div
+      class="mainStandard"
+      {@attach draggable(neoDragConfig(dragContext.movable))}
+    >
       <ProjectText projectID={String(projectID)} />
     </div>
 
-    <div class="githubWidget" {@attach draggable(neoDragConfig)}>
+    <div
+      class="githubWidget"
+      {@attach draggable(neoDragConfig(dragContext.movable))}
+    >
       {#await fetchGitHub(projectID)}
         <p>Waiting for project data...</p>
         <img src={hornetRunning} alt="Hornet Running" style="width: 200px;" />
