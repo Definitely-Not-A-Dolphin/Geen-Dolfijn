@@ -1,9 +1,7 @@
 <script lang="ts">
-  import { draggable } from "@neodrag/svelte";
   import { page } from "$app/state";
   import generalData from "$lib/generalData.json" with { type: "json" };
-
-  let { children } = $props();
+  const { children } = $props();
 </script>
 
 <div class="centerer">
@@ -17,7 +15,7 @@
         {#each generalData.pages as pageName, index}
           {#if index < 3}
             <a href={pageName[1]}>
-              <div use:draggable={{ bounds: "body" }} class="button1">
+              <div class="button1">
                 <p class="nob not">{pageName[0]}</p>
               </div>
             </a>
@@ -27,7 +25,7 @@
         {#each generalData.pages as pageName}
           {#if page.url.pathname != pageName[1]}
             <a href={pageName[1]}>
-              <div use:draggable={{ bounds: "body" }} class="button1">
+              <div class="button1">
                 <p class="nob not">{pageName[0]}</p>
               </div>
             </a>

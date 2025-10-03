@@ -1,15 +1,16 @@
 <script lang="ts">
   import { draggable } from "@neodrag/svelte";
+  import { neoDragConfig } from "$lib/utils.ts";
   import data from "./blogs.json" with { type: "json" };
 </script>
 
-<div class="header">
+<div class="header" {@attach draggable(neoDragConfig)}>
   <h1 class="not nob" style="color: var(--blogcolor)">Blog Channel</h1>
   <p class="not nob">I try to update it!</p>
 </div>
 
 {#each data.blogArray as thing}
-  <div use:draggable={{ bounds: "body" }} class="main">
+  <div class="main" {@attach draggable(neoDragConfig)}>
     <h2 class="nob not" style="color: var(--blogcolor)">{thing.title}</h2>
     <p class="not">{thing.subtitle}</p>
     <p class="nob">{thing.blog}</p>
