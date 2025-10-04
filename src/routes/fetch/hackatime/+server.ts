@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import { secretData } from "$lib/secrets.ts";
+import { HACKATIMEAUTH } from "$env/static/private";
 
 export async function GET(): Promise<Response> {
   const response = await fetch(
@@ -7,7 +7,7 @@ export async function GET(): Promise<Response> {
     {
       method: "GET",
       headers: {
-        Authorization: secretData.hackatimeAuth,
+        Authorization: HACKATIMEAUTH,
       },
     },
   );

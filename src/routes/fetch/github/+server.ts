@@ -1,18 +1,22 @@
-import { json } from "@sveltejs/kit";
+import { json, type RequestEvent } from "@sveltejs/kit";
 import type {
   GitHubRepository,
   Language,
   OctokitResponse,
 } from "$lib/customTypes.ts";
 import { Octokit } from "octokit";
-import { secretData } from "$lib/secrets.ts";
+import { GITHUB_TOKEN } from "$env/static/private";
 
-export async function GET({ url }: any): Promise<Response> {
-  const repoID: number = url.searchParams.get("repoID");
+export async function GET({ url }: RequestEvent): Promise<Response> {
+  if (!GITHUB_TOKEN) {
+    console.log("Incomplete dotenv! Missing \x1b[34mGITHUB_TOKEN\x1b[0m");
+    return json(false);
+  }
+  const repoID: string | null = url.searchParams.get("repoID");
   if (!repoID) return json(false);
 
   const octokit: Octokit = new Octokit({
-    auth: secretData.token,
+    auth: GITHUB_TOKEN,
   });
 
   // Request the repo with matching IDs
@@ -46,7 +50,7 @@ export async function GET({ url }: any): Promise<Response> {
     totalChar += Number(language[1]);
   }
 
-  let languageData: { [language: string]: number } = {};
+  const languageData: { [language: string]: number } = {};
   for (const language of Object.entries(rawLanguageData.data)) {
     const thing: number = Math.floor(Number(language[1]) / totalChar * 1000) /
       10;

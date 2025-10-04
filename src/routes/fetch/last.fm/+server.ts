@@ -1,8 +1,19 @@
 import { json } from "@sveltejs/kit";
 import type { LastFMData, LastFMTrack } from "$lib/customTypes.ts";
 import { secretData } from "$lib/secrets.ts";
+import { LASTFMKEY, LASTFMUSER } from "$env/static/private";
 
 export async function GET(): Promise<Response> {
+  if (!(LASTFMKEY || LASTFMUSER)) {
+    console.log("\x1b[34mIncomplete dotenv file!\x1b[0m");
+    if (!LASTFMKEY) {
+      console.log("\x1b[34mMissing LASTFMKEY\x1b[0m");
+    }
+    if (!LASTFMUSER) {
+      console.log("\x1b[34mMissing LASTFMUSER\x1b[0m");
+    }
+    return json(false);
+  }
   try {
     const response: Response = await fetch(
       `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${secretData.lastfmUser}&api_key=${secretData.lastfmkey}&format=json&limit=1`,
