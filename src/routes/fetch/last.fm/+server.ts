@@ -1,6 +1,5 @@
 import { json } from "@sveltejs/kit";
 import type { LastFMData, LastFMTrack } from "$lib/customTypes.ts";
-import { secretData } from "$lib/secrets.ts";
 import { LASTFMKEY, LASTFMUSER } from "$env/static/private";
 
 export async function GET(): Promise<Response> {
@@ -16,7 +15,7 @@ export async function GET(): Promise<Response> {
   }
   try {
     const response: Response = await fetch(
-      `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${secretData.lastfmUser}&api_key=${secretData.lastfmkey}&format=json&limit=1`,
+      `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LASTFMUSER}&api_key=${LASTFMKEY}&format=json&limit=1`,
     );
 
     if (!response.ok) return json(false);

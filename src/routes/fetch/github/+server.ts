@@ -7,6 +7,36 @@ import type {
 import { Octokit } from "octokit";
 import { GITHUB_TOKEN } from "$env/static/private";
 
+/*
+export async function getLatestCommits(repoID: number): Promise<Commit[]> {
+  const octokit: Octokit = new Octokit({
+    auth: GITHUB_TOKEN,
+  });
+
+  const commitData: OctokitResponse<GitHubCommit[]> = await octokit.request(
+    "GET /repositories/{repoID}/commits",
+    {
+      repoID: repoID,
+    },
+  );
+
+  const returnData: Commit[] = [];
+
+  for (let i = 0; i <= 2; i++) {
+    const thing = commitData.data[i];
+    returnData.push({
+      message: thing.commit.message,
+      author: thing.author.login,
+      html_url: thing.html_url,
+      author_html_url: thing.author.html_url,
+      author_avatar_url: thing.author.avatar_url,
+    });
+  }
+
+  return returnData;
+}
+*/
+
 export async function GET({ url }: RequestEvent): Promise<Response> {
   if (!GITHUB_TOKEN) {
     console.log("Incomplete dotenv! Missing \x1b[34mGITHUB_TOKEN\x1b[0m");
