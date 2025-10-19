@@ -17,3 +17,5 @@ On the [blog channel](https://geen-dolfijn.nl/blog-channel) you can find, well, 
 ### What stuff makes it work?
 
 This website was made with the SvelteKit framework, with TypeScript instead of JavaScript. The homepage features the _last.fm API_, so it displays the music I am listening to in real time when you visit my site! It also features the _hackatime_ API, so you can see how much time I have logged that day! Then of course I use the _GitHub Octokit API_ for the projects page.
+
+I also use the [Neodrag](https://www.neodrag.dev/) for the draggable elements!
