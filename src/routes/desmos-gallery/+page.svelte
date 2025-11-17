@@ -1,9 +1,9 @@
 <script lang="ts">
   import { draggable } from "@neodrag/svelte";
-  import { neoDragConfig, getDragContext } from "$lib/utils.ts";
+  import { neoDragConfig, getTypeContext } from "$lib/utils.ts";
   import desmos from "./desmos.json" with { type: "json" };
 
-  let dragContext = getDragContext<{ movable: boolean }>("dragThing");
+  let dragContext = getTypeContext<{ movable: boolean }>("dragThing");
 </script>
 
 <div class="header" {@attach draggable(neoDragConfig(dragContext.movable))}>

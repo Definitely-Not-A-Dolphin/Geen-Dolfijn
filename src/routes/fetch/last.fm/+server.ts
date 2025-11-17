@@ -3,14 +3,10 @@ import type { LastFMData, LastFMTrack } from "$lib/customTypes.ts";
 import { LASTFMKEY, LASTFMUSER } from "$env/static/private";
 
 export async function GET(): Promise<Response> {
-  if (!(LASTFMKEY || LASTFMUSER)) {
-    console.log("\x1b[34mIncomplete dotenv file!\x1b[0m");
-    if (!LASTFMKEY) {
-      console.log("\x1b[34mMissing LASTFMKEY\x1b[0m");
-    }
-    if (!LASTFMUSER) {
-      console.log("\x1b[34mMissing LASTFMUSER\x1b[0m");
-    }
+  if (!(LASTFMKEY && LASTFMUSER)) {
+    console.error("\x1b[34mIncomplete dotenv file!\x1b[0m");
+    console.assert(Boolean(LASTFMKEY), "\x1b[34mMissing LASTFMKEY\x1b[0m");
+    console.assert(Boolean(LASTFMUSER), "\x1b[34mMissing LASTFMUSER\x1b[0m");
     return json(false);
   }
 

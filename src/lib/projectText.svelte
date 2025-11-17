@@ -1,5 +1,5 @@
 <script lang="ts">
-  let { projectID } = $props();
+  const { projectID } = $props();
 </script>
 
 {#if projectID === "898363939"}

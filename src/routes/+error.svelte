@@ -1,9 +1,9 @@
 <script lang="ts">
   import { draggable } from "@neodrag/svelte";
-  import { neoDragConfig, getDragContext } from "$lib/utils.ts";
+  import { neoDragConfig, getTypeContext } from "$lib/utils.ts";
   import { page } from "$app/state";
 
-  let dragContext = getDragContext<{ movable: boolean }>("dragThing");
+  let dragContext = getTypeContext<{ movable: boolean }>("dragThing");
 
   const emojis: Record<number, string> = {
     404: "❓",

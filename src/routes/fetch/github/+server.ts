@@ -10,7 +10,7 @@ import { GITHUB_TOKEN } from "$env/static/private";
 
 export async function GET({ url }: RequestEvent): Promise<Response> {
   if (!GITHUB_TOKEN) {
-    console.log("Incomplete dotenv! Missing \x1b[34mGITHUB_TOKEN\x1b[0m");
+    console.error("Incomplete dotenv! Missing \x1b[34mGITHUB_TOKEN\x1b[0m");
     return json(false);
   }
 

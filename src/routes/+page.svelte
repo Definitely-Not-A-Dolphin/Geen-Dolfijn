@@ -1,6 +1,6 @@
 <script lang="ts">
   import { draggable } from "@neodrag/svelte";
-  import { randomInt, neoDragConfig, getDragContext } from "$lib/utils.ts";
+  import { randomInt, neoDragConfig, getTypeContext } from "$lib/utils.ts";
   import type { HackaTimeToday, Track } from "$lib/customTypes.ts";
   import hornetRunning from "$images/HornetRunning.gif";
   import sizzle from "$images/NotBaldCat.jpg";
@@ -16,7 +16,7 @@
     return await response.json();
   };
 
-  let dragContext = getDragContext<{ movable: boolean }>("dragThing");
+  let dragContext = getTypeContext<{ movable: boolean }>("dragThing");
 
   const titles: string[] = [
     "Ik ben een titel",

@@ -1,11 +1,11 @@
 import { bounds, BoundsFrom, disabled } from "@neodrag/svelte";
 import { getContext, setContext } from "svelte";
 
-export function setDragContext<T>(key: string, thing: T): void {
-  setContext(key, thing);
+export function setTypeContext<T>(key: string, body: T): void {
+  setContext(key, body);
 }
 
-export function getDragContext<T>(key: string): T {
+export function getTypeContext<T>(key: string): T {
   return getContext(key) as T;
 }
 

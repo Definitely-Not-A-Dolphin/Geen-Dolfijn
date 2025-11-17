@@ -1,12 +1,12 @@
 <script lang="ts">
   import { draggable } from "@neodrag/svelte";
-  import { neoDragConfig, getDragContext } from "$lib/utils.ts";
+  import { neoDragConfig, getTypeContext } from "$lib/utils.ts";
   import ProjectText from "$lib/projectText.svelte";
   import generalData from "$lib/generalData.json" with { type: "json" };
   import hornetRunning from "../../images/HornetRunning.gif";
   import type { Repository } from "$lib/customTypes.ts";
 
-  let dragContext = getDragContext<{ movable: boolean }>("dragThing");
+  let dragContext = getTypeContext<{ movable: boolean }>("dragThing");
 
   const fetchGitHub = async (repoID: number) => {
     const response = await fetch(`/fetch/github?repoID=${repoID}`);
@@ -17,9 +17,8 @@
     for (const [colorLanguage, [red, green, blue]] of Object.entries(
       generalData.languageColors,
     )) {
-      if (language === colorLanguage) {
+      if (language === colorLanguage)
         return "rgb(" + red + "," + green + "," + blue + ")";
-      }
     }
 
     return "white";

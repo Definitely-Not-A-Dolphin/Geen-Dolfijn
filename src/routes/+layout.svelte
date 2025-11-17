@@ -1,13 +1,13 @@
 <script lang="ts">
   import { draggable } from "@neodrag/svelte";
-  import { neoDragConfig, setDragContext } from "$lib/utils.ts";
+  import { neoDragConfig, setTypeContext } from "$lib/utils.ts";
   import { page } from "$app/state";
   import generalData from "$lib/generalData.json" with { type: "json" };
 
   const toggle = () => (thing.movable = !thing.movable);
   let thing = $state({ movable: true });
 
-  setDragContext("dragThing", thing);
+  setTypeContext("dragThing", thing);
 
   const { children } = $props();
 </script>
