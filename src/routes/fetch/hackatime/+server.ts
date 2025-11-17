@@ -12,9 +12,7 @@ export async function GET(): Promise<Response> {
     },
   );
 
-  if (!response.ok) {
-    throw new Error(`Error response ${response.text}`);
-  }
+  if (!response.ok) throw new Error(`Error response ${response.text}`);
 
   const data = await response.json();
   return json(data);

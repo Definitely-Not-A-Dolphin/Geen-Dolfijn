@@ -5,7 +5,7 @@
 
   let dragContext = getDragContext<{ movable: boolean }>("dragThing");
 
-  const emojis: { [thrownError: number]: string } = {
+  const emojis: Record<number, string> = {
     404: "❓",
     420: "🫠",
     500: "💥",

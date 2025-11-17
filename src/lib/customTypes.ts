@@ -191,6 +191,7 @@ export type GitHubRepository = {
   default_branch: string;
 };
 
+/*
 export type Commit = {
   message: string;
   author: string;
@@ -319,7 +320,7 @@ export type GitHubRepositoryCommit = {
   commiter: GitHubUser;
   parents: GitHubParent[];
 };
-
+*/
 export type ResponseHeaders = {
   "cache-control"?: string;
   "content-length"?: number;
@@ -343,7 +344,7 @@ export type ResponseHeaders = {
   [header: string]: string | number | undefined;
 };
 
-export type Language = { [language: string]: string };
+export type Language = Record<string, string>;
 
 export type Url = string;
 

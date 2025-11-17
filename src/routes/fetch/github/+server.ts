@@ -3,49 +3,21 @@ import type {
   GitHubRepository,
   Language,
   OctokitResponse,
+  Repository,
 } from "$lib/customTypes.ts";
 import { Octokit } from "octokit";
 import { GITHUB_TOKEN } from "$env/static/private";
-
-/*
-export async function getLatestCommits(repoID: number): Promise<Commit[]> {
-  const octokit: Octokit = new Octokit({
-    auth: GITHUB_TOKEN,
-  });
-
-  const commitData: OctokitResponse<GitHubCommit[]> = await octokit.request(
-    "GET /repositories/{repoID}/commits",
-    {
-      repoID: repoID,
-    },
-  );
-
-  const returnData: Commit[] = [];
-
-  for (let i = 0; i <= 2; i++) {
-    const thing = commitData.data[i];
-    returnData.push({
-      message: thing.commit.message,
-      author: thing.author.login,
-      html_url: thing.html_url,
-      author_html_url: thing.author.html_url,
-      author_avatar_url: thing.author.avatar_url,
-    });
-  }
-
-  return returnData;
-}
-*/
 
 export async function GET({ url }: RequestEvent): Promise<Response> {
   if (!GITHUB_TOKEN) {
     console.log("Incomplete dotenv! Missing \x1b[34mGITHUB_TOKEN\x1b[0m");
     return json(false);
   }
-  const repoID: string | null = url.searchParams.get("repoID");
+
+  const repoID = url.searchParams.get("repoID");
   if (!repoID) return json(false);
 
-  const octokit: Octokit = new Octokit({
+  const octokit = new Octokit({
     auth: GITHUB_TOKEN,
   });
 
@@ -64,7 +36,7 @@ export async function GET({ url }: RequestEvent): Promise<Response> {
   console.log(receivedRepoData.headers);
 
   // Get the languages
-  const rawLanguageData: OctokitResponse<Language[]> = await octokit
+  const rawLanguageData: OctokitResponse<Language> = await octokit
     .request("GET /{url}", {
       url: receivedRepoData.data.languages_url,
     });
@@ -76,21 +48,20 @@ export async function GET({ url }: RequestEvent): Promise<Response> {
 
   // Aantal characters
   let totalChar: number = 0;
-  for (const language of Object.entries(rawLanguageData.data)) {
-    totalChar += Number(language[1]);
+  console.log(rawLanguageData.data);
+  for (const [_, charCount] of Object.entries(rawLanguageData.data)) {
+    totalChar += Number(charCount);
   }
 
-  const languageData: { [language: string]: number } = {};
-  for (const language of Object.entries(rawLanguageData.data)) {
-    const thing: number = Math.floor(Number(language[1]) / totalChar * 1000) /
-      10;
-    if (thing === 0) {
-      continue; // Equivalent of break as long as github doesn't switch the descending order of languages
-    }
-    languageData[language[0]] = thing;
+  const languageData: Record<string, number> = {};
+  for (const [language, charCount] of Object.entries(rawLanguageData.data)) {
+    const thing = Math.floor(Number(charCount) / totalChar * 1000) / 10;
+    // Equivalent of break as long as github doesn't switch the descending order of languages
+    if (thing === 0) continue;
+    languageData[language] = thing;
   }
 
-  const returnData = {
+  const returnData: Repository = {
     id: receivedRepoData.data.id,
     fullName: receivedRepoData.data.full_name,
     name: receivedRepoData.data.name,

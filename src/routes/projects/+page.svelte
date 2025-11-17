@@ -14,13 +14,14 @@
   };
 
   const getColor = (language: string): string => {
-    for (const looper of Object.entries(generalData.languageColors)) {
-      if (language === looper[0]) {
-        return (
-          "rgb(" + looper[1][0] + "," + looper[1][1] + "," + looper[1][2] + ")"
-        );
+    for (const [colorLanguage, [red, green, blue]] of Object.entries(
+      generalData.languageColors,
+    )) {
+      if (language === colorLanguage) {
+        return "rgb(" + red + "," + green + "," + blue + ")";
       }
     }
+
     return "white";
   };
 
@@ -49,7 +50,7 @@
 
   {@const stars = Math.min(project.stargazerCount, 6)}
   <p class="halfb halft">
-    {#each Array.from(Array(stars).keys()) as _}
+    {#each [...Array(stars).keys()] as _}
       <svg
         height="16"
         viewBox="0 0 16 16"
@@ -69,9 +70,9 @@
 
   <p class="nob not">Languages</p>
   <ul class="not" style="font-size: 16px;">
-    {#each Object.entries(project.languages) as [key, value]}
+    {#each Object.entries(project.languages) as [language, percent]}
       <li>
-        {value}% <span style="color: {getColor(key)}">{key}</span>
+        {percent}% <span style="color: {getColor(language)}">{language}</span>
       </li>
     {/each}
   </ul>
@@ -83,12 +84,12 @@
       overflow: hidden;
     "
   >
-    {#each Object.entries(project.languages) as [key, value]}
+    {#each Object.entries(project.languages) as [language, percent]}
       <div
         style="
-            width: {2.304 * Number(value)}px;
+            width: {2.304 * Number(percent)}px;
             height: 12px;
-            background-color: {getColor(key)}
+            background-color: {getColor(language)}
         "
       ></div>
     {/each}

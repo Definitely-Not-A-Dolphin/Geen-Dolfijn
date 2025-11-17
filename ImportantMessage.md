@@ -18,7 +18,7 @@ deno lint
 
 when you are done, and do not forget to format everything.
 
-## nix
+## NixOS
 
 There are two files concerning nix-users. If you do not use NixOS, just ignore them, do NOT remove them.
 

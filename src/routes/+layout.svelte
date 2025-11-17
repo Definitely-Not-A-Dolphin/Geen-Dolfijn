@@ -5,9 +5,7 @@
   import generalData from "$lib/generalData.json" with { type: "json" };
 
   const toggle = () => (thing.movable = !thing.movable);
-  let thing = $state({
-    movable: true,
-  });
+  let thing = $state({ movable: true });
 
   setDragContext("dragThing", thing);
 
