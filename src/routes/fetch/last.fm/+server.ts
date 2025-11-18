@@ -11,23 +11,23 @@ export async function GET(): Promise<Response> {
   }
 
   try {
-    const response = await fetch(
+    const lastFMResponse = await fetch(
       `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LASTFMUSER}&api_key=${LASTFMKEY}&format=json&limit=1`,
     );
 
-    if (!response.ok) return json(false);
+    if (!lastFMResponse.ok) return json(false);
 
-    const responseData: LastFMData = await response.json();
-    const tracks: LastFMTrack[] = responseData.recenttracks.track;
+    const responseData: LastFMData = await lastFMResponse.json();
+    const recentTracks: LastFMTrack[] = responseData.recenttracks.track;
 
     if (
-      tracks.length === 0 ||
-      !tracks[0] ||
-      !tracks[0]["@attr"] ||
-      !tracks[0]["@attr"].nowplaying
+      recentTracks.length === 0 ||
+      !recentTracks[0] ||
+      !recentTracks[0]["@attr"] ||
+      !recentTracks[0]["@attr"].nowplaying
     ) return json(true);
 
-    const currentTrack = tracks[0];
+    const currentTrack = recentTracks[0];
 
     const image = currentTrack.image[2]["#text"];
     return json({

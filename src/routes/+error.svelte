@@ -18,5 +18,5 @@
   <p class="not">
     Error code: {page.status}, {page.error?.message}
   </p>
-  <h1>{emojis[page.status] ?? emojis[500]}</h1>
+  <h1>{emojis[page.status ?? 500]}</h1>
 </div>

@@ -2,10 +2,8 @@ import { json, type RequestEvent } from "@sveltejs/kit";
 import type {
   GitHubRepository,
   Language,
-  OctokitResponse,
   Repository,
 } from "$lib/customTypes.ts";
-import { Octokit } from "octokit";
 import { GITHUB_TOKEN } from "$env/static/private";
 
 export async function GET({ url }: RequestEvent): Promise<Response> {
@@ -14,77 +12,87 @@ export async function GET({ url }: RequestEvent): Promise<Response> {
     return json(false);
   }
 
-  const repoID = url.searchParams.get("repoID");
+  const repoID: string | null = url.searchParams.get("repoID");
   if (!repoID) return json(false);
 
-  const octokit = new Octokit({
-    auth: GITHUB_TOKEN,
-  });
+  const repositoryResponse = await fetch(
+    `https://api.github.com/repositories/${repoID}`,
+    {
+      method: "GET",
+      headers: {
+        access_token: GITHUB_TOKEN,
+      },
+    },
+  );
+
+  if (!repositoryResponse.ok) return json(false);
 
   // Request the repo with matching IDs
-  const receivedRepoData: OctokitResponse<GitHubRepository> = await octokit
-    .request(
-      "GET /repositories/{repoID}",
-      {
-        repoID: repoID,
-      },
-    );
+  const repositoryData: GitHubRepository = await repositoryResponse.json();
 
   console.log(
-    `\x1b[44m > \x1b[0m Fetch Log: ${receivedRepoData.data.full_name}`,
+    `\x1b[44m > \x1b[0m Fetch Log: ${repositoryData.full_name}`,
+    repositoryResponse.headers,
   );
-  console.log(receivedRepoData.headers);
 
   // Get the languages
-  const rawLanguageData: OctokitResponse<Language> = await octokit
-    .request("GET /{url}", {
-      url: receivedRepoData.data.languages_url,
-    });
+  const languageResponse = await fetch(
+    repositoryData.languages_url,
+    {
+      method: "GET",
+      headers: {
+        access_token: GITHUB_TOKEN,
+      },
+    },
+  );
+
+  if (!languageResponse.ok) return json(false);
 
   console.log(
-    `\x1b[43m > \x1b[0m Fetch Log Languages: ${receivedRepoData.data.full_name}`,
+    `\x1b[43m > \x1b[0m Fetch Log Languages: ${repositoryData.full_name}`,
+    languageResponse.headers,
   );
-  console.log(rawLanguageData.headers);
+
+  const rawLanguageData: Language = await languageResponse.json();
 
   // Aantal characters
-  let totalChar: number = 0;
-  console.log(rawLanguageData.data);
-  for (const [_, charCount] of Object.entries(rawLanguageData.data)) {
-    totalChar += Number(charCount);
+  let totalCharacterCount = 0;
+  for (const [, characterCount] of Object.entries(rawLanguageData)) {
+    totalCharacterCount += characterCount;
   }
 
-  const languageData: Record<string, number> = {};
-  for (const [language, charCount] of Object.entries(rawLanguageData.data)) {
-    const thing = Math.floor(Number(charCount) / totalChar * 1000) / 10;
+  const languageData: Language = {};
+  for (const [language, charCount] of Object.entries(rawLanguageData)) {
+    const percent = Math.floor(charCount / totalCharacterCount * 1000) / 10;
     // Equivalent of break as long as github doesn't switch the descending order of languages
-    if (thing === 0) continue;
-    languageData[language] = thing;
+    if (percent === 0) continue;
+    languageData[language] = percent;
   }
 
   const returnData: Repository = {
-    id: receivedRepoData.data.id,
-    fullName: receivedRepoData.data.full_name,
-    name: receivedRepoData.data.name,
+    id: repositoryData.id,
+    fullName: repositoryData.full_name,
+    name: repositoryData.name,
     owner: {
-      login: receivedRepoData.data.owner.login,
-      avatarUrl: receivedRepoData.data.owner.avatar_url,
+      login: repositoryData.owner.login,
+      avatarUrl: repositoryData.owner.avatar_url,
     },
-    description: receivedRepoData.data.description,
-    url: receivedRepoData.data.html_url,
+    description: repositoryData.description,
+    url: repositoryData.html_url,
     languages: languageData,
-    license: receivedRepoData.data.license
+    license: repositoryData.license
       ? {
-        name: receivedRepoData.data.license.name,
-        url: receivedRepoData.data.license.url,
+        name: repositoryData.license.name,
+        url: repositoryData.license.url,
       }
-      : undefined,
-    stargazerCount: receivedRepoData.data.stargazers_count,
+      : null,
+    stargazerCount: repositoryData.stargazers_count,
   };
 
   console.log(
-    `\x1b[102m > \x1b[0m Returned Data: ${receivedRepoData.data.full_name}`,
+    `\x1b[102m > \x1b[0m Returned Data: ${repositoryData.full_name}`,
+    returnData,
   );
-  console.log(returnData);
 
   return json(returnData);
 }
