@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "nodeModulesDir": "auto",
   "tasks": {
     "dev": "vite dev",
@@ -13,7 +12,6 @@
   "imports": {
     "@neodrag/svelte": "npm:@neodrag/svelte@next",
     "@sveltejs/adapter-node": "npm:@sveltejs/adapter-node@^5.4.0",
-    "octokit": "npm:octokit@^5.0.3",
     "@sveltejs/kit": "npm:@sveltejs/kit@^2.16.0",
     "@sveltejs/package": "npm:@sveltejs/package@^2.0.0",
     "@sveltejs/vite-plugin-svelte": "npm:@sveltejs/vite-plugin-svelte@^5.0.0",

@@ -4,10 +4,10 @@
   import { page } from "$app/state";
   import generalData from "$lib/generalData.json" with { type: "json" };
 
-  const toggle = () => (thing.movable = !thing.movable);
-  let thing = $state({ movable: true });
+  const toggle = () => (neoDraggable.movable = !neoDraggable.movable);
+  let neoDraggable = $state({ movable: true });
 
-  setTypeContext("dragThing", thing);
+  setTypeContext("dragThing", neoDraggable);
 
   const { children } = $props();
 </script>
@@ -42,7 +42,7 @@
       {/if}
     </div>
 
-    <div class="mentions" {@attach draggable(neoDragConfig(thing.movable))}>
+    <div class="mentions" {@attach draggable(neoDragConfig(neoDraggable.movable))}>
       <h3>My frend</h3>
       {#each generalData.friends as friend}
         <a href={friend.link}>
@@ -59,7 +59,7 @@
 
     <button class="button1" style="width: 100%;" onclick={toggle}>
       <p class="nob not">
-        {#if thing.movable}
+        {#if neoDraggable.movable}
           Disable draggability!
         {:else}
           Enable draggability!

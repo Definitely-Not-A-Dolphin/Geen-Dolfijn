@@ -27,7 +27,7 @@ export async function GET(): Promise<Response> {
       !recentTracks[0]["@attr"].nowplaying
     ) return json(true);
 
-    const currentTrack = recentTracks[0];
+    const currentTrack: LastFMTrack = recentTracks[0];
 
     const image = currentTrack.image[2]["#text"];
     return json({

@@ -1,5 +1,6 @@
-import { json } from "@sveltejs/kit";
 import { HACKATIMEAUTH } from "$env/static/private";
+import type { HackaTimeToday } from "../../../lib/customTypes.ts";
+import { json } from "@sveltejs/kit";
 
 export async function GET(): Promise<Response> {
   const hackatimeResponse = await fetch(
@@ -12,8 +13,10 @@ export async function GET(): Promise<Response> {
     },
   );
 
-  if (!hackatimeResponse.ok) throw new Error(`Error response ${hackatimeResponse.text}`);
+  if (!hackatimeResponse.ok) {
+    throw new Error(`Error response ${hackatimeResponse.text}`);
+  }
 
-  const data = await hackatimeResponse.json();
+  const data: HackaTimeToday = await hackatimeResponse.json();
   return json(data);
 }
