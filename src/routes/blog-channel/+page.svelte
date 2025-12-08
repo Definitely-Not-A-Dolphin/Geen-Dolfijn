@@ -11,11 +11,11 @@
   <p class="not nob">I try to update it!</p>
 </div>
 
-{#each data.blogArray as thing}
+{#each data.blogArray as blog}
   <div class="main" {@attach draggable(neoDragConfig(neoDragContext.movable))}>
-    <h2 class="nob not" style="color: var(--blogcolor)">{thing.title}</h2>
-    <p class="not">{thing.subtitle}</p>
-    <p class="nob">{thing.blog}</p>
-    <p class="small">{thing.date}</p>
+    <h2 class="nob not" style="color: var(--blogcolor)">{blog.title}</h2>
+    <p class="not">{blog.subtitle}</p>
+    <p class="nob">{blog.blog}</p>
+    <p class="small">{blog.date}</p>
   </div>
 {/each}

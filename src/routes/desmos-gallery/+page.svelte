@@ -35,8 +35,8 @@
 >
   <h2 class="nob not" style="color: var(--mathcolor)">Smaller things</h2>
   <p class="not">Some other small things I made.</p>
-  {#each desmos.minorGraphs as graphs}
-    {graphs.title}
-    <a href={graphs.link}>{graphs.text}</a><br />
+  {#each desmos.minorGraphs as graph}
+    {graph.title}
+    <a href={graph.link}>{graph.text}</a><br />
   {/each}
 </div>
