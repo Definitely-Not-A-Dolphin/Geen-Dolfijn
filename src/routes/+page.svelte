@@ -1,6 +1,6 @@
 <script lang="ts">
   import { draggable } from "@neodrag/svelte";
-  import { randomInt, neoDragConfig, getTypeContext } from "$lib/utils.ts";
+  import { randomInt, neoDragConfig, getNeoDragContext } from "$lib/utils.ts";
   import type { HackaTimeToday, Track } from "$lib/customTypes.ts";
   import hornetRunning from "$images/HornetRunning.gif";
   import sizzle from "$images/NotBaldCat.jpg";
@@ -16,7 +16,7 @@
     return await response.json();
   };
 
-  let dragContext = getTypeContext<{ movable: boolean }>("dragThing");
+  let neoDragContext = getNeoDragContext();
 
   const titles: string[] = [
     "Ik ben een titel",
@@ -29,14 +29,14 @@
   ] as const;
 </script>
 
-<div class="header" {@attach draggable(neoDragConfig(dragContext.movable))}>
+<div class="header" {@attach draggable(neoDragConfig(neoDragContext.movable))}>
   <h1>{titles[randomInt(0, titles.length - 1)]}</h1>
 </div>
 
 <div class="containerStandard">
   <div
     class="mainStandard"
-    {@attach draggable(neoDragConfig(dragContext.movable))}
+    {@attach draggable(neoDragConfig(neoDragContext.movable))}
   >
     <h1 style="color: var(--linkblue)" class="nob not">Hello there!</h1>
 
@@ -90,7 +90,7 @@
       <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
       <p>
         I have no idea how the hell the data fetched errorless but the awaiting
-        failed, so enjoy this error message I guess!
+        failed, so enjoy this error message I guess! :D
       </p>
     {/await}
   </div>
@@ -103,7 +103,7 @@
 
   <div
     class="mainStandard"
-    {@attach draggable(neoDragConfig(dragContext.movable))}
+    {@attach draggable(neoDragConfig(neoDragContext.movable))}
   >
     <h1 style="color: var(--linkblue)" class="nob not">Coding</h1>
     <p class="nob not">
@@ -120,9 +120,14 @@
 
     {#await fetchHackaTime()}
       Currently fetching HackaTime data.
-    {:then thing}
-      Today I have logged {thing.data.grand_total.total_seconds} seconds of coding,
-      which is equal to {thing.data.grand_total.text}!
+    {:then hackatimeData}
+      Today I have logged {hackatimeData.data.grand_total.total_seconds} seconds of
+      coding, which is equal to
+      {#if hackatimeData.data.grand_total.text === "Start coding to track your time"}
+        nothing :\
+      {:else}
+        {hackatimeData.data.grand_total.text}!
+      {/if}
     {:catch}
       Oops! Something went wrong while fetching data!
     {/await}

@@ -49,37 +49,9 @@ export type HackaTimeToday = {
   data: {
     grand_total: {
       text: string;
-      total_seconds: 1064;
+      total_seconds: number;
     };
   };
-};
-
-export type GitHubUser = {
-  login: string;
-  id: number;
-  node_id: string;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: string;
-  user_view_type: string;
-  site_admin: boolean;
-};
-
-export type GitHubParent = {
-  sha: string;
-  url: string;
-  html_url: string;
 };
 
 export type Repository = {
@@ -92,9 +64,7 @@ export type Repository = {
   };
   description: string;
   url: string;
-  languages: {
-    [language: string]: number;
-  };
+  languages: Languages;
   license: {
     name: string;
     url: string;
@@ -109,7 +79,27 @@ export type GitHubRepository = {
   name: string;
   full_name: string;
   private: boolean;
-  owner: GitHubUser;
+  owner: {
+    login: string;
+    id: number;
+    node_id: string;
+    avatar_url: string;
+    gravatar_id: string;
+    url: string;
+    html_url: string;
+    followers_url: string;
+    following_url: string;
+    gists_url: string;
+    starred_url: string;
+    subscriptions_url: string;
+    organizations_url: string;
+    repos_url: string;
+    events_url: string;
+    received_events_url: string;
+    type: string;
+    user_view_type: string;
+    site_admin: boolean;
+  };
   html_url: string;
   description: string;
   fork: boolean;
@@ -191,4 +181,4 @@ export type GitHubRepository = {
   default_branch: string;
 };
 
-export type Language = Record<string, number>;
+export type Languages = Record<string, number>;

@@ -1,10 +1,10 @@
-import { json, type RequestEvent } from "@sveltejs/kit";
+import { GITHUB_TOKEN } from "$env/static/private";
 import type {
   GitHubRepository,
-  Language,
+  Languages,
   Repository,
-} from "$lib/customTypes.ts";
-import { GITHUB_TOKEN } from "$env/static/private";
+} from "../../../lib/customTypes.ts";
+import { json, type RequestEvent } from "@sveltejs/kit";
 
 export async function GET({ url }: RequestEvent): Promise<Response> {
   if (!GITHUB_TOKEN) {
@@ -53,7 +53,7 @@ export async function GET({ url }: RequestEvent): Promise<Response> {
     languageResponse.headers,
   );
 
-  const rawLanguageData: Language = await languageResponse.json();
+  const rawLanguageData: Languages = await languageResponse.json();
 
   // Aantal characters
   let totalCharacterCount = 0;
@@ -61,12 +61,10 @@ export async function GET({ url }: RequestEvent): Promise<Response> {
     totalCharacterCount += characterCount;
   }
 
-  const languageData: Language = {};
+  const languageData: Languages = {};
   for (const [language, charCount] of Object.entries(rawLanguageData)) {
     const percent = Math.floor(charCount / totalCharacterCount * 1000) / 10;
-    // Equivalent of break as long as github doesn't switch the descending order of languages
-    if (percent === 0) continue;
-    languageData[language] = percent;
+    if (percent !== 0) languageData[language] = percent;
   }
 
   const returnData: Repository = {

@@ -1,6 +1,6 @@
-import { json } from "@sveltejs/kit";
-import type { LastFMData, LastFMTrack } from "$lib/customTypes.ts";
 import { LASTFMKEY, LASTFMUSER } from "$env/static/private";
+import type { LastFMData, LastFMTrack } from "../../../lib/customTypes.ts";
+import { json } from "@sveltejs/kit";
 
 export async function GET(): Promise<Response> {
   if (!(LASTFMKEY && LASTFMUSER)) {
@@ -20,12 +20,7 @@ export async function GET(): Promise<Response> {
     const responseData: LastFMData = await lastFMResponse.json();
     const recentTracks: LastFMTrack[] = responseData.recenttracks.track;
 
-    if (
-      recentTracks.length === 0 ||
-      !recentTracks[0] ||
-      !recentTracks[0]["@attr"] ||
-      !recentTracks[0]["@attr"].nowplaying
-    ) return json(true);
+    if (!recentTracks[0]["@attr"]?.nowplaying) return json(true);
 
     const currentTrack: LastFMTrack = recentTracks[0];
 

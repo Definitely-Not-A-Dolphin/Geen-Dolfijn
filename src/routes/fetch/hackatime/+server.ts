@@ -1,6 +1,6 @@
 import { HACKATIMEAUTH } from "$env/static/private";
-import type { HackaTimeToday } from "../../../lib/customTypes.ts";
 import { json } from "@sveltejs/kit";
+import type { HackaTimeToday } from "../../../lib/customTypes.ts";
 
 export async function GET(): Promise<Response> {
   const hackatimeResponse = await fetch(

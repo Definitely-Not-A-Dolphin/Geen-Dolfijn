@@ -2,41 +2,32 @@
   const { projectID } = $props();
 </script>
 
-{#if projectID === "898363939"}
-  <h2 class="nob not project" style="color: var(--projectcolor)">
-    Finnish Language Trainer
-  </h2>
+{#if projectID === "1065728389"}
+  <h2 class="nob not project" style="color: var(--projectcolor)">Opi-Suomea</h2>
   <p class="not">
-    I learn Finnish, and I also like C++ (counter arguments will not be listened
-    to), so I combined the two to make the Finnish Language Trainer.
+    I learn Finnish, and I wanted to learn Rust. I previously made the
+    Finnish-Language-Trainer with C++, but quit development for it because C++
+    gave me constant headaches.
   </p>
   <p class="nob not">
     Some things that I wish to include / add in the future are:
   </p>
   <ul class="nob not">
-    <li>
-      Colors, since everything happens in the terminal, colors can help
-      organising all the text, and it looks aesthetically pleasing.
-    </li>
+    <li>More lessons</li>
     <li>More grammar explainations.</li>
-    <li>
-      A way to practise numbers up to a million, but without having to type the
-      first million numbers out in a file.
-    </li>
+    <li>More types of lessons</li>
   </ul>
 {:else if projectID === "915271815"}
   <h2 class="nob not project" style="color: var(--projectcolor)">
-    This website
+    Geen-Dolfijn
   </h2>
   <p class="nob not">
     This site is made with SvelteKit, TypeScript and all the other usual stuff.
-    My friend Jsw helped me with the setup, and will host this site on his
-    server soon.
+    My friend Jsw helped me with the setup, and its hosted on his server!
   </p>
 
   <p class="nob">Some things that I wish to include / add in the future are:</p>
   <ul class="nob not">
-    <li>A better design on the background</li>
     <li>
       More banner-gifs on the frends-tab, although my friends won't make one. :(
     </li>
@@ -48,19 +39,15 @@
   </h2>
   <p class="not">
     One day I woke up and had the urge to make a discord bot. I do not know
-    where it came from, but here it is anyway! It can translate to morse code
-    and send memes. I plan on making it run 24/7 once I get a raspberry pi or a
-    server!
+    where it came from, but here it is anyway! I plan on making it run 24/7 once
+    I get a raspberry pi or a server!
   </p>
 
   <p class="nob not">
     Some things that I wish to include / add in the future are:
   </p>
   <ul class="nob not">
-    <li>More memes, but I have to wait for a server first</li>
-    <li>
-      A way for trusted users (me, friends) to upload their memes via discord.
-    </li>
+    <li>Mipo: a simple game with complicated strategies</li>
   </ul>
 {:else if projectID === "1002157693"}
   <h2 class="nob not project" style="color: var(--projectcolor)">
@@ -79,5 +66,19 @@
   </p>
   <ul class="nob not">
     <li>Nothing, I did everything</li>
+  </ul>
+{:else if projectID === "1097844217"}
+  <h2 class="nob not project" style="color: var(--projectcolor)">DenoDing</h2>
+  <p class="not">
+    A small API for a ToDo site im making. I still have to make a frontend but
+    this is already mostly done
+  </p>
+
+  <p class="nob not">
+    Some things that I wish to include / add in the future are:
+  </p>
+  <ul class="nob not">
+    <li>Custom types of To Do entries</li>
+    <li>Maybe make it available for other ppl as well</li>
   </ul>
 {/if}

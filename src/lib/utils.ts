@@ -1,19 +1,14 @@
 import { bounds, BoundsFrom, disabled } from "@neodrag/svelte";
-import { getContext, setContext } from "svelte";
+import { createContext } from "svelte";
 
-export function setTypeContext<T>(key: string, body: T): void {
-  setContext(key, body);
-}
-
-export function getTypeContext<T>(key: string): T {
-  return getContext(key) as T;
-}
+export const [getNeoDragContext, setNeoDragContext] = createContext<
+  { movable: boolean }
+>();
 
 export const neoDragConfig = (x: boolean) => [
   bounds(BoundsFrom.viewport()),
   disabled(!x),
 ];
 
-export function randomInt(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+export const randomInt = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min + 1) + min);

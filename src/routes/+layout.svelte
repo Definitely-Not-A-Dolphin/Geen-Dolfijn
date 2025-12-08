@@ -1,13 +1,13 @@
 <script lang="ts">
   import { draggable } from "@neodrag/svelte";
-  import { neoDragConfig, setTypeContext } from "$lib/utils.ts";
+  import { neoDragConfig, setNeoDragContext } from "$lib/utils.ts";
   import { page } from "$app/state";
   import generalData from "$lib/generalData.json" with { type: "json" };
 
-  const toggle = () => (neoDraggable.movable = !neoDraggable.movable);
-  let neoDraggable = $state({ movable: true });
+  const toggle = () => (neoDragContext.movable = !neoDragContext.movable);
+  let neoDragContext = $state({ movable: true });
 
-  setTypeContext("dragThing", neoDraggable);
+  setNeoDragContext(neoDragContext);
 
   const { children } = $props();
 </script>
@@ -42,7 +42,10 @@
       {/if}
     </div>
 
-    <div class="mentions" {@attach draggable(neoDragConfig(neoDraggable.movable))}>
+    <div
+      class="mentions"
+      {@attach draggable(neoDragConfig(neoDragContext.movable))}
+    >
       <h3>My frend</h3>
       {#each generalData.friends as friend}
         <a href={friend.link}>
@@ -59,7 +62,7 @@
 
     <button class="button1" style="width: 100%;" onclick={toggle}>
       <p class="nob not">
-        {#if neoDraggable.movable}
+        {#if neoDragContext.movable}
           Disable draggability!
         {:else}
           Enable draggability!
