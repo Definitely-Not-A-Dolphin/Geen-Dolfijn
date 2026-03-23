@@ -5,9 +5,9 @@ export const [getNeoDragContext, setNeoDragContext] = createContext<
   { movable: boolean }
 >();
 
-export const neoDragConfig = (x: boolean) => [
+export const neoDragConfig = (movable: boolean) => [
   bounds(BoundsFrom.viewport()),
-  disabled(!x),
+  disabled(!movable),
 ];
 
 export const randomInt = (min: number, max: number) =>

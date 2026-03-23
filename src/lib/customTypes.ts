@@ -1,12 +1,12 @@
-export type Track = {
+export interface Track {
   name: string;
   album: string;
   artist: string;
   image: string;
   url: string;
-};
+}
 
-export type LastFMTrack = {
+export interface LastFMTrack {
   artist: {
     mbid: string;
     "#text": string;
@@ -30,9 +30,9 @@ export type LastFMTrack = {
   "@attr"?: {
     nowplaying: boolean;
   };
-};
+}
 
-export type LastFMData = {
+export interface LastFMData {
   recenttracks: {
     track: LastFMTrack[];
     "@attr": {
@@ -43,18 +43,18 @@ export type LastFMData = {
       total: string;
     };
   };
-};
+}
 
-export type HackaTimeToday = {
+export interface HackaTimeToday {
   data: {
     grand_total: {
       text: string;
       total_seconds: number;
     };
   };
-};
+}
 
-export type Repository = {
+export interface Repository {
   id: number;
   fullName: string;
   name: string;
@@ -70,10 +70,10 @@ export type Repository = {
     url: string;
   } | null;
   stargazerCount: number;
-};
+}
 
 // May not exactly match the github project response type.
-export type GitHubRepository = {
+export interface GitHubRepository {
   id: number;
   node_id: string;
   name: string;
@@ -179,6 +179,6 @@ export type GitHubRepository = {
   open_issues: number;
   watchers: number;
   default_branch: string;
-};
+}
 
 export type Languages = Record<string, number>;

@@ -14,12 +14,8 @@
   };
 
   const getColor = (language: string): string => {
-    for (const [colorLanguage, [red, green, blue]] of Object.entries(
-      generalData.languageColors,
-    )) {
-      if (language === colorLanguage)
-        return "rgb(" + red + "," + green + "," + blue + ")";
-    }
+    for (const [languages, [red, green, blue]] of generalData.languageColors)
+      if (language === languages) return `rgb(${red},${green},${blue})`;
 
     return "white";
   };

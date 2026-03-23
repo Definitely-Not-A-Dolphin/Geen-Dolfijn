@@ -1,6 +1,12 @@
 {
   "blogArray": [
     {
+      "title": "I need a whacky frontend for my whacky backend",
+      "subtitle": "todotodotodotodotodo",
+      "blog": "I recently made an API for todo's, but i need to make a simple frontend for it before I can actually use it, all put that on my to do list. wait...",
+      "date": "08/12/2025"
+    },
+    {
       "title": "Need Ideas",
       "subtitle": "im out of them",
       "blog": "I need ideas for this site I am running out of them and I need hours for Summer of Making",

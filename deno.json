@@ -12,12 +12,12 @@
   "imports": {
     "@neodrag/svelte": "npm:@neodrag/svelte@^3.0.0-next.8",
     "@sveltejs/adapter-node": "npm:@sveltejs/adapter-node@^5.4.0",
-    "@sveltejs/kit": "npm:@sveltejs/kit@^2.49.1",
+    "@sveltejs/kit": "npm:@sveltejs/kit@^2.49.2",
     "@sveltejs/package": "npm:@sveltejs/package@^2.5.7",
     "@sveltejs/vite-plugin-svelte": "npm:@sveltejs/vite-plugin-svelte@^5.1.1",
-    "publint": "npm:publint@^0.3.15",
-    "svelte": "npm:svelte@^5.45.6",
-    "svelte-check": "npm:svelte-check@^4.3.4",
+    "publint": "npm:publint@^0.3.16",
+    "svelte": "npm:svelte@^5.46.1",
+    "svelte-check": "npm:svelte-check@^4.3.5",
     "svelte-preprocess": "npm:svelte-preprocess@^6.0.3",
     "typescript": "npm:typescript@^5.9.3",
     "vite": "npm:vite@^6.4.1"

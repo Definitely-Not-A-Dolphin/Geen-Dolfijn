@@ -1,5 +1,5 @@
 import { LASTFMKEY, LASTFMUSER } from "$env/static/private";
-import type { LastFMData, LastFMTrack } from "../../../lib/customTypes.ts";
+import type { LastFMData } from "../../../lib/customTypes.ts";
 import { json } from "@sveltejs/kit";
 
 export async function GET(): Promise<Response> {
@@ -18,11 +18,11 @@ export async function GET(): Promise<Response> {
     if (!lastFMResponse.ok) return json(false);
 
     const responseData: LastFMData = await lastFMResponse.json();
-    const recentTracks: LastFMTrack[] = responseData.recenttracks.track;
+    const recentTracks = responseData.recenttracks.track;
 
     if (!recentTracks[0]["@attr"]?.nowplaying) return json(true);
 
-    const currentTrack: LastFMTrack = recentTracks[0];
+    const currentTrack = recentTracks[0];
 
     const image = currentTrack.image[2]["#text"];
     return json({

@@ -12,7 +12,7 @@ export async function GET({ url }: RequestEvent): Promise<Response> {
     return json(false);
   }
 
-  const repoID: string | null = url.searchParams.get("repoID");
+  const repoID = url.searchParams.get("repoID");
   if (!repoID) return json(false);
 
   const repositoryResponse = await fetch(
@@ -26,8 +26,6 @@ export async function GET({ url }: RequestEvent): Promise<Response> {
   );
 
   if (!repositoryResponse.ok) return json(false);
-
-  // Request the repo with matching IDs
   const repositoryData: GitHubRepository = await repositoryResponse.json();
 
   console.log(
