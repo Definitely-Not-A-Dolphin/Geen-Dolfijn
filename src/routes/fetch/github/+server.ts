@@ -55,7 +55,7 @@ export async function GET({ url }: RequestEvent): Promise<Response> {
 
   // Aantal characters
   let totalCharacterCount = 0;
-  for (const [, characterCount] of Object.entries(rawLanguageData)) {
+  for (const characterCount of Object.values(rawLanguageData)) {
     totalCharacterCount += characterCount;
   }
 
