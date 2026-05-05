@@ -1,0 +1,46 @@
+{
+  "repoIDs": [1065728389, 971248396, 915271815, 1002157693, 1097844217],
+  "friends": [
+    {
+      "name": "Jsw",
+      "link": "https://jsw.tf",
+      "pfpId": "46420489"
+    },
+    {
+      "name": "Emma",
+      "link": "https://prpl.wtf",
+      "pfpId": "103201875"
+    },
+    {
+      "name": "Whacky",
+      "link": "https://whackydev.nl",
+      "pfpId": "148389656"
+    },
+    {
+      "name": "Elziy",
+      "link": "https://elziyplace.xyz",
+      "pfpId": "154922150"
+    },
+    {
+      "name": "Tijme",
+      "link": "https://www.tijmevh.nl/",
+      "pfpId": "68817281"
+    }
+  ],
+  "pages": [
+    ["Home", "/"],
+    ["Projects", "/projects"],
+    ["Desmos Gallery", "/desmos-gallery"],
+    ["Blog Channel", "/blog-channel"]
+  ],
+  "languageColors": {
+    "Svelte": [255, 62, 0],
+    "TypeScript": [49, 120, 198],
+    "JavaScript": [241, 224, 90],
+    "CSS": [102, 51, 153],
+    "HTML": [227, 76, 38],
+    "Nix": [126, 126, 255],
+    "C+": [243, 75, 125],
+    "Rust": [222, 165, 132]
+  }
+}

@@ -1,9 +1,6 @@
-import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vite";
+import { fresh } from "@fresh/plugin-vite";
 
 export default defineConfig({
-  plugins: [sveltekit()],
-  server: {
-    allowedHosts: ["geen-dolfijn.nl"],
-  },
+  plugins: [fresh()],
 });

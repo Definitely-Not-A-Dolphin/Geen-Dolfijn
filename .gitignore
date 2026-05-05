@@ -1,35 +1,12 @@
-node_modules
-src/routes/testing/+page.svelte
-src/lib/secretData.json
-src/lib/secrets.json
-src/lib/_getGitHubData.ts
-secrets.json
-
-# Output
-.output
-.vercel
-.netlify
-.wrangler
-/.svelte-kit
-/build
-/dist
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Env
+# dotenv environment variable files
 .env
-.env.*
-!.env.example
-!.env.test
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
 
-# Vite
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
-/.vite
-
-.direnv
-.sveltekit
-
-test.ts
+# Fresh build directory
+_fresh/
+# npm + other dependencies
+node_modules/
+vendor/
