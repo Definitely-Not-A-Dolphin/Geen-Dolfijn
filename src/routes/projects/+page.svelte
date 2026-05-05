@@ -8,17 +8,19 @@
 
   let neoDragContext = getNeoDragContext();
 
-  const fetchGitHub = async (repoID: number) => {
+  async function fetchGitHub(repoID: number): Promise<Repository> {
     const response = await fetch(`/fetch/github?repoID=${repoID}`);
     return await response.json();
-  };
+  }
 
-  const getColor = (language: string): string => {
-    for (const [languages, [red, green, blue]] of generalData.languageColors)
+  function getColor(language: string): string {
+    for (const [languages, [red, green, blue]] of Object.entries(
+      generalData.languageColors,
+    ))
       if (language === languages) return `rgb(${red},${green},${blue})`;
 
     return "white";
-  };
+  }
 
   const flexDirector = (counter: number) =>
     counter % 2 === 0 ? "row" : "row-reverse";
