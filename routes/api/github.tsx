@@ -4,29 +4,37 @@ import type {
   Repository,
 } from "@/lib/customTypes.ts";
 import { define } from "../../utils.ts";
+import { Octokit } from "octokit";
+
+const octokit = new Octokit({
+  auth: Deno.env.get("GITHUB_TOKEN")!,
+});
 
 export const handler = define.handlers({
   async GET(ctx) {
     if (!Deno.env.get("GITHUB_TOKEN")) {
       console.error("Incomplete dotenv! Missing \x1b[34mGITHUB_TOKEN\x1b[0m");
-      return Response.json(false);
+      throw new Error(
+        "Server error: missing github auth key, not your fault, sorry :(",
+      );
     }
 
     const repoID = ctx.url.searchParams.get("repoID");
-    if (!repoID) return Response.json(false);
+    if (!repoID) {
+      throw new Error("Server error: no repo supplied :(");
+    }
 
-    const repositoryResponse = await fetch(
-      `https://api.github.com/repositories/${repoID}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `BEARER: ${Deno.env.get("GITHUB_TOKEN")!}`,
-        },
-      },
+    const repositoryResponse = await octokit.request(
+      `GET /repositories/${repoID}`,
     );
 
-    if (!repositoryResponse.ok) return Response.json(false);
-    const repositoryData: GitHubRepository = await repositoryResponse.json();
+    if (repositoryResponse.status !== 200) {
+      throw new Error(
+        "Server error: something went wrong while fetching data :(",
+      );
+    }
+
+    const repositoryData: GitHubRepository = repositoryResponse.data;
 
     console.log(
       `\x1b[44m > \x1b[0m Fetch Log: ${repositoryData.full_name}`,
@@ -34,24 +42,22 @@ export const handler = define.handlers({
     );
 
     // Get the languages
-    const languageResponse = await fetch(
-      repositoryData.languages_url,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `BEARER: ${Deno.env.get("GITHUB_TOKEN")!}`,
-        },
-      },
+    const languageResponse = await octokit.request(
+      `GET ${repositoryData.languages_url}`,
     );
 
-    if (!languageResponse.ok) return Response.json(false);
+    if (repositoryResponse.status !== 200) {
+      throw new Error(
+        "Server error: something went wrong while fetching language data :(",
+      );
+    }
 
     console.log(
       `\x1b[43m > \x1b[0m Fetch Log Languages: ${repositoryData.full_name}`,
       languageResponse.headers,
     );
 
-    const rawLanguageData: Languages = await languageResponse.json();
+    const rawLanguageData: Languages = languageResponse.data;
 
     let totalCharacterCount = 0;
     for (const characterCount of Object.values(rawLanguageData)) {

@@ -1,15 +1,14 @@
+import HackatimeStats from "@/islands/HackatimeStats.tsx";
+import LastFMStats from "@/islands/LastfmStats.tsx";
 import { randomInt } from "@/lib/utils.ts";
+import { define } from "../utils.ts";
 import sizzle from "/NotBaldCat.jpg";
 import okkie from "/Okkie<3.jpg";
-import { define } from "../utils.ts";
 
 export default define.page(function Home() {
   const birthTimestamp = new Date("2008-12-31T13:00:00Z").getTime(); // Replace with your actual birth date
-  const calculateAge = () => {
-    const now = Date.now();
-    const age = (now - birthTimestamp) / 31557600000;
-    return age.toFixed(8);
-  };
+  const calculateAge = () =>
+    ((Date.now() - birthTimestamp) / 31557600000).toFixed(8);
 
   const age = calculateAge();
 
@@ -36,60 +35,13 @@ export default define.page(function Home() {
           <p class="not">
             My name is Derek Verduijn, aka Definitely Not A Dolphin. I am an
             {" "}
+            {/* ToDo: make this update automatically */}
             {age}{" "}
             year old computer and math enthusiast from The Netherlands. Other
             interests include Finnish and chess.
           </p>
 
-          {
-            /*{#await fetchLastFM()}
-        <div style="display: flex; gap: 10px; justify-content: space-between;">
-          <div>
-            <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
-            <p class="not">Waiting last.fm data...</p>
-          </div>
-          <div>
-            <img
-              src={hornetRunning}
-              alt="Hornet Running"
-              style="height: 140px;"
-            />
-          </div>
-        </div>
-      {:then trackData}
-        {#if trackData === false}
-          <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
-          <p class="not">Something went wrong while fetching Last.fm data D:</p>
-        {:else if trackData === true}
-          <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
-          <p class="not">I am not currently listening to any music</p>
-        {:else}
-          <div style="display: flex; gap: 10px; justify-content: space-between;">
-            <div>
-              <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
-              <p class="not">
-                Currently listening to <a href={trackData.url}>{trackData.name}</a
-                >
-                from {trackData.album} by {trackData.artist}
-              </p>
-            </div>
-            <div>
-              <img
-                style="border-radius: 15px; height: 120px;"
-                alt="album cover"
-                src={trackData.image}
-              />
-            </div>
-          </div>
-        {/if}
-      {:catch}
-        <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
-        <p>
-          I have no idea how the hell the data fetched errorless but the awaiting
-          failed, so enjoy this error message I guess! :D
-        </p>
-      {/await}*/
-          }
+          <LastFMStats />
         </div>
 
         <img alt="My cat!" src={sizzle} class="imageStandard" />
@@ -111,22 +63,7 @@ export default define.page(function Home() {
 
           <h3 style="color: var(--mathcolor)" class="nob not">Hackatime</h3>
 
-          {
-            /*{#await fetchHackaTime()}
-        Currently fetching HackaTime data...
-      {:then hackatimeData}
-        {@const grandTotal = hackatimeData.data.grand_total}
-        Today I have logged {grandTotal.total_seconds} seconds of coding, which is equal
-        to
-        {#if grandTotal.text === "Start coding to track your time"}
-          nothing :/
-        {:else}
-          {grandTotal.text}!
-        {/if}
-      {:catch}
-        Oops! Something went wrong while fetching data!
-      {/await}*/
-          }
+          <HackatimeStats />
         </div>
       </div>
     </>

@@ -1,15 +1,27 @@
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 import type { Repository } from "@/lib/customTypes.ts";
-import generalData from "@/assets/generalData.json" with { type: "json" };
+
+const languageColors = {
+  Svelte: [255, 62, 0],
+  TypeScript: [49, 120, 198],
+  JavaScript: [241, 224, 90],
+  CSS: [102, 51, 153],
+  HTML: [227, 76, 38],
+  Nix: [126, 126, 255],
+  Rust: [222, 165, 132],
+  Shell: [137, 224, 81],
+  Dockerfile: [56, 77, 84],
+};
 
 function getColor(language: string): string {
   const foundLanguage = Object
-    .keys(generalData.languageColors)
+    .keys(languageColors)
     .find((languages) => language === languages);
 
   if (foundLanguage) {
-    const [red, green, blue] = foundLanguage[1];
+    const [red, green, blue] =
+      languageColors[foundLanguage as keyof typeof languageColors];
     return `rgb(${red},${green},${blue})`;
   }
 
@@ -27,10 +39,8 @@ export default function GithubStats({ repoID }: { repoID: number }) {
       .catch((e) => error.value = e.message);
   }, []);
 
-  if (error.value) return <p>Failed to load stats.</p>;
+  if (error.value) return <p>Failed to load stats. Error: {error.value}</p>;
   if (!stats.value) return <p>Loading GitHub stats...</p>;
-
-  console.log("wiufbweifubwifub");
 
   const project = stats.value;
   const stars = Math.min(project.stargazerCount, 6);
@@ -70,7 +80,9 @@ export default function GithubStats({ repoID }: { repoID: number }) {
         {Object.entries(project.languages).map(([language, percent]) => (
           <li>
             {percent}%{" "}
-            <span style={`color: ${getColor(language)}`}>{language}</span>
+            <span style={`color: ${getColor(language)}`}>
+              {language}
+            </span>
           </li>
         ))}
       </ul>
