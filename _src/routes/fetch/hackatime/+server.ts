@@ -7,6 +7,7 @@ export async function GET(): Promise<Response> {
     console.error("Incomplete dotenv! Missing \x1b[34mHACKATIMEAUTH\x1b[0m");
     return json(false);
   }
+
   const hackatimeResponse = await fetch(
     "https://hackatime.hackclub.com/api/hackatime/v1/users/5619/statusbar/today",
     {

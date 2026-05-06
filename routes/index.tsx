@@ -1,13 +1,13 @@
-import { define } from "../utils.ts";
 import { randomInt } from "@/lib/utils.ts";
-import sizzle from "@/static/NotBaldCat.jpg";
-import okkie from "@/static/Okkie<3.jpg";
+import sizzle from "/NotBaldCat.jpg";
+import okkie from "/Okkie<3.jpg";
+import { define } from "../utils.ts";
 
 export default define.page(function Home() {
   const birthTimestamp = new Date("2008-12-31T13:00:00Z").getTime(); // Replace with your actual birth date
   const calculateAge = () => {
     const now = Date.now();
-    const age = (now - birthTimestamp) / (1000 * 60 * 60 * 24 * 365.25);
+    const age = (now - birthTimestamp) / 31557600000;
     return age.toFixed(8);
   };
 
@@ -25,18 +25,18 @@ export default define.page(function Home() {
 
   return (
     <>
-      <div class="header" /*{@attach draggable(neoDragConfig(neoDragContext.movable))}*/>
+      <div class="header">
         <h1>{titles[randomInt(0, titles.length - 1)]}</h1>
       </div>
 
       <div class="containerStandard">
-        <div class="mainStandard" /*{@attach draggable(neoDragConfig(neoDragContext.movable))}*/>
+        <div class="mainStandard">
           <h1 style="color: var(--linkblue)" class="nob not">Hello there!</h1>
 
           <p class="not">
             My name is Derek Verduijn, aka Definitely Not A Dolphin. I am an
             {" "}
-            {age}
+            {age}{" "}
             year old computer and math enthusiast from The Netherlands. Other
             interests include Finnish and chess.
           </p>
@@ -98,7 +98,7 @@ export default define.page(function Home() {
       <div class="containerStandard">
         <img alt="My other cat!" src={okkie} class="imageStandard" />
 
-        <div class="mainStandard" /*{@attach draggable(neoDragConfig(neoDragContext.movable))}*/>
+        <div class="mainStandard">
           <h1 style="color: var(--linkblue)" class="nob not">Coding</h1>
           <p class="nob not">
             Currently I am working on Kuusi and CCMath.

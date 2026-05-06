@@ -1,0 +1,95 @@
+import type {
+  GitHubRepository,
+  Languages,
+  Repository,
+} from "@/lib/customTypes.ts";
+import { define } from "../../utils.ts";
+
+export const handler = define.handlers({
+  async GET(ctx) {
+    if (!Deno.env.get("GITHUB_TOKEN")) {
+      console.error("Incomplete dotenv! Missing \x1b[34mGITHUB_TOKEN\x1b[0m");
+      return Response.json(false);
+    }
+
+    const repoID = ctx.url.searchParams.get("repoID");
+    if (!repoID) return Response.json(false);
+
+    const repositoryResponse = await fetch(
+      `https://api.github.com/repositories/${repoID}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `BEARER: ${Deno.env.get("GITHUB_TOKEN")!}`,
+        },
+      },
+    );
+
+    if (!repositoryResponse.ok) return Response.json(false);
+    const repositoryData: GitHubRepository = await repositoryResponse.json();
+
+    console.log(
+      `\x1b[44m > \x1b[0m Fetch Log: ${repositoryData.full_name}`,
+      repositoryResponse.headers,
+    );
+
+    // Get the languages
+    const languageResponse = await fetch(
+      repositoryData.languages_url,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `BEARER: ${Deno.env.get("GITHUB_TOKEN")!}`,
+        },
+      },
+    );
+
+    if (!languageResponse.ok) return Response.json(false);
+
+    console.log(
+      `\x1b[43m > \x1b[0m Fetch Log Languages: ${repositoryData.full_name}`,
+      languageResponse.headers,
+    );
+
+    const rawLanguageData: Languages = await languageResponse.json();
+
+    let totalCharacterCount = 0;
+    for (const characterCount of Object.values(rawLanguageData)) {
+      totalCharacterCount += characterCount;
+    }
+
+    const languageData: Languages = {};
+    for (const [language, charCount] of Object.entries(rawLanguageData)) {
+      const percent = Math.floor(charCount / totalCharacterCount * 1000) / 10;
+
+      if (percent !== 0) languageData[language] = percent;
+    }
+
+    const returnData: Repository = {
+      id: repositoryData.id,
+      fullName: repositoryData.full_name,
+      name: repositoryData.name,
+      owner: {
+        login: repositoryData.owner.login,
+        avatarUrl: repositoryData.owner.avatar_url,
+      },
+      description: repositoryData.description,
+      url: repositoryData.html_url,
+      languages: languageData,
+      license: repositoryData.license
+        ? {
+          name: repositoryData.license.name,
+          url: repositoryData.license.url,
+        }
+        : null,
+      stargazerCount: repositoryData.stargazers_count,
+    };
+
+    console.log(
+      `\x1b[102m > \x1b[0m Returned Data: ${repositoryData.full_name}`,
+      returnData,
+    );
+
+    return Response.json(returnData);
+  },
+});

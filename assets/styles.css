@@ -13,7 +13,6 @@ body {
   color: white;
   font-family: var(
     --default-font-family,
-    "Jetbrains Mono",
     ui-sans-serif,
     system-ui,
     sans-serif,

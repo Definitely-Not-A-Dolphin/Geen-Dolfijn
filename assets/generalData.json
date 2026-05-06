@@ -1,5 +1,7 @@
 {
-  "repoIDs": [1065728389, 971248396, 915271815, 1002157693, 1097844217],
+  "repoIDs": [
+    1133847980, 1065728389, 971248396, 915271815, 1002157693, 1097844217
+  ],
   "friends": [
     {
       "name": "Jsw",
@@ -28,10 +30,9 @@
     }
   ],
   "pages": [
-    ["Home", "/"],
-    ["Projects", "/projects"],
-    ["Desmos Gallery", "/desmos-gallery"],
-    ["Blog Channel", "/blog-channel"]
+    { "name": "Home", "url": "/" },
+    { "name": "Projects", "url": "/projects" },
+    { "name": "Math", "url": "/math" }
   ],
   "languageColors": {
     "Svelte": [255, 62, 0],
@@ -41,6 +42,7 @@
     "HTML": [227, 76, 38],
     "Nix": [126, 126, 255],
     "C+": [243, 75, 125],
-    "Rust": [222, 165, 132]
+    "Rust": [222, 165, 132],
+    "Dockerfile": [56, 77, 84]
   }
 }

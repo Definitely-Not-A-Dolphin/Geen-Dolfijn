@@ -1,31 +1,30 @@
-import { GITHUB_TOKEN } from "$env/static/private";
 import type {
   GitHubRepository,
   Languages,
   Repository,
 } from "../../../lib/customTypes.ts";
-import { json, type RequestEvent } from "@sveltejs/kit";
+//import { json, type RequestEvent } from "@sveltejs/kit";
 
-export async function GET({ url }: RequestEvent): Promise<Response> {
-  if (!GITHUB_TOKEN) {
+export async function GET({ url }): Promise<Response | boolean> {
+  if (!Deno.env.get("GITHUB_TOKEN")) {
     console.error("Incomplete dotenv! Missing \x1b[34mGITHUB_TOKEN\x1b[0m");
-    return json(false);
+    return false;
   }
 
   const repoID = url.searchParams.get("repoID");
-  if (!repoID) return json(false);
+  if (!repoID) return false;
 
   const repositoryResponse = await fetch(
     `https://api.github.com/repositories/${repoID}`,
     {
       method: "GET",
       headers: {
-        access_token: GITHUB_TOKEN,
+        access_token: Deno.env.get("GITHUB_TOKEN")!,
       },
     },
   );
 
-  if (!repositoryResponse.ok) return json(false);
+  if (!repositoryResponse.ok) return false;
   const repositoryData: GitHubRepository = await repositoryResponse.json();
 
   console.log(
