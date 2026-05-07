@@ -1,27 +1,19 @@
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 import type { Repository } from "@/lib/customTypes.ts";
-
-const languageColors = {
-  Svelte: [255, 62, 0],
-  TypeScript: [49, 120, 198],
-  JavaScript: [241, 224, 90],
-  CSS: [102, 51, 153],
-  HTML: [227, 76, 38],
-  Nix: [126, 126, 255],
-  Rust: [222, 165, 132],
-  Shell: [137, 224, 81],
-  Dockerfile: [56, 77, 84],
-};
+import generalData from "@/assets/generalData.json" with { type: "json" };
 
 function getColor(language: string): string {
   const foundLanguage = Object
-    .keys(languageColors)
+    .keys(generalData.languageColors)
     .find((languages) => language === languages);
 
   if (foundLanguage) {
     const [red, green, blue] =
-      languageColors[foundLanguage as keyof typeof languageColors];
+      generalData
+        .languageColors[
+          foundLanguage as keyof typeof generalData.languageColors
+        ];
     return `rgb(${red},${green},${blue})`;
   }
 

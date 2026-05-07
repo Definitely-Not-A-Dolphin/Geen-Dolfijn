@@ -20,6 +20,7 @@
   ],
   "imports": {
     "@/": "./",
+    "@neodrag/react": "npm:@neodrag/react@^2.3.1",
     "fresh": "jsr:@fresh/core@^2.3.3",
     "octokit": "npm:octokit@^5.0.5",
     "preact": "npm:preact@^10.29.1",

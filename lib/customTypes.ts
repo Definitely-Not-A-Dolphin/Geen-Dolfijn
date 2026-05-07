@@ -65,10 +65,10 @@ export interface Repository {
   description: string;
   url: string;
   languages: Languages;
-  license: {
+  license?: {
     name: string;
     url: string;
-  } | null;
+  };
   stargazerCount: number;
 }
 

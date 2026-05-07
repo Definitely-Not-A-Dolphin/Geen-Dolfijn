@@ -4,18 +4,18 @@ import { useEffect } from "preact/hooks";
 import hornetRunning from "/HornetRunning.gif";
 
 export default function LastFMStats() {
-  const stats = useSignal<Track | boolean | null>(null);
+  const trackData = useSignal<Track | boolean | null>(null);
   const error = useSignal<string | null>(null);
 
   useEffect(() => {
     fetch(`/api/lastfm`)
       .then((r) => r.json())
-      .then((data) => stats.value = data)
+      .then((data) => trackData.value = data)
       .catch((e) => error.value = e.message);
   }, []);
 
   if (error.value) return <p>Failed to load stats. Error: {error.value}</p>;
-  if (stats.value === null) {
+  if (trackData.value === null) {
     return (
       <div style="display: flex; gap: 10px; justify-content: space-between;">
         <div>
@@ -33,7 +33,7 @@ export default function LastFMStats() {
     );
   }
 
-  if (stats.value === false) {
+  if (trackData.value === false) {
     return (
       <>
         <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
@@ -42,7 +42,7 @@ export default function LastFMStats() {
     );
   }
 
-  if (stats.value === true) {
+  if (trackData.value === true) {
     return (
       <>
         <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
@@ -51,23 +51,21 @@ export default function LastFMStats() {
     );
   }
 
-  const trackData = stats.value;
-
   return (
     <div style="display: flex; gap: 10px; justify-content: space-between;">
       <div>
         <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
         <p class="not">
-          Currently listening to <a href={trackData.url}>{trackData.name}</a>
-          {" "}
-          from {trackData.album} by {trackData.artist}
+          Currently listening to{" "}
+          <a href={trackData.value.url}>{trackData.name}</a> from{" "}
+          {trackData.value.album} by {trackData.value.artist}
         </p>
       </div>
       <div>
         <img
           style="border-radius: 15px; height: 120px;"
-          alt="album cover"
-          src={trackData.image}
+          alt="Album Cover"
+          src={trackData.value.image}
         />
       </div>
     </div>

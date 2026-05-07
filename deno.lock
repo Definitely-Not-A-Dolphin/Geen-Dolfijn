@@ -30,6 +30,7 @@
     "jsr:@std/uuid@^1.0.9": "1.1.1",
     "npm:@babel/core@^7.28.0": "7.29.0",
     "npm:@babel/preset-react@^7.27.1": "7.28.5_@babel+core@7.29.0",
+    "npm:@neodrag/react@^2.3.1": "2.3.1",
     "npm:@opentelemetry/api@^1.9.0": "1.9.1",
     "npm:@preact/signals@^2.5.1": "2.9.0_preact@10.29.1",
     "npm:@preact/signals@^2.9.0": "2.9.0_preact@10.29.1",
@@ -772,6 +773,9 @@
         "@jridgewell/sourcemap-codec"
       ]
     },
+    "@neodrag/react@2.3.1": {
+      "integrity": "sha512-mOVefo3mFmaVLs9PB5F5wMXnnclG81qjOaPHyf8YZUnw/Ciz0pAqyJDwDJk0nPTIK5I2x1JdjXSchGNdCxZNRQ=="
+    },
     "@octokit/app@16.1.2": {
       "integrity": "sha512-8j7sEpUYVj18dxvh0KWj6W/l6uAiVRBl1JBDVRqH1VHKAO/G5eRVl4yEoYACjakWers1DjUkcCHyJNQK47JqyQ==",
       "dependencies": [
@@ -1495,6 +1499,7 @@
     "dependencies": [
       "jsr:@fresh/core@^2.3.3",
       "jsr:@fresh/plugin-vite@^1.1.2",
+      "npm:@neodrag/react@^2.3.1",
       "npm:@preact/signals@^2.9.0",
       "npm:@types/babel__core@^7.20.5",
       "npm:octokit@^5.0.5",
