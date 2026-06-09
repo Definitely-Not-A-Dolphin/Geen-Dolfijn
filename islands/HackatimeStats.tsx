@@ -22,7 +22,7 @@ export default function HackatimeStats() {
   return (
     <p>
       Today I have logged {grandTotal.total_seconds}{" "}
-      seconds of coding, which is equal to {" "}
+      seconds of coding, which is equal to{"  "}
       {grandTotal.text === "Start coding to track your time"
         ? "nothing :/"
         : `${grandTotal.text}!`}

@@ -140,7 +140,7 @@ export default define.page(function Home() {
           class="containerStandard"
           style={`flex-direction: ${flexDirector(index)}`}
         >
-          <div class="mainStandard">
+          <div class="standardBlock projectBlock">
             {projectTexts[projectID as keyof typeof projectTexts]}
           </div>
 

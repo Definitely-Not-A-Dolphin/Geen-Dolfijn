@@ -86,7 +86,8 @@ export const handler = define.handlers({
         ? {
           name: repositoryData.license.name,
           url: repositoryData.license.url,
-        } : undefined,
+        }
+        : undefined,
       stargazerCount: repositoryData.stargazers_count,
     };
 

@@ -9,11 +9,10 @@ function getColor(language: string): string {
     .find((languages) => language === languages);
 
   if (foundLanguage) {
-    const [red, green, blue] =
-      generalData
-        .languageColors[
-          foundLanguage as keyof typeof generalData.languageColors
-        ];
+    const [red, green, blue] = generalData
+      .languageColors[
+        foundLanguage as keyof typeof generalData.languageColors
+      ];
     return `rgb(${red},${green},${blue})`;
   }
 

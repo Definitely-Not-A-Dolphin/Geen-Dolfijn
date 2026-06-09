@@ -3,11 +3,11 @@ import { useDraggable } from "@neodrag/react";
 import { useSignal } from "@preact/signals";
 import { define } from "../utils.ts";
 
-function LinkTo({ name, url }: { name: string; url: string }) {
+function LinkTo({ url }: { url: string }) {
   return (
     <a href={url}>
       <div class="button1">
-        <p class="nob not">{name}</p>
+        <p class="nob not">{url}</p>
       </div>
     </a>
   );
@@ -32,9 +32,9 @@ export default define.page(function App({ Component }) {
             <Component />
 
             <div class="containerButtons">
-              {generalData.pages.map((page) =>
+              {generalData.pages.map((url) =>
                 // deno-lint-ignore jsx-key
-                <LinkTo {...page} />
+                <LinkTo {...{ url }} />
               )}
             </div>
 

@@ -97,23 +97,32 @@ a {
 .containerStandard {
   flex-direction: row;
   display: flex;
-  column-gap: calc(var(--mainwidth) * 2 / 40);
+  column-gap: calc(var(--mainwidth) / 20);
 }
 
-.mainStandard {
+.standardBlock {
   text-align: left;
   border-radius: 15px;
-  padding: calc(var(--mainwidth) * 1 / 40);
-  width: calc(var(--mainwidth) * 24 / 40);
+  padding: calc(var(--mainwidth) / 40);
   background-color: var(--itemcolor);
   box-shadow: 10px 10px rgb(0, 0, 0);
 }
 
+.projectBlock {
+  /* Inherits textStandard */
+  width: calc(var(--mainwidth) * 3 / 5);
+}
+
+.mathBlock {
+  /* Inherits textStandard */
+  width: calc(var(--mainwidth * 19 / 20));
+}
+
 .githubWidget {
   background-color: rgb(13, 17, 23);
-  width: calc(var(--mainwidth) * 10 / 40);
+  width: calc(var(--mainwidth) / 4);
   border-radius: 20px;
-  padding: calc(var(--mainwidth) * 1 / 40);
+  padding: calc(var(--mainwidth) / 40);
   text-align: left;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
@@ -126,16 +135,16 @@ a {
 }
 
 .sideStandard {
-  width: calc(var(--mainwidth) * 10 / 40);
+  width: calc(var(--mainwidth) / 4);
   border-radius: 20px;
-  padding: calc(var(--mainwidth) * 1 / 40);
+  padding: calc(var(--mainwidth) / 40);
   background-color: var(--itemcolor);
   text-align: left;
   box-shadow: 10px 10px rgb(0, 0, 0);
 }
 
 .imageStandard {
-  width: calc(var(--mainwidth) * 12 / 40);
+  width: calc(var(--mainwidth) * 3 / 10);
   border-radius: 20px;
   background-color: var(--itemcolor);
   height: 315px;
@@ -145,8 +154,8 @@ a {
 .main {
   text-align: left;
   border-radius: 15px;
-  padding: calc(var(--mainwidth) * 1 / 40);
-  width: calc(var(--mainwidth) * 38 / 40);
+  padding: calc(var(--mainwidth) / 40);
+  width: calc(var(--mainwidth) * 19 / 20);
   background-color: var(--itemcolor);
   box-shadow: 10px 10px rgb(0, 0, 0);
 }
@@ -155,7 +164,7 @@ a {
 .containerButtons {
   display: flex;
   flex-direction: row;
-  column-gap: calc(var(--mainwidth) * 2 / 40);
+  column-gap: calc(var(--mainwidth) / 20);
   height: auto;
 }
 
@@ -168,7 +177,7 @@ a {
   /* text center horizontaal */
   line-height: 40px;
   /* zorgt ervoor dat text in midden verticaal is, verander dit als je height veranderd*/
-  width: calc(var(--mainwidth) * 12 / 40);
+  width: calc(var(--mainwidth) * 0.3);
   height: auto;
   border-radius: 10px;
   color: var(--linkblue);
