@@ -1,5 +1,5 @@
 import type { HackaTimeToday } from "@/lib/customTypes.ts";
-import { define } from "../../utils.ts";
+import { define } from "@/utils.ts";
 
 const HACKATIMEAUTH = Deno.env.get("HACKATIMEAUTH");
 

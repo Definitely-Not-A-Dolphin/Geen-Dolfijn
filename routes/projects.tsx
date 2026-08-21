@@ -123,7 +123,7 @@ const projectTexts = {
       </ul>
     </>
   ),
-};
+} as const;
 
 const flexDirector = (counter: number) =>
   counter % 2 === 0 ? "row" : "row-reverse";

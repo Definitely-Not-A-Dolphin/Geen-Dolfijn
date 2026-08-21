@@ -1,5 +1,5 @@
 import type { LastFMData } from "@/lib/customTypes.ts";
-import { define } from "../../utils.ts";
+import { define } from "@/utils.ts";
 
 const LASTFMKEY = Deno.env.get("LASTFMKEY");
 const LASTFMUSER = Deno.env.get("LASTFMUSER");

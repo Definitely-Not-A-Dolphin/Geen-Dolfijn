@@ -1,6 +1,4 @@
 import generalData from "@/assets/generalData.json" with { type: "json" };
-import { useDraggable } from "@neodrag/react";
-import { useSignal } from "@preact/signals";
 import { define } from "../utils.ts";
 
 function LinkTo({ url }: { url: string }) {
@@ -14,9 +12,6 @@ function LinkTo({ url }: { url: string }) {
 }
 
 export default define.page(function App({ Component }) {
-  const draggableRef = useSignal(null);
-  useDraggable(draggableRef);
-
   return (
     <html>
       <head>

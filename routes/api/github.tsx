@@ -3,7 +3,7 @@ import type {
   Languages,
   Repository,
 } from "@/lib/customTypes.ts";
-import { define } from "../../utils.ts";
+import { define } from "@/utils.ts";
 import { Octokit } from "octokit";
 
 const octokit = new Octokit({
@@ -20,9 +20,7 @@ export const handler = define.handlers({
     }
 
     const repoID = ctx.url.searchParams.get("repoID");
-    if (!repoID) {
-      throw new Error("Server error: no repo supplied :(");
-    }
+    if (!repoID) throw new Error("Server error: no repo supplied :(");
 
     const repositoryResponse = await octokit.request(
       `GET /repositories/${repoID}`,

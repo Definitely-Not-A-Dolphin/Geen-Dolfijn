@@ -3,7 +3,7 @@ import { define } from "@/utils.ts";
 const entries = [
   {
     title: "The Button Analysis",
-    discription: "I once saw a game on steam called \"The Button\", and I thought that it had some interesting math going with it, so I decided to graph how its probabilities work!",
+    discription: "I once saw a game on steam called \"The Button\", and I thought that it had some interesting math going with it, so I decided to graph how the underlying probabilities work.",
     link: "LINK",
   },
   {

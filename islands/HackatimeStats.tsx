@@ -13,7 +13,13 @@ export default function HackatimeStats() {
       .catch((e) => error.value = e.message);
   }, []);
 
-  if (error.value) return <p>Failed to load stats. Error: {error.value}</p>;
+  if (error.value) {
+    return (
+      <p>
+        <strong>Failed to load stats. Error:</strong> {error.value}
+      </p>
+    );
+  }
   if (!stats.value) return <p>Loading Hackatime stats...</p>;
 
   const hackatimeData = stats.value;

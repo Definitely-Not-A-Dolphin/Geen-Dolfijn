@@ -14,12 +14,16 @@ export default function LastFMStats() {
       .catch((e) => error.value = e.message);
   }, []);
 
-  if (error.value) return <p>Failed to load stats. Error: {error.value}</p>;
-  if (trackData.value === null) {
-    return (
+  return error.value
+    ? (
+      <p>
+        <strong>Failed to load stats. Error:</strong> {error.value}
+      </p>
+    )
+    : trackData.value === null
+    ? (
       <div style="display: flex; gap: 10px; justify-content: space-between;">
         <div>
-          <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
           <p class="not">Waiting last.fm data...</p>
         </div>
         <div>
@@ -30,44 +34,27 @@ export default function LastFMStats() {
           />
         </div>
       </div>
-    );
-  }
-
-  if (trackData.value === false) {
-    return (
-      <>
-        <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
-        <p class="not">Something went wrong while fetching Last.fm data D:</p>
-      </>
-    );
-  }
-
-  if (trackData.value === true) {
-    return (
-      <>
-        <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
-        <p class="not">I am not currently listening to any music</p>
-      </>
-    );
-  }
-
-  return (
-    <div style="display: flex; gap: 10px; justify-content: space-between;">
-      <div>
-        <h3 class="nob not" style="color: var(--mathcolor);">Last.fm</h3>
-        <p class="not">
-          Currently listening to{" "}
-          <a href={trackData.value.url}>{trackData.name}</a> from{" "}
-          {trackData.value.album} by {trackData.value.artist}
-        </p>
+    )
+    : trackData.value === false
+    ? <p class="not">Something went wrong while fetching Last.fm data D:</p>
+    : trackData.value === true
+    ? <p class="not">I am not currently listening to any music</p>
+    : (
+      <div style="display: flex; gap: 10px; justify-content: space-between;">
+        <div>
+          <p class="not">
+            Currently listening to{" "}
+            <a href={trackData.value.url}>{trackData.name}</a> from{" "}
+            {trackData.value.album} by {trackData.value.artist}
+          </p>
+        </div>
+        <div>
+          <img
+            style="border-radius: 15px; height: 120px;"
+            alt="Album Cover"
+            src={trackData.value.image}
+          />
+        </div>
       </div>
-      <div>
-        <img
-          style="border-radius: 15px; height: 120px;"
-          alt="Album Cover"
-          src={trackData.value.image}
-        />
-      </div>
-    </div>
-  );
+    );
 }
