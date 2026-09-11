@@ -7,7 +7,7 @@ This project uses _deno_, not _npm_ to run it. There is a reason
 everything with deno. Don't know how? Just run:
 
 ```bash
-deno i --npm; deno i --jsr;
+deno i --jsr; deno i --deno;
 ```
 
 The commands to run the project can all be found in `deno.json` under `tasks`.

@@ -1,10 +1,10 @@
-import type { Track } from "@/lib/customTypes.ts";
+import type { Track } from "@/lib/types.ts";
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
-import hornetRunning from "/HornetRunning.gif";
+import hornetRunning from "@/static/HornetRunning.gif";
 
 export default function LastFMStats() {
-  const trackData = useSignal<Track | boolean | null>(null);
+  const trackData = useSignal<Track | undefined | null>(null);
   const error = useSignal<string | null>(null);
 
   useEffect(() => {
@@ -35,9 +35,7 @@ export default function LastFMStats() {
         </div>
       </div>
     )
-    : trackData.value === false
-    ? <p class="not">Something went wrong while fetching Last.fm data D:</p>
-    : trackData.value === true
+    : trackData.value === undefined
     ? <p class="not">I am not currently listening to any music</p>
     : (
       <div style="display: flex; gap: 10px; justify-content: space-between;">

@@ -1,26 +1,24 @@
-import type {
-  GitHubRepository,
-  Languages,
-  Repository,
-} from "@/lib/customTypes.ts";
+import type { GitHubRepository, Languages, Repository } from "@/lib/types.ts";
 import { define } from "@/utils.ts";
 import { Octokit } from "octokit";
 
-const octokit = new Octokit({
-  auth: Deno.env.get("GITHUB_TOKEN")!,
-});
+const octokit = new Octokit({ auth: Deno.env.get("GITHUB_TOKEN")! });
 
 export const handler = define.handlers({
   async GET(ctx) {
     if (!Deno.env.get("GITHUB_TOKEN")) {
       console.error("Incomplete dotenv! Missing \x1b[34mGITHUB_TOKEN\x1b[0m");
       throw new Error(
-        "Server error: missing github auth key, not your fault, sorry :(",
+        "Server error: missing github auth key. not your fault, sorry :(",
       );
     }
 
     const repoID = ctx.url.searchParams.get("repoID");
-    if (!repoID) throw new Error("Server error: no repo supplied :(");
+    if (!repoID) {
+      throw new Error(
+        "Server error: no repo supplied. not your fault, sorry :(",
+      );
+    }
 
     const repositoryResponse = await octokit.request(
       `GET /repositories/${repoID}`,
@@ -28,7 +26,7 @@ export const handler = define.handlers({
 
     if (repositoryResponse.status !== 200) {
       throw new Error(
-        "Server error: something went wrong while fetching data :(",
+        "Server error: something went wrong while fetching data. not your fault, sorry :(",
       );
     }
 
@@ -46,7 +44,7 @@ export const handler = define.handlers({
 
     if (repositoryResponse.status !== 200) {
       throw new Error(
-        "Server error: something went wrong while fetching language data :(",
+        "Server error: something went wrong while fetching language data. not your fault, sorry :(",
       );
     }
 

@@ -1,15 +1,11 @@
 import HackatimeStats from "@/islands/HackatimeStats.tsx";
 import LastFMStats from "@/islands/LastfmStats.tsx";
 import { randomInt } from "@/lib/utils.ts";
+import sizzle from "@/static/NotBaldCat.jpg";
+import okkie from "@/static/Okkie<3.jpg";
 import { define } from "@/utils.ts";
-import { useDraggable } from "@neodrag/react";
-import sizzle from "/NotBaldCat.jpg";
-import okkie from "/Okkie<3.jpg";
-import { useRef } from "preact/hooks";
 
 export default define.page(function Home() {
-  const draggableRef = useRef(null);
-  useDraggable(draggableRef);
   const birthTimestamp = new Date("2008-12-31T13:00:00Z").getTime(); // Replace with your actual birth date
   const calculateAge = () =>
     ((Date.now() - birthTimestamp) / 31557600000).toFixed(8);
@@ -28,7 +24,7 @@ export default define.page(function Home() {
 
   return (
     <>
-      <div class="header" ref={draggableRef}>
+      <div class="header">
         <h1>{titles[randomInt(0, titles.length - 1)]}</h1>
       </div>
 

@@ -9,15 +9,15 @@ const projectTexts = {
         kuusi
       </h2>
       <p class="not">
-        What if there was a TypeScript framework instead of a JavaScript
-        framework? Well I made kuusi as a simple file based router, but it grew
-        quickly.
+        I made kuusi as a simple file based router, but it grew quickly into a
+        backend JavaScript library. Check it out on{" "}
+        <a href="https://kuusi.dev">kuusi.dev</a>
       </p>
       <p class="nob not">
         Some things that I wish to include / add in the future are:
       </p>
       <ul class="nob not">
-        <li>Better dotenv options</li>
+        <li>Nothing currently!</li>
       </ul>
     </>
   ),
@@ -47,9 +47,8 @@ const projectTexts = {
         Geen-Dolfijn
       </h2>
       <p class="nob not">
-        This site is made with SvelteKit, TypeScript and all the other usual
-        stuff. My friend Jsw helped me with the setup, and its hosted on his
-        server!
+        This site is made with Fresh, TypeScript and all the other usual stuff.
+        My friend Jsw helped me with the setup, and its hosted on his server!
       </p>
 
       <p class="nob">
@@ -93,7 +92,7 @@ const projectTexts = {
         bot for it. Now, it uses a database for infections, so you can register
         your infection, and check how many infections anyone has. It also
         auto-assigns roles to everyone in the database based on how many
-        infectedtions they did, and more.
+        infections they did, and more.
       </p>
 
       <p class="nob not">
@@ -104,14 +103,15 @@ const projectTexts = {
       </ul>
     </>
   ),
-  1097844217: (
+  1284471965: (
     <>
       <h2 class="nob not project" style="color: var(--projectcolor)">
-        DenoDing
+        funktio
       </h2>
       <p class="not">
-        A small API for a ToDo site im making. I still have to make a frontend
-        but this is already mostly done
+        Inspired by 3Blue1Brown's video on my fellow countryman M.C. Escher, I
+        made a CLI that allows you to applyy various mathematical functions to
+        any image.
       </p>
 
       <p class="nob not">
