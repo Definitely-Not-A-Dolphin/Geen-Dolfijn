@@ -1,13 +1,12 @@
 import generalData from "@/assets/generalData.json" with { type: "json" };
 import { define } from "../utils.ts";
 
-function LinkTo({ url }: { url: string }) {
+function LinkTo(url: string) {
   return (
-    <a href={url}>
-      <div class="button1">
-        <p class="nob not">{url}</p>
-      </div>
-    </a>
+    <>
+      <a href={url}>{url}</a>
+      {" "}
+    </>
   );
 }
 
@@ -23,18 +22,17 @@ export default define.page(function App({ Component }) {
         <div class="centerer">
           <div class="fillerElement" />
 
-          <div class="containerMain">
-            <Component />
-
-            <div class="containerButtons">
-              {generalData.pages.map((url) =>
-                // deno-lint-ignore jsx-key
-                <LinkTo {...{ url }} />
-              )}
+          <div class="mainContainer">
+            <div class="standardBlock">
+              <div class="containerButtons">
+                {generalData.pages.map((url) => LinkTo(url))}
+              </div>
             </div>
 
+            <Component />
+
             <div class="mentions">
-              <h3>My frend</h3>
+              <h3>My friends</h3>
 
               {generalData.friends.map((friend) => (
                 <a href={friend.link}>

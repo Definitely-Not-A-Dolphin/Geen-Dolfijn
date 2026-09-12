@@ -23,7 +23,7 @@
 <div class="centerer">
   <div class="fillerElement"></div>
 
-  <div class="containerMain">
+  <div class="mainContainer">
     {@render children()}
 
     <div class="containerButtons">

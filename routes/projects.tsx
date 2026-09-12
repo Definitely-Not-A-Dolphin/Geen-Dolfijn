@@ -129,23 +129,24 @@ const flexDirector = (counter: number) =>
   counter % 2 === 0 ? "row" : "row-reverse";
 
 export default define.page(function Home() {
+  const githubData: Record<number, unknown> = {};
+  for (const projectID of generalData.repoIDs) {
+    githubData[projectID] = GithubStats(projectID);
+  }
+
   return (
     <>
-      <div class="header">
-        <h1 style="color: var(--projectcolor)">My Projects</h1>
-      </div>
-
       {generalData.repoIDs.map((projectID, index) => (
         <div
-          class="containerStandard"
+          class="projectContainer"
           style={`flex-direction: ${flexDirector(index)}`}
         >
-          <div class="standardBlock projectBlock">
+          <div class="projectBlock">
             {projectTexts[projectID as keyof typeof projectTexts]}
           </div>
 
           <div class="githubWidget">
-            <GithubStats {...{ repoID: projectID }} />
+            {githubData[projectID] as any}
           </div>
         </div>
       ))}

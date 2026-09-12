@@ -1,11 +1,11 @@
 :root {
-  --linkblue: rgb(0, 200, 200);
+  --blue: rgb(0, 200, 200);
   --backgroundcolor: rgb(12, 12, 12);
   --itemcolor: rgb(25, 25, 25);
-  --mathcolor: rgb(255, 75, 75);
+  --red: rgb(255, 75, 75);
   --blogcolor: rgb(35, 219, 38);
   --projectcolor: gold;
-  --mainwidth: 768px;
+  --mainwidth: 720px;
 }
 
 body {
@@ -13,6 +13,7 @@ body {
   color: white;
   font-family: var(
     --default-font-family,
+    jetbrains mono,
     ui-sans-serif,
     system-ui,
     sans-serif,
@@ -22,31 +23,12 @@ body {
     "Noto Color Emoji"
   );
   text-align: center;
-
-  background: #000000;
-  --gap: 5em;
-  --line: 1px;
-  --color: rgba(255, 255, 255, 0.2);
-
-  background-image:
-    linear-gradient(
-      -90deg,
-      transparent calc(var(--gap) - var(--line)),
-      var(--color) calc(var(--gap) - var(--line) + 1px),
-      var(--color) var(--gap)
-    ),
-    linear-gradient(
-      0deg,
-      transparent calc(var(--gap) - var(--line)),
-      var(--color) calc(var(--gap) - var(--line) + 1px),
-      var(--color) var(--gap)
-    );
-  background-size: var(--gap) var(--gap);
+  background-color: var(--itemcolor);
 }
 
 a {
-  color: var(--linkblue);
-  text-decoration: none;
+  color: var(--blue);
+  text-decoration: underline;
 }
 
 .not {
@@ -70,14 +52,14 @@ a {
 }
 
 .fillerElement {
-  width: 30vw;
   flex-shrink: 2;
   flex-grow: 2;
   min-width: none;
 }
 
 /* Flexboxes */
-.containerMain {
+.mainContainer {
+  background-color: var(--itemcolor);
   display: flex;
   width: var(--mainwidth);
   row-gap: 30px;
@@ -87,17 +69,14 @@ a {
 .header {
   width: var(--mainwidth);
   border-radius: 15px;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
   height: auto;
   background-color: var(--itemcolor);
-  box-shadow: 10px 10px rgb(0, 0, 0);
 }
 
-.containerStandard {
+.projectContainer {
   flex-direction: row;
   display: flex;
-  column-gap: calc(var(--mainwidth) / 20);
+  width: var(--mainwidth);
 }
 
 .standardBlock {
@@ -105,29 +84,30 @@ a {
   border-radius: 15px;
   padding: calc(var(--mainwidth) / 40);
   background-color: var(--itemcolor);
-  box-shadow: 10px 10px rgb(0, 0, 0);
 }
 
 .projectBlock {
   /* Inherits textStandard */
+  text-align: left;
   width: calc(var(--mainwidth) * 3 / 5);
+  margin: calc(var(--mainwidth) / 40);
+}
+
+.githubWidget {
+  background-color: rgb(13, 17, 23);
+  width: calc(var(--mainwidth) * 11 / 40);
+  padding: calc(var(--mainwidth) / 40);
+  margin: calc(var(--mainwidth) / 40);
+  border-radius: 20px;
+  text-align: left;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 .mathBlock {
   /* Inherits textStandard */
   width: calc(var(--mainwidth * 19 / 20));
-}
-
-.githubWidget {
-  background-color: rgb(13, 17, 23);
-  width: calc(var(--mainwidth) / 4);
-  border-radius: 20px;
-  padding: calc(var(--mainwidth) / 40);
-  text-align: left;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  box-shadow: 10px 10px rgb(0, 0, 0);
 }
 
 .githublangbar {
@@ -137,10 +117,8 @@ a {
 .sideStandard {
   width: calc(var(--mainwidth) / 4);
   border-radius: 20px;
-  padding: calc(var(--mainwidth) / 40);
   background-color: var(--itemcolor);
   text-align: left;
-  box-shadow: 10px 10px rgb(0, 0, 0);
 }
 
 .imageStandard {
@@ -148,24 +126,13 @@ a {
   border-radius: 20px;
   background-color: var(--itemcolor);
   height: 315px;
-  box-shadow: 10px 10px rgb(0, 0, 0);
 }
 
 .main {
   text-align: left;
   border-radius: 15px;
-  padding: calc(var(--mainwidth) / 40);
   width: calc(var(--mainwidth) * 19 / 20);
   background-color: var(--itemcolor);
-  box-shadow: 10px 10px rgb(0, 0, 0);
-}
-
-/* For the Buttons! */
-.containerButtons {
-  display: flex;
-  flex-direction: row;
-  column-gap: calc(var(--mainwidth) / 20);
-  height: auto;
 }
 
 .button1 {
@@ -181,12 +148,11 @@ a {
   height: auto;
   border-radius: 10px;
   color: var(--linkblue);
-  box-shadow: 10px 10px rgb(0, 0, 0);
   transition: 0.3s; /* :3 */
 }
 
 .button1:hover {
-  background-color: var(--linkblue);
+  background-color: var(--blue);
   color: var(--itemcolor);
 }
 
@@ -195,7 +161,6 @@ a {
   height: auto;
   background-color: var(--itemcolor);
   padding-bottom: 10px;
-  box-shadow: 10px 10px rgb(0, 0, 0);
 }
 
 .mentionspfp {

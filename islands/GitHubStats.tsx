@@ -1,7 +1,7 @@
+import generalData from "@/assets/generalData.json" with { type: "json" };
+import type { Repository } from "@/lib/types.ts";
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
-import type { Repository } from "@/lib/customTypes.ts";
-import generalData from "@/assets/generalData.json" with { type: "json" };
 
 function getColor(language: string): string {
   const foundLanguage = Object
@@ -19,7 +19,7 @@ function getColor(language: string): string {
   return "white";
 }
 
-export default function GithubStats({ repoID }: { repoID: number }) {
+export default function GithubStats(repoID: number) {
   const stats = useSignal<Repository | null>(null);
   const error = useSignal<string | null>(null);
 

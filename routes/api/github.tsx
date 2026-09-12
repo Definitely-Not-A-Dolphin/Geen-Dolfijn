@@ -30,7 +30,7 @@ export const handler = define.handlers({
       );
     }
 
-    const repositoryData: GitHubRepository = repositoryResponse.data;
+    const repositoryData = repositoryResponse.data as GitHubRepository;
 
     console.log(
       `\x1b[44m > \x1b[0m Fetch Log: ${repositoryData.full_name}`,
@@ -53,7 +53,7 @@ export const handler = define.handlers({
       languageResponse.headers,
     );
 
-    const rawLanguageData: Languages = languageResponse.data;
+    const rawLanguageData = languageResponse.data as Languages;
 
     let totalCharacterCount = 0;
     for (const characterCount of Object.values(rawLanguageData)) {
@@ -83,7 +83,7 @@ export const handler = define.handlers({
           name: repositoryData.license.name,
           url: repositoryData.license.url,
         }
-        : undefined,
+        : null,
       stargazerCount: repositoryData.stargazers_count,
     };
 
